@@ -1,0 +1,10 @@
+2019-08-05 08:00:05 u97114795 zQqN8P-1hgiW70LOk-00MeL0 |< -- /usr/sbin/sendmail -i -FCronDaemon -B8BITMIME -oem wpbgutachter@gmail.com
+2019-08-05 08:00:05 u97114795 zQqN8P-1hgiW70LOk-00MeL0 WW ignored command line option -B
+2019-08-05 08:00:05 u97114795 zQqN8P-1hgiW70LOk-00MeL0 WW invalid sender address: " root (Cron Daemon)"
+2019-08-05 08:00:05 u97114795 zQqN8P-1hgiW70LOk-00MeL0 <= S=cgi-mailer-bounces-781075469@kundenserver.de SZ=918 D=0 SID=781075469
+2019-08-05 08:00:05 u97114795 zQqN8P-1hgiW70LOk-00MeL0 => wpbgutachter@gmail.com msmtp.kundenserver.de[172.19.35.7] 250 Requested mail action okay, completed: id=1MUp8r-1hlPCW1Rvl-00Qizg
+2019-08-05 09:00:02 u97114795 zRqtcc-1igWxf2rC5-00mg72 |< -- /usr/sbin/sendmail -i -FCronDaemon -B8BITMIME -oem wpbgutachter@gmail.com
+2019-08-05 09:00:02 u97114795 zRqtcc-1igWxf2rC5-00mg72 WW ignored command line option -B
+2019-08-05 09:00:02 u97114795 zRqtcc-1igWxf2rC5-00mg72 WW invalid sender address: " root (Cron Daemon)"
+2019-08-05 09:00:02 u97114795 zRqtcc-1igWxf2rC5-00mg72 <= S=cgi-mailer-bounces-781075469@kundenserver.de SZ=931 D=0 SID=781075469
+2019-08-05 09:00:03 u97114795 zRqtcc-1igWxf2rC5-00mg72 => wpbgutachter@gmail.com msmtp.kundenserver.de[172.19.35.7] 250 Requested mail action okay, completed: id=1MgiPE-1iZ5O30cGa-00h8J2

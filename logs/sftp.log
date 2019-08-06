@@ -1,0 +1,171 @@
+Aug  5 11:07:39 10.71.57.0 u97114795 Connection from 10.71.57.0 port 17808 on 82.165.87.24 port 22
+Aug  5 11:08:00 10.71.57.0 u97114795 Accepted password for u97114795 from 10.71.57.0 port 17808 ssh2
+Aug  5 11:08:05 10.71.57.0 u97114795 Connection closed by 10.71.57.0
+Aug  5 11:18:28 10.71.56.0 tmp97114795-6201 Connection from 10.71.56.0 port 25332 on 82.165.87.24 port 22
+Aug  5 11:18:28 10.71.56.0 tmp97114795-6201 Accepted password for tmp97114795-6201 from 10.71.56.0 port 25332 ssh2
+Aug  5 11:18:28 10.71.56.0 tmp97114795-6201 Starting session: subsystem 'sftp' for tmp97114795-6201 from 10.71.56.0 port 25332
+Aug  5 11:18:28 10.71.56.0 tmp97114795-6201 session opened for local user tmp97114795-6201 from [10.71.56.0]
+Aug  5 11:18:43 10.71.56.0 tmp97114795-9197 Connection from 10.71.56.0 port 38710 on 82.165.87.24 port 22
+Aug  5 11:18:43 10.71.56.0 tmp97114795-9197 Accepted password for tmp97114795-9197 from 10.71.56.0 port 38710 ssh2
+Aug  5 11:18:43 10.71.56.0 tmp97114795-6201 open "/resources/views/mailpdf/index.blade.php" flags READ mode 0666
+Aug  5 11:18:43 10.71.56.0 tmp97114795-6201 close "/resources/views/mailpdf/index.blade.php" bytes read 9795 written 0
+Aug  5 11:18:43 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|9795|0|0|0|2f7265736f75726365732f76696577732f6d61696c7064662f696e6465782e626c6164652e706870|]
+Aug  5 11:19:10 10.71.56.0 tmp97114795-6201 open "/resources/views/mailpdf/index.blade.php" flags READ mode 0666
+Aug  5 11:19:10 10.71.56.0 tmp97114795-6201 close "/resources/views/mailpdf/index.blade.php" bytes read 9795 written 0
+Aug  5 11:19:10 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|9795|0|0|0|2f7265736f75726365732f76696577732f6d61696c7064662f696e6465782e626c6164652e706870|]
+Aug  5 11:21:14 10.71.56.0 tmp97114795-6201 open "/resources/views/mailpdf/index.blade.php" flags READ mode 0666
+Aug  5 11:21:14 10.71.56.0 tmp97114795-6201 close "/resources/views/mailpdf/index.blade.php" bytes read 9795 written 0
+Aug  5 11:21:14 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|9795|0|0|0|2f7265736f75726365732f76696577732f6d61696c7064662f696e6465782e626c6164652e706870|]
+Aug  5 11:24:35 10.71.56.0 tmp97114795-6201 open "/resources/views/mailpdf/index.blade.php" flags READ mode 0666
+Aug  5 11:24:35 10.71.56.0 tmp97114795-6201 close "/resources/views/mailpdf/index.blade.php" bytes read 9795 written 0
+Aug  5 11:24:35 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|9795|0|0|0|2f7265736f75726365732f76696577732f6d61696c7064662f696e6465782e626c6164652e706870|]
+Aug  5 11:31:18 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags READ mode 0666
+Aug  5 11:31:18 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 5653 written 0
+Aug  5 11:31:18 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|5653|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 11:31:48 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags READ mode 0666
+Aug  5 11:31:48 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 5653 written 0
+Aug  5 11:31:48 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|5653|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 11:37:12 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags READ mode 0666
+Aug  5 11:37:12 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 5653 written 0
+Aug  5 11:37:12 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|5653|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 11:37:47 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags WRITE,CREATE,TRUNCATE mode 0666
+Aug  5 11:37:47 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 0 written 5745
+Aug  5 11:37:47 10.71.56.0 tmp97114795-6201 [10.71.56.0|put|0|5745|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 11:38:13 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags READ mode 0666
+Aug  5 11:38:13 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 5745 written 0
+Aug  5 11:38:13 10.71.56.0 tmp97114795-6201 [10.71.56.0|get|0|5745|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 11:38:55 10.71.56.0 tmp97114795-6201 open "/public/eduread/js/function.js" flags WRITE,CREATE,TRUNCATE mode 0666
+Aug  5 11:38:55 10.71.56.0 tmp97114795-6201 close "/public/eduread/js/function.js" bytes read 0 written 5745
+Aug  5 11:38:55 10.71.56.0 tmp97114795-6201 [10.71.56.0|put|0|5745|0|0|0|2f7075626c69632f656475726561642f6a732f66756e6374696f6e2e6a73|]
+Aug  5 12:38:19 10.71.56.0 u97114795 Connection from 10.71.56.0 port 65324 on 82.165.87.24 port 22
+Aug  5 12:38:21 10.71.56.0 u97114795 Accepted password for u97114795 from 10.71.56.0 port 65324 ssh2
+Aug  5 12:38:21 10.71.56.0 u97114795 Starting session: subsystem 'sftp' for u97114795 from 10.71.56.0 port 65324
+Aug  5 12:38:21 10.71.56.0 u97114795 session opened for local user u97114795 from [10.71.56.0]
+Aug  5 12:53:03 10.71.56.0 tmp97114795-6201 Connection closed by 10.71.56.0
+Aug  5 12:53:03 10.71.56.0 tmp97114795-6201 session closed for local user tmp97114795-6201 from [10.71.56.0]
+Aug  5 12:53:03 10.71.56.0 tmp97114795-9197 Connection closed by 10.71.56.0
+Aug  5 13:05:33 10.71.56.0 u97114795 session closed for local user u97114795 from [10.71.56.0]
+Aug  5 13:05:33 10.71.56.0 u97114795 Connection closed by 10.71.56.0
+Aug  5 20:37:14 10.71.56.0 tmp97114795-4307 Connection from 10.71.56.0 port 55278 on 82.165.87.24 port 22
+Aug  5 20:37:14 10.71.56.0 tmp97114795-4307 Accepted password for tmp97114795-4307 from 10.71.56.0 port 55278 ssh2
+Aug  5 20:37:14 10.71.56.0 tmp97114795-4307 Starting session: subsystem 'sftp' for tmp97114795-4307 from 10.71.56.0 port 55278
+Aug  5 20:37:14 10.71.56.0 tmp97114795-4307 session opened for local user tmp97114795-4307 from [10.71.56.0]
+Aug  5 20:38:55 10.71.56.0 u97114795 Connection from 10.71.56.0 port 55082 on 82.165.87.24 port 22
+Aug  5 20:38:56 10.71.56.0 u97114795 Accepted password for u97114795 from 10.71.56.0 port 55082 ssh2
+Aug  5 20:38:56 10.71.56.0 u97114795 Starting session: subsystem 'sftp' for u97114795 from 10.71.56.0 port 55082
+Aug  5 20:38:56 10.71.56.0 u97114795 session opened for local user u97114795 from [10.71.56.0]
+Aug  5 20:39:11 10.71.56.0 u97114795 remove name "/prod_Skriptenzimmer.zip"
+Aug  5 20:39:11 10.71.56.0 u97114795 [10.71.56.0|rm|0|0|0|0|0|2f70726f645f536b72697074656e7a696d6d65722e7a6970|]
+Aug  5 20:40:00 10.71.56.0 u97114795 sent status No such file
+Aug  5 20:39:59 10.71.56.0 u97114795 Connection from 10.71.56.0 port 54750 on 82.165.87.24 port 22
+Aug  5 20:40:00 10.71.56.0 u97114795 Accepted password for u97114795 from 10.71.56.0 port 54750 ssh2
+Aug  5 20:39:59 10.71.56.0 u97114795 Connection from 10.71.56.0 port 54752 on 82.165.87.24 port 22
+Aug  5 20:40:00 10.71.56.0 u97114795 Accepted password for u97114795 from 10.71.56.0 port 54752 ssh2
+Aug  5 20:40:00 10.71.56.0 u97114795 Starting session: subsystem 'sftp' for u97114795 from 10.71.56.0 port 54750
+Aug  5 20:40:00 10.71.56.0 u97114795 Starting session: subsystem 'sftp' for u97114795 from 10.71.56.0 port 54752
+Aug  5 20:40:00 10.71.56.0 u97114795 session opened for local user u97114795 from [10.71.56.0]
+Aug  5 20:40:00 10.71.56.0 u97114795 session opened for local user u97114795 from [10.71.56.0]
+Aug  5 20:40:00 10.71.56.0 u97114795 open "/.env" flags READ mode 0666
+Aug  5 20:40:00 10.71.56.0 u97114795 open "/.env.mailtrap" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/.env" bytes read 799 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|1|799|0|0|0|2f2e656e76|]
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/.env.mailtrap" bytes read 830 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|1|830|0|0|0|2f2e656e762e6d61696c74726170|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/index.php" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/webpack.mix.js" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/index.php" bytes read 1991 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|1991|0|0|0|2f696e6465782e706870|]
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/webpack.mix.js" bytes read 578 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|578|0|0|0|2f7765627061636b2e6d69782e6a73|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/server.php" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/readme.md" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/readme.md" bytes read 0 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|0|0|0|0|2f726561646d652e6d64|]
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/server.php" bytes read 584 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|584|0|0|0|2f7365727665722e706870|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/phpunit.xml" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/passport info.txt" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/phpunit.xml" bytes read 1167 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|1167|0|0|0|2f706870756e69742e786d6c|]
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/passport info.txt" bytes read 232 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|232|0|0|0|2f70617373706f727420696e666f2e747874|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/package.json" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/package-lock.json" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/package.json" bytes read 1505 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|1505|0|0|0|2f7061636b6167652e6a736f6e|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/favicon.ico" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/favicon.ico" bytes read 1150 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|1150|0|0|0|2f66617669636f6e2e69636f|]
+Aug  5 20:40:01 10.71.56.0 u97114795 close "/package-lock.json" bytes read 529920 written 0
+Aug  5 20:40:01 10.71.56.0 u97114795 [10.71.56.0|get|0|529920|0|0|0|2f7061636b6167652d6c6f636b2e6a736f6e|]
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/composer.lock" flags READ mode 0666
+Aug  5 20:40:01 10.71.56.0 u97114795 open "/composer.json" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/composer.json" bytes read 2036 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|1|2036|0|0|0|2f636f6d706f7365722e6a736f6e|]
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/composer.lock" bytes read 223016 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|1|223016|0|0|0|2f636f6d706f7365722e6c6f636b|]
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/artisan" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/artisan" bytes read 1739 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|1739|0|0|0|2f6172746973616e|]
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.htaccess" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.gitignore" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.htaccess" bytes read 1747 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|1747|0|0|0|2f2e6874616363657373|]
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.gitignore" bytes read 191 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|191|0|0|0|2f2e67697469676e6f7265|]
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.gitattributes" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.ftpquota" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.gitattributes" bytes read 0 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|0|0|0|0|2f2e67697461747472696275746573|]
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.ftpquota" bytes read 17 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|17|0|0|0|2f2e66747071756f7461|]
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.env.example" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/.editorconfig" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.env.example" bytes read 694 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|694|0|0|0|2f2e656e762e6578616d706c65|]
+Aug  5 20:40:02 10.71.56.0 u97114795 close "/.editorconfig" bytes read 228 written 0
+Aug  5 20:40:02 10.71.56.0 u97114795 [10.71.56.0|get|0|228|0|0|0|2f2e656469746f72636f6e666967|]
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/logs/mail.log.30.gz" flags READ mode 0666
+Aug  5 20:40:02 10.71.56.0 u97114795 open "/logs/access.log.29.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/mail.log.30.gz" bytes read 1115 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|1|1115|0|0|0|2f6c6f67732f6d61696c2e6c6f672e33302e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/access.log.28.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/access.log.28.gz" bytes read 32818 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|32818|0|0|0|2f6c6f67732f6163636573732e6c6f672e32382e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/mail.log.28.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/access.log.29.gz" bytes read 26531 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|1|26531|0|0|0|2f6c6f67732f6163636573732e6c6f672e32392e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/mail.log.28.gz" bytes read 861 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|861|0|0|0|2f6c6f67732f6d61696c2e6c6f672e32382e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/access.log.26.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/mail.log.27.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/access.log.26.gz" bytes read 37197 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|37197|0|0|0|2f6c6f67732f6163636573732e6c6f672e32362e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/mail.log.27.gz" bytes read 1037 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|1037|0|0|0|2f6c6f67732f6d61696c2e6c6f672e32372e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/access.log.25.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/mail.log.26.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/access.log.25.gz" bytes read 34202 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|34202|0|0|0|2f6c6f67732f6163636573732e6c6f672e32352e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/mail.log.29.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/mail.log.29.gz" bytes read 1032 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|1032|0|0|0|2f6c6f67732f6d61696c2e6c6f672e32392e677a|]
+Aug  5 20:40:03 10.71.56.0 u97114795 open "/logs/mail.log.31.gz" flags READ mode 0666
+Aug  5 20:40:03 10.71.56.0 u97114795 close "/logs/mail.log.31.gz" bytes read 935 written 0
+Aug  5 20:40:03 10.71.56.0 u97114795 [10.71.56.0|get|0|935|0|0|0|2f6c6f67732f6d61696c2e6c6f672e33312e677a|]
+Aug  5 20:40:04 10.71.56.0 u97114795 close "/logs/mail.log.26.gz" bytes read 936 written 0
+Aug  5 20:40:04 10.71.56.0 u97114795 [10.71.56.0|get|1|936|0|0|0|2f6c6f67732f6d61696c2e6c6f672e32362e677a|]
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/access.log.32.1" flags READ mode 0666
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/access.log.31.2.gz" flags READ mode 0666
+Aug  5 20:40:04 10.71.56.0 u97114795 close "/logs/access.log.31.2.gz" bytes read 6716 written 0
+Aug  5 20:40:04 10.71.56.0 u97114795 [10.71.56.0|get|0|6716|0|0|0|2f6c6f67732f6163636573732e6c6f672e33312e322e677a|]
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/sftp.log.30.gz" flags READ mode 0666
+Aug  5 20:40:04 10.71.56.0 u97114795 close "/logs/access.log.32.1" bytes read 441216 written 0
+Aug  5 20:40:04 10.71.56.0 u97114795 [10.71.56.0|get|0|441216|0|0|0|2f6c6f67732f6163636573732e6c6f672e33322e31|]
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/access.log.24.gz" flags READ mode 0666
+Aug  5 20:40:04 10.71.56.0 u97114795 close "/logs/access.log.24.gz" bytes read 44948 written 0
+Aug  5 20:40:04 10.71.56.0 u97114795 [10.71.56.0|get|0|44948|0|0|0|2f6c6f67732f6163636573732e6c6f672e32342e677a|]
+Aug  5 20:40:04 10.71.56.0 u97114795 close "/logs/sftp.log.30.gz" bytes read 250217 written 0
+Aug  5 20:40:04 10.71.56.0 u97114795 [10.71.56.0|get|0|250217|0|0|0|2f6c6f67732f736674702e6c6f672e33302e677a|]
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/mail.log.25.gz" flags READ mode 0666
+Aug  5 20:40:04 10.71.56.0 u97114795 open "/logs/sftp.log" flags READ mode 0666

@@ -1,0 +1,6 @@
+ersonal access client created successfully.
+Client ID: 1
+Client Secret: BsH23Kc6U3ox26nN8Ah15z8DL658KZobMRqqYqvK
+Password grant client created successfully.
+Client ID: 2
+Client Secret: AmmJxgRNOT4hSj652HgZGVMlw0yD7au2Pln0OUuB
