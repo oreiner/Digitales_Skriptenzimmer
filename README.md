@@ -11,10 +11,12 @@ Moderator können
 
 Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst ihr 
 1. Dateien auf einem Hosting hochladen.
-2. Datenbank erstellen >php artisan migrate<...
+2. Datenbank erstellen 
+>> php artisan migrate...
 3. .env Datei mit euer URL, Mail-Daten usw. konfigurieren.
 [...]
-4. nachdem env fertig ist >php artisan config:cache<
+4. nachdem env fertig ist 
+>>php artisan config:cache
 
 ## Webseite für eure Prüfungen bereitstellen
 1. Admin User in der Datenbank erstellen
