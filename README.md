@@ -3,7 +3,7 @@
 Diese Anleitung ist noch nicht vollständig! 
 Sie wird im Verlauf berarbeitet.
 
-### Nutzer können
+#### Nutzer können
   - Protokolle herunterladen
   - Anschließend Protokoll ergänzen
   - ...
@@ -19,7 +19,7 @@ Sie wird im Verlauf berarbeitet.
  - wie Moderatoren fungieren
  - Prüfungen erstellen
  - Verschiedene Sachen löschen
- -
+ - ...
 
 ## Installation
 
@@ -32,7 +32,8 @@ bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und 
 >>[...]
 4. nachdem .env fertig ist 
 >>php artisan config:cache
-bei jeder änderung der .env Datei muss man cache nochmal aktualisieren mit diesem Befehl
+
+bei jeder Änderung der .env Datei muss man die Cache nochmal  mit diesem Befehl aktualisieren
 5. Alle Texte unter /resources/views/ für euch anpassen
 
 ## Webseite für eure Prüfungen bereitstellen
