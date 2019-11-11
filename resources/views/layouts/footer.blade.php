@@ -8,7 +8,7 @@
                     <p>Zusammen mit dem Verein der Freunde der Humanmedizinstudierendenschaft Köln (FdHmsK e.V.) betreiben wir diesen sagenumwobenen Ort, an dem ihr alles findet, was euer Studierendenherz begehrt!</p>
                     <ul class="list-unstyled">
                         <!--<li><span><i class="fa fa-phone footer-icon"></i></span>0123-456-789</li>!-->
-                        <li><span><i class="fa fa-envelope footer-icon"></i></span>skriptenzimmer@gmail.com</li>
+                        <li><span><i class="fa fa-envelope footer-icon"></i></span>{{ config('mail.from.address') }}</li>
                         <li><span><i class="fa fa-map-marker footer-icon"></i></span>LFI, Bettenhaus</li>
                     </ul>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="col-md-6 col-sm-12 footer-no-padding">
                         <ul class="list-unstyled footer-menu text-right">
                             <li>Folgt uns:</li>
-                            <li><a href="https://www.facebook.com/SkriptenzimmerKoeln/"><i class="fa fa-facebook facebook"></i></a></li>
+                            <li><a href="{{ config('app.facebook') }}"><i class="fa fa-facebook facebook"></i></a></li>
                         </ul>
                     </div>
                 </div>

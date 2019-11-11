@@ -147,7 +147,6 @@
                         <a href="#WPB">Hier klicken<i class="fa fa-long-arrow-right slider-b-btn-icon"></i></a>
 						<p>Medizinbüchermark Uni Köln</p>
                         <a href="https://www.facebook.com/groups/917724168254664/">Hier klicken<i class="fa fa-long-arrow-right slider-b-btn-icon"></i></a>
-						
                         
                     </div>
                 </div>
@@ -158,7 +157,11 @@
                         <h3>Angebot</h3>
                         <p>von Kittel und Präpbesteck zu EKG-Lineal und Stethoskop - alles, was du für dein Studium benötigst.</p>
                         <a href="#Angebot">Zum Shop<i class="fa fa-long-arrow-right slider-b-btn-icon"></i></a>
-						</div>
+                        <br><br>
+                  		<h3>Häufig gestellte Fragen</h3>
+                        <p>Du brauchst hilfe?</p>
+                        <a href="{{url('faq')}}">Zu den FAQ<i class="fa fa-long-arrow-right slider-b-btn-icon"></i></a>
+                  </div>
                 </div>
 
             </div>
@@ -183,7 +186,7 @@ Den ersten Kittel darfst du einfach ziehen. Wenn du einen neuen haben willst, mu
 Und so ist das auch mit den Protokollen. Das erste Protokoll bekommst du vorgestreckt. Für das nächste Protokoll musst du deine absolvierte Prüfung protokollieren und einreichen.
 Also, los geht's!</p>
 
-                    <a href="/login" class="read_more-btn fa fa-long-arrow-right">lese mehr</a>
+                    <a href="{{url('faq')}}" class="read_more-btn fa fa-long-arrow-right">lese mehr</a>
                 </div><!-- Ends: . -->
 
                 <div class="col-sm-6 welcome-img">				@guest					<img src="images/index/welcome.jpg" alt="" class="img-responsive">				@else
@@ -247,12 +250,12 @@ Also, los geht's!</p>
                         <figure>
                             <div class="figure-img"><img src="images/skriptenzimmer/kittel.jpg" alt="" class="img-responsive"></div> 
                             <figcaption>
-                                <div><a href="http://www.fsmed-koeln.de/20848.html#c48381" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#c48381" target='_blank' >Kittel</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank' >Kittel</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -282,12 +285,12 @@ Also, los geht's!</p>
                         <figure>
                              <div class="figure-img"><img src="images/skriptenzimmer/hammer.jpg" alt="" class="img-responsive"></div> 
                             <figcaption>
-                                <div><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' >Reflexhammer</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank' >Reflexhammer</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -313,12 +316,12 @@ Also, los geht's!</p>
                         <figure>
                             <div class="figure-img"><img src="images/skriptenzimmer/stethoscope.jpg" alt="" class="img-responsive"></div>
                             <figcaption>
-                                <div><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank'>Stethoskope</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank'>Stethoskope</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -347,12 +350,12 @@ Also, los geht's!</p>
                         <figure>
                              <div class="figure-img"><img src="images/skriptenzimmer/handschuhe.jpg" alt="" class="img-responsive"></div> 
                             <figcaption> 
-                                  <div><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                  <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank'>Handschuhe S,M,L</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank'>Handschuhe S,M,L</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -378,12 +381,12 @@ Also, los geht's!</p>
                         <figure>
                             <div class="figure-img"><img src="images/skriptenzimmer/praepset.jpg" alt="" class="img-responsive"></div> 
                             <figcaption>
-                                <div><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank'>Präparierset</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank'>Präparierset</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -409,12 +412,12 @@ Also, los geht's!</p>
                         <figure>
                             <div class="figure-img"><img src="images/skriptenzimmer/leuchte.jpg" alt="" class="img-responsive"></div> 
                             <figcaption>
-                                <div><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
+                                <div><a href="{{ config('app.shop') }}" target='_blank' class="read_more-btn">Kauf bei uns im Skriptenzimmer</a></div>
                             </figcaption>
                         </figure>
                         <div class="courses-content-box">
                             <div class="courses-content">
-                                <h3><a href="http://www.fsmed-koeln.de/20848.html#" target='_blank' >Diagnostikleuchte</a></h3>
+                                <h3><a href="{{ config('app.shop') }}" target='_blank' >Diagnostikleuchte</a></h3>
                                 <!--<div class="rank-icons">
                                     <ul class="list-unstyled">
                                         <li><i class="fa fa-star"></i></li>
@@ -507,7 +510,7 @@ Also, los geht's!</p>
                 <div class="col-12 col-offset-0 col-sm-5 col-sm-offset-0 counters">
 					<!-- grab  some Data to populate the numbers !-->
 					<?php
-						$file = @file_get_contents('http://wpbgutachter.de/site_statistics.php'); //@supress any warning
+						$file = @file_get_contents('{{ config('app.wpb') }}/site_statistics.php'); //@supress any warning
 						if ($file){
 							$stats = explode ("/", substr($file,-12));
 						} else {
@@ -565,13 +568,13 @@ Also, los geht's!</p>
                         </div>
 
                         <div class="counter-btn">
-                            <a href="http://www.wpbgutachter.de">Direktzugang zum WPB-Gutachter</a>
+                            <a href="{{ config('app.wpb') }}">Direktzugang zum WPB-Gutachter</a>
                         </div>
                     </div>
 
 					<div class="counter-text-box visible-xs">
 						<div class="counter-btn">
-								<a href="http://www.wpbgutachter.de">WPB-Gutachter</a>
+								<a href="{{ config('app.wpb') }}">WPB-Gutachter</a>
 						</div>
 					</div>
 				</div>

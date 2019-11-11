@@ -62,6 +62,7 @@ class SendReminderEmails extends Command
 				   $user_info = User::where('id',$user->user_id)->first();
 				   $email = $user_info->email;
 				   Mail::to($email)->queue(new SendReminder($user_info));
+				   sleep(5);
 			   }
 		   }
 

@@ -3,17 +3,18 @@
         <div class="row">
             <div class="col-sm-6 col-xs-12 header-top-left">
                 <ul class="list-unstyled">
-                    <li><i class="fa fa-facebook-square top-icon"></i> <a href="https://www.facebook.com/SkriptenzimmerKoeln" target="_blank">Facebook</a></li> 
+                    <li><i class="fa fa-facebook-square top-icon"></i> <a href="{{ config('app.facebook') }}" target="_blank">Facebook</a></li> 
                     
-					<li><i class="fa fa-envelope top-icon"></i><a href="mailto:skriptenzimmer@gmail.com" target="_top">skriptenzimmer@gmail.com</a> </li>
+					<li><i class="fa fa-envelope top-icon"></i><a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln" target="_top">{{ config('mail.from.address') }}</a> </li>
 					
-					<li><i class="fa fa-calendar top-icon"></i><a href="https://calendar.google.com/calendar/embed?src=pnr4h06fcudo2v3e62rllnld54%40group.calendar.google.com&ctz=Europe/Berlin" target="_blank" >Öffnungszeiten</a> </li>
+					<li><i class="fa fa-calendar top-icon"></i><a href="{{ config('app.calendar') }}" target="_blank" >Öffnungszeiten</a> </li>
 					
                 </ul>
             </div>
             <div class="col-sm-6 col-xs-12 header-top-right">
                 <ul class="list-unstyled">
 					<li><a href="{{route('terms')}}"><i class="fa fa-gavel top-icon"></i> AGB</a></li>
+					<li><a href="{{route('faq')}}"><i class="fa fa-question-circle  top-icon"></i> FAQ</a></li>
                     @guest
                         <li><a href="{{route('register')}}"><i class="fa fa-user-plus top-icon"></i> Registrierung</a></li>
                         <li><a href="{{route('login')}}"><i class="fa fa-lock top-icon"></i>Anmeldung</a></li>

@@ -2,6 +2,20 @@
 
 return [
 
+	/*
+    |--------------------------------------------------------------------------
+    | Extra Configs
+    |--------------------------------------------------------------------------
+    |
+    | for the top menu
+    |
+    */
+	
+	'facebook' => env('APP_FACEBOOK', 'https://www.facebook.com/'),
+	'calendar' => env('APP_CALENDAR', ''),
+	'shop' => env('APP_SHOP', ''),
+	'wpb' => env('APP_WPB', ''),
+	
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -13,7 +27,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Digitales Skriptenzimmer'),
+    'name' => env('APP_NAME', 'Laravel'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +66,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', ' '),
+    'url' => env('APP_URL', 'http://localhost'),
 
     /*
     |--------------------------------------------------------------------------
@@ -146,6 +160,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+
         /*
          * Package Service Providers...
          */
@@ -157,10 +172,10 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-		//debugger
-		//Barryvdh\Debugbar\ServiceProvider::class,
+		//ban users
+		 Cog\Laravel\Ban\Providers\BanServiceProvider::class,
+
     ],
 
     /*
@@ -209,9 +224,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Helper' => App\Helper\Helper::class,
-		'Reminder' => App\Reminder::class,
-		//'Debugbar' => 'Barryvdh\Debugbar\Facade',
+        'Helper' => App\Helper\Helper::class
     ],
 
 ];

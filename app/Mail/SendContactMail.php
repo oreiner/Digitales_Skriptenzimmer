@@ -32,7 +32,7 @@ class SendContactMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-		$mail = $this->markdown('emails.contactmail')->from('info@skripte.koeln', 'Skriptenzimmer Köln')->subject('Erinnerung Skriptenzimmer-Protokoll')->with('name',$this->user->name);
+		$mail = $this->markdown('emails.contactmail')->from(config('mail.from.address'), config('app.name'))->subject('Erinnerung Skriptenzimmer-Protokoll')->with('name',$this->user->name);
 		return $mail;
     }
 }

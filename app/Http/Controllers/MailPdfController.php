@@ -131,7 +131,7 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->whereIn('examiner_id',$request->examinerlist)->get();
         $content = [
-                   'from_email'=> 'info@skripte.koeln',
+                   'from_email'=> config('mail.from.address'),
 				   'name'=> 'Skriptenzimmer Köln',
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
@@ -258,8 +258,8 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
         $content = [
-                   'from_email'=> 'info@skripte.koeln',
-				   'name'=> 'Skriptenzimmer Köln',
+                   'from_email'=> config('mail.from.address'),
+				   'name'=> config('app.name'),
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
                   ];
@@ -315,7 +315,7 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
         $content = [
-                   'from_email'=> 'info@skripte.koeln',
+                   'from_email'=> config('mail.from.address'),
 				   'name'=> 'Skriptenzimmer Köln',
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
