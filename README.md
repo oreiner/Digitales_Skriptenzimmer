@@ -40,9 +40,10 @@ bei jeder Änderung der .env Datei muss man die Cache nochmal  mit diesem Befehl
 ## Webseite für eure Prüfungen bereitstellen
 1. Admin User auf der Seite registrieren und in der Datenbank auf type:admin ändern
 2. einloggen auf https://URL/admin
-2. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
-...
+3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
+4. ...
 
 ## Weitere Funktionen
 Sind auf der admin Startseite beschrieben
+
 [...]
