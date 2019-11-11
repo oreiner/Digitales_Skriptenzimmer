@@ -34,6 +34,7 @@ bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und 
 >>php artisan config:cache
 
 bei jeder Änderung der .env Datei muss man die Cache nochmal  mit diesem Befehl aktualisieren
+
 5. Alle Texte unter /resources/views/ für euch anpassen
 
 ## Webseite für eure Prüfungen bereitstellen
