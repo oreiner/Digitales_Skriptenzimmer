@@ -1,0 +1,25 @@
+{
+    "name": "faryar76/lrm",
+    "description": "this package usefull for manage laravel projects in sharing hosts",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "faryar",
+            "email": "faryar76@hotmil.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Faryar76\\LRM\\":"src/"
+        }
+    },"extra": {
+        "laravel": {
+            "providers": [
+                "Faryar76\\LRM\\LRMServiceProvider"
+            ]
+        }
+    }
+}
