@@ -46,7 +46,6 @@ class ContactController extends Controller
     {
         
         try {
-			 //mail('omerreiner@gmail.com','contact test', 'normal php mail'); 
 			
 			 $user=auth()->user();
              Mail::to($user->email)

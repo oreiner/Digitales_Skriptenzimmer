@@ -273,65 +273,6 @@ class MailPdfController extends Controller
         }
         Session::flash('success', 'Die Protokolle wurden erneut an deine E-Mail-Adresse versandt. Bitte kontrolliere sonst deinen Spamordner und deine E-Mail-Adresse unter "Profil"');
         return redirect()->route('mailpdf.index');
-		
-		/*
-		// this way, would recompile the file, the above way only changes the watermark and if the file in "pdf" was changed
-		//get data so far
-		$usertotest = UserToTest::with('mailpdfs')->find($id);
-		$testExaminers= TestExaminer::where('test_id',$usertotest->test_id)->whereIn('examiner_id',$usertotest->mailpdfs->pluck('examiner_id'))->get();
-		//$mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
-		
-		//update data
-		foreach($testExaminers as $testExaminer) {
-            //new watermark and filename
-			$helper=new Helper();
-            $filename=$helper->generatePdf($testExaminer->pdf,auth()->user()->name);
-			//register new name
-			$mailpdf =  MailPdf::where('user_to_test_id',$usertotest->id)->where('examiner_id',$testExaminer->examiner_id)->first();
-			$mailpdf->mailpdf = $filename;
-            $mailpdf->save();
-			//recompile file
-			$comments = MailPdf::where('user_to_test_id',$usertotest->id)->where('examiner_id',$testExaminer->examiner_id)->whereNotNull('questions')->pluck('id'); //skip still open protocolls by using NULL in questions. This is where I wish my SQL was different with mailpdf child of user and test
-			$files = [public_path('img/originalpdf/'.$testExaminer->pdf)]; //make sure to grab original uploaded pdf!!
-			
-			foreach ($comments as $comment_id){
-				$distination_path = $comment_id.'_mergepdf.pdf'; 
-				array_unshift($files, public_path('img/mergepdf/'.$distination_path));
-			}
-			
-			$pdf = new Fpdi();
-			foreach ($files as $file) {
-				$pageCount = $pdf->setSourceFile($file);
-				for ($i = 0; $i < $pageCount; $i++) {
-					$tpl = $pdf->importPage($i + 1, '/MediaBox');
-					$pdf->addPage();
-					$pdf->useTemplate($tpl);
-				}
-			}	
-			$distination_path = $testExaminer->pdf;
-			$filename=public_path('img/pdf/'.$distination_path);
-			$pdf->Output($filename, 'F');	
-			
-        }
-        $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
-        $content = [
-                   'from_email'=> 'info@skripte.koeln',
-				   'name'=> 'Skriptenzimmer Köln',
-                   'username'=> auth()->user()->name,
-                   'queryMailPdfs'=> $mailpdfs,
-                  ];
-		
-        try {
-            Mail::to(auth()->user()->email)->send(new SendMailPdf($content)); //queues by default in class
-            //User::find(auth()->user()->id)->decrement('pdf_count'); //don't decrement for resends
-        } catch (\Exception $e) {
-            echo 'Error - '.$e;
-            //  die;
-        }
-        Session::flash('success', 'Die Protokolle wurden erneut an deine E-Mail-Adresse versandt. Bitte kontrolliere sonst deinen Spamordner und deine E-Mail-Adresse unter "Profil"');
-        return redirect()->route('mailpdf.index');
-	*/
-		
 
     }
     /**
