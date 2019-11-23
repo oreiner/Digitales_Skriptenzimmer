@@ -509,13 +509,13 @@ Also, los geht's!</p>
             <div class="row">		
                 <div class="col-12 col-offset-0 col-sm-5 col-sm-offset-0 counters">
 					<!-- grab  some Data to populate the numbers !-->
-					<?php
-						$file = @file_get_contents('{{ config('app.wpb') }}/site_statistics.php'); //@supress any warning
+					<?php 
+						$file = @file_get_contents('{{ config(\'app.wpb\') }}/site_statistics.php'); //@supress any warning
 						if ($file){
 							$stats = explode ("/", substr($file,-12));
 						} else {
 							$stats = ["?","?","?"]; //in case URL not found, doesn't break page
-						}
+						} 
 					?>
 					
                     <div class="row">
