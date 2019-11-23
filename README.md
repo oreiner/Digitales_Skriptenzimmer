@@ -57,7 +57,7 @@ Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite la
 >Tabelle findet sich hier bald.
 
 ## Webseite für eure Prüfungen bereitstellen
-1. Admin User auf der Seite registrieren und in der Datenbank auf type:admin ändern
+1. Admin User auf der Seite registrieren und in der Datenbank unter Users auf type:admin ändern
 2. einloggen auf https://URL/admin
 3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
 4. ...
