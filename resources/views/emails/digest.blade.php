@@ -16,7 +16,7 @@ Bitte Kontrolliert sie auf Sinnhaftigkeit etc.<br>
 	
 	Keine neue Benutzer
 @endforelse
-
+	
 <br><br><u><strong>Neue Kommentare</strong></u><br>
 @forelse ($new_comments as $usertotest)
 

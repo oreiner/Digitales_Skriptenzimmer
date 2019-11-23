@@ -195,15 +195,18 @@ class UserToTestController extends Controller
 		$examiner_id = $record->examiner_id;
 		$user_to_test_id = $record->user_to_test_id;
 		$testid = UserToTest::where('id', $user_to_test_id )->pluck('test_id'); 
-		$record->delete();
 		
 		//update pdf to recompile without erased comments
 		//similar to  MailPdfController@update
-		
 		$testExaminer=TestExaminer::where('test_id',$testid)->where('examiner_id',$examiner_id)->first();
+		$files = [public_path('img/originalpdf/'.$testExaminer->pdf)];
+		if(file_exists($files[0])){ //make sure to grab original uploaded pdf for recompliling!!
+			$record->delete(); //delte the mailpdf only if backup pdf is there, otherwise recompile will fail
+		}
 		
-		$comments = MailPdf::where('examiner_id',$examiner_id)->whereNotNull('questions')->pluck('id'); //skip still open protocolls by using NULL in questions
-		$files = [public_path('img/originalpdf/'.$testExaminer->pdf)]; //make sure to grab original uploaded pdf!!
+		//find all comments, only for this test! (examiner can belong to more than one test. Anatomie+Physikum Or Kinder+M3)	
+		$utt_ids = UserToTest::where('test_id',$testid)->pluck('id');//this is a stupid workaround to constrain the comments to one test 	
+		$comments = MailPdf::where('examiner_id',$testExaminer->examiner_id)->whereIn('user_to_test_id',$utt_ids)->whereNotNull('questions')->pluck('id'); //skip still open protocolls by using NULL in questions
 		
 		foreach ($comments as $comment_id){
 			$distination_path = $comment_id.'_mergepdf.pdf'; //changed time() to $id. this is unique enough and should make it easier to delete specific comments.

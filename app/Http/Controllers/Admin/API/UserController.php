@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\User;
+use App\UserToTest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -134,7 +135,14 @@ class UserController extends Controller
         $user->save();
         return $user;
     }
-
+	//manually unapprove user who has been previously approved (mostly in case the moderator falsly clicks on approve)
+    public function unapproveUser($id)
+    {
+        $user= User::findOrFail($id);
+        $user->manually_verified_at = null;
+        $user->save();
+        return $user;
+    }
 	/**
      * Show the form for creating a new resource.
      *
@@ -203,9 +211,12 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //$this->authorize('isAdmin');
-        $user=User::findOrFail($id);
+    {	
+		//$this->authorize('isAdmin');
+		$user=User::findOrFail($id);
+		//close all open feedbacks so reminder email won't crash
+		$open_feedbacks = UserToTest::where('user_id',$id)->where('feedback_status',"0")->delete();
+		//delete user
         $user->delete();
         return ['message'=>'User successfully deleted'];
     }

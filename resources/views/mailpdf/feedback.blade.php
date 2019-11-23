@@ -214,6 +214,7 @@
 										@endforeach
 										<p>Es empflielt sich, die Texte in einem externen Texteditor zu schreiben und sie im Anschluss in das Formular zu übertragen.</p>
 									</div>
+									
 								</div>
 							</div>
 						</div>
@@ -222,7 +223,7 @@
 
                 <div class="col-sm-12">
 					<div class="row">	
-						<div class="col-sm-12 contact-form">
+						<div class="col-xs-12 contact-form">
 							<div class="input-contact-form">
 								<div class="view_more_btn" style="float: right">
 									<button value="Protokoll abgeben" type="submit" class="btn view-more-item" name="submit" id="submit">Protokoll abgeben &nbsp; &nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>

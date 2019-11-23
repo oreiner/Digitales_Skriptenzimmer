@@ -76,7 +76,7 @@ class MailPdfController extends Controller
         }else {
             $mailPdf=new MailPdf();
 			//get tests for user to choose
-            $tests = Test::all()->pluck('name', 'id')->toArray();
+            $tests = Test::all()->sortBy('position')->pluck('name', 'id','position')->toArray();
 			//get subjects for chosen test
 			//$ids = TestExaminer::where('test_id',$request->testid)->with('examiner')->pluck('examiner_id');
 			//$faecher = Examiner::whereIn('id',$ids)->pluck('description');
@@ -131,8 +131,8 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->whereIn('examiner_id',$request->examinerlist)->get();
         $content = [
-                   'from_email'=> config('mail.from.address'),
-				   'name'=> 'Skriptenzimmer Köln',
+                   'from_email'=> config('mail.from.sender'),
+				   'name'=> config('mail.from.name'),
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
                   ];
@@ -258,8 +258,8 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
         $content = [
-                   'from_email'=> config('mail.from.address'),
-				   'name'=> config('app.name'),
+                   'from_email'=> config('mail.from.sender'),
+				   'name'=> config('mail.from.name'),
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
                   ];
@@ -315,7 +315,7 @@ class MailPdfController extends Controller
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
         $content = [
-                   'from_email'=> config('mail.from.address'),
+                   'from_email'=> 'info@skripte.koeln',
 				   'name'=> 'Skriptenzimmer Köln',
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
@@ -372,7 +372,7 @@ class MailPdfController extends Controller
     public function getExaminerByTestId(Request $request){
 		//Debugbar::info($request);
 		
-        $testExaminers= TestExaminer::where('test_id',$request->testid)->with('examiner')->with('test')->get()->sortBy('examiner.name'); //get examiner collection and sort by last name, when format is "last name, first name"
+        $testExaminers= TestExaminer::where('test_id',$request->testid)->with('examiner')->with('test')->get()->sortBy('examiner.name', SORT_NATURAL|SORT_FLAG_CASE); //get examiner collection and sort by last name, when format is "last name, first name"
 		//$testExaminers = TestExaminer::where('test_id', $request->testid)->with('examiner')->with('test')->get()->map(function ($item, $key) {$item->examiner->last_name = array_slice(explode(' ', $item->examiner->name), -1)[0]; return $item; }) ->sortBy('examiner.last_name'); //get examiner collection and sort by last name, when format is "first name last name"	
 		
       	$result = array();
@@ -394,7 +394,7 @@ class MailPdfController extends Controller
 	
 	public function getExaminerByFach(Request $request){
 		
-		$testExaminers= TestExaminer::where('test_id',$request->testid)->whereHas('examiner',function ($q) use ($request) {$q->whereIn('description',$request->fach);} )->with('examiner')->with('test')->get()->sortBy('examiner.name'); //get examiner collection and sort by last name, when format is "last name, first name"
+		$testExaminers= TestExaminer::where('test_id',$request->testid)->whereHas('examiner',function ($q) use ($request) {$q->whereIn('description',$request->fach);} )->with('examiner')->with('test')->get()->sortBy('examiner.name', SORT_NATURAL|SORT_FLAG_CASE); //get examiner collection and sort by last name, when format is "last name, first name"
         //$testExaminers= TestExaminer::where('test_id',$request->testid)->whereHas('examiner',function ($q) use ($request) {$q->whereIn('description',$request->fach);} )->with('examiner')->with('test')->get()->map(function ($item, $key) {$item->examiner->last_name = array_slice(explode(' ', $item->examiner->name), -1)[0]; return $item; }) ->sortBy('examiner.last_name'); //get examiner collection and sort by by last name, when format is "first name last name"		
         $result = array();
         $num=0;

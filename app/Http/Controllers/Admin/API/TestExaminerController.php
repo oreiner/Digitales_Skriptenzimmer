@@ -65,8 +65,9 @@ class TestExaminerController extends Controller
 
         $pdf=$request->pdf;
 
-        $filename = time().'_'.$pdf->getClientOriginalName();
-        $destinationPath = public_path('img/pdf/');
+        //$filename = time().'_'.$pdf->getClientOriginalName(); //delete time() so moderators control the file name - important for parallel tests i.e. "Physikum"+"Physikum (Zahnmedizin)"
+        $filename = $pdf->getClientOriginalName();
+		$destinationPath = public_path('img/pdf/');
         $pdf->move($destinationPath, $filename);
 		//create backup file to reuse when deleting comments
 		$backupPath = public_path('img/originalpdf/');

@@ -27,7 +27,7 @@ class UserController extends Controller
             'name'=>'required|string|max:191',
             'email'=> 'required|email|string|max:191"|unique:users,email,'.$user->id,
             'username'=> 'required|string|min:6"|unique:users,username,'.$user->id,
-            'password'=>'nullable|string|min:6',
+            'password'=> 'nullable|string|min:6',
         ]);
 
         if(!empty($request->password)){

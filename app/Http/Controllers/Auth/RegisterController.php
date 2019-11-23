@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Rules\Fullname;
 use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -49,7 +50,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => [ 'required', 
+						'string', 
+						'max:255',
+						function ($attribute, $value, $fail) {
+							if (str_word_count($value) == 1) {
+								$fail('Du bist nicht Madonna. Bitte gib deinen echten vollständigen Namen ein. Er wird von uns überprüft.');
+							}
+						},
+					  ],
             'email' => 'required|string|email|max:255|unique:users',
             'username' => 'required|string|max:56|min:6|unique:users',
             'password' => 'required|string|min:6|confirmed',
@@ -72,5 +81,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
             'bio' => $data['bio'],
         ]);
+		
+		//$user->sendEmailVerificationNotification();
+
+        //return $user;
     }
 }

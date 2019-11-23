@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 //Auth::routes();
 Auth::routes(['verify' => true]);
@@ -28,6 +26,7 @@ Route::group(['middleware'=>'is-ban'], function(){
 	Route::get('download', 'DownloadController@index')->middleware('verified');
 	Route::get('profile', 'UserController@profile')->name('profile');
 	Route::post('profile', 'UserController@updateProfile');
+	Route::get('faq', 'FaqController@index')->name('faq');
 	Route::resource('mailpdf', 'MailPdfController')->middleware(['verified','manually-verified']);
 	Route::get('mailpdf/resend/{id}', 'MailPdfController@resend')->name('mailpdf.resend');
 	Route::post('mailpdf/getFaecherByTestId', 'MailPdfController@getFaecherByTestId');

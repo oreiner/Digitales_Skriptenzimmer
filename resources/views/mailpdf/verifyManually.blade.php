@@ -73,9 +73,9 @@
 
 							<span>
 
-								<a href="mailto:skriptenzimmer@gmail.com?cc=info@skripte.koeln">
+								<a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln">
 
-                        <h1>skriptenzimmer@gmail.com</h1>
+                        <h1>{{ config('mail.from.address') }}</h1>
 							
 								</a>
 								
