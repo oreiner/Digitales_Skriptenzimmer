@@ -44,6 +44,8 @@ bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und 
 bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren.
 Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite langsamer.
 
+*Wenn ihr shared hosting benutzt (kostenloses Server) kann es komplizierter sein. Ein gutes Tutorial dafür ist   https://www.000webhost.com/forum/t/deploy-laravel-project-into-000webhost-site/127323
+
 5. Alle Texte unter /resources/views/ für euch anpassen
 >Tabelle findet sich hier bald.
 
