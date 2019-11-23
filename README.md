@@ -27,6 +27,13 @@ Sie wird im Verlauf berarbeitet.
 
  - Digest über neuen Nutzer und neuen abgegebenen Protokolle an die Moderatoren herumschicken 
  
+### Beispielseite
+Ein Demo findet ihr hier: https://demoskriptenzimmer.000webhostapp.com/  
+Fühlr euch frei mit der Seite rumzuspielen.
+Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin
+Username: admin
+Passwort: 123123
+ 
 ## Installation
 
 Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst ihr: 
