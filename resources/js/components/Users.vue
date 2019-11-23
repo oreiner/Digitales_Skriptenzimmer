@@ -50,8 +50,11 @@
                                         <i class="fas fa-trash"></i>
                                     </a>
                                     /
-                                    <a href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
+                                    <a v-if="user.manually_verified_at" href="javascript:void(0)" @click="unapproveUser(user.id)" v-my-tooltip.bottom-center="'Freischaltung zurückziehen'">
                                         <i class="fas fa-check-square"></i>
+                                    </a>
+									<a v-else href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
+                                        <i class="fas fa-times-circle"></i>
                                     </a>
                                 </td>
 								<td v-else-if="user.manually_verified_at">
