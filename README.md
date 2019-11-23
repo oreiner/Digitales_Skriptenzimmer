@@ -35,11 +35,11 @@ Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst i
 >> /database/db_vorlage_skrizi.sql  
 
 bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und mit dem Server mit ssh verbinden. Dann:  
->> php artisan migrate
+>> $ php artisan migrate
 3. .env Datei mit euren URLs, Mail-Daten usw. konfigurieren.
 >>  /.env
 4. nachdem .env fertig ist 
->>php artisan config:cache
+>> $ php artisan config:cache
 
 bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren.
 Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite langsamer.
