@@ -4,8 +4,8 @@
         <div class="row">
             <div class=" col-sm-12 footer-content-box">
                 <div class="col-sm-4">
-                    <h3><span><i class="fa fa-graduation-cap footer-h-icon"></i></span> Skriptenzimmer Köln</h3>
-                    <p>Zusammen mit dem Verein der Freunde der Humanmedizinstudierendenschaft Köln (FdHmsK e.V.) betreiben wir diesen sagenumwobenen Ort, an dem ihr alles findet, was euer Studierendenherz begehrt!</p>
+                    <h3><span><i class="fa fa-graduation-cap footer-h-icon"></i></span> {{ config('app.name') }}</h3>
+                    <p>Wir betreiben diesen sagenumwobenen Ort, an dem ihr alles findet, was euer Studierendenherz begehrt!</p>
                     <ul class="list-unstyled">
                         <!--<li><span><i class="fa fa-phone footer-icon"></i></span>0123-456-789</li>!-->
                         <li><span><i class="fa fa-envelope footer-icon"></i></span>{{ config('mail.from.address') }}</li>

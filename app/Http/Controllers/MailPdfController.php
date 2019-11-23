@@ -76,7 +76,7 @@ class MailPdfController extends Controller
         }else {
             $mailPdf=new MailPdf();
 			//get tests for user to choose
-            $tests = Test::all()->sortBy('position')->pluck('name', 'id','position')->toArray();
+            $tests = Test::all()->sortBy('position')->pluck('name', 'id')->toArray();
 			//get subjects for chosen test
 			//$ids = TestExaminer::where('test_id',$request->testid)->with('examiner')->pluck('examiner_id');
 			//$faecher = Examiner::whereIn('id',$ids)->pluck('description');

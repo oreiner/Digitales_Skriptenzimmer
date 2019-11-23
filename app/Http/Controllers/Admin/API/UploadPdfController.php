@@ -48,13 +48,13 @@ class UploadPdfController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'        => 'required',
+            'title'        => 'required',	
             'category'       => 'required',
             'upload_pdf'        => 'required|mimes:pdf',
         ]);
 
         $upload_pdf=$request->upload_pdf;
-        $filename = time().'_'.$upload_pdf->getClientOriginalName();
+        //$filename = time().'_'.$upload_pdf->getClientOriginalName();		$filename = $upload_pdf->getClientOriginalName();
         $destinationPath = public_path('img/uploadpdf/');
         $upload_pdf->move($destinationPath, $filename);
 

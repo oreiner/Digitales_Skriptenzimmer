@@ -15,6 +15,7 @@
                             <tbody>
                             <tr>
                                 <th>ID</th>
+								<th>Position</th>
                                 <th>Prüfung</th>
                                 <!-- <th>Beschreibung</th> !-->
                                 <th>Anzahl der Prüfer</th>
@@ -22,6 +23,7 @@
                             </tr>
                             <tr v-for="test in tests.data" :key="test.id">
                                 <td>{{test.id}}</td>
+								<td>{{test.position}}</td>
                                 <td>{{test.name}}</td>
                                 <!-- <td>{{test.description}}</td> !-->
                                 <td>{{test.no_of_examiner }}</td>
@@ -100,6 +102,10 @@
 										!-->
                                     </select>
                                     <has-error :form="form" field="no_of_examiner"></has-error>
+                                </div>
+								<div class="form-group">
+                                    <input type="number" v-model="form.position" name="position" class="form-control" :class="{ 'is-invalid': form.errors.has('position') }" id="position">
+                                    <has-error :form="form" field="position"></has-error>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -191,6 +197,7 @@
                 tests:{},
                  form : new Form({
                      id            :'',
+					 position      :'',
                      name          :'',
                      no_of_examiner:'',
                      description   :'',

@@ -49,7 +49,6 @@ class TestController extends Controller
     {
         $this->validate($request,[
             'name'=>'required|string|max:191|unique:tests',
-			'position'=> 'required|numeric',
             'no_of_examiner'=> 'required|numeric',
             'description'=> 'nullable|string',
         ]);
@@ -57,7 +56,6 @@ class TestController extends Controller
 
         $test = Test::create([
             'name'=>$request->name,
-			'position'=> 'required|numeric',
             'no_of_examiner'=>$request->no_of_examiner,
             'description'=>$request->description
         ]);
@@ -93,7 +91,6 @@ class TestController extends Controller
         $test=Test::findOrFail($id);
         $this->validate($request,[
             'name'=>'required|string|max:191|unique:tests,name,'.$test->id,
-			'position'=> 'required|numeric',
             'no_of_examiner'=> 'required|numeric',
             'description'=>'nullable|string'
         ]);

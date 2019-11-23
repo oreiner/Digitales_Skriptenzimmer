@@ -32,7 +32,7 @@
                                 <td>{{user.type | upText}}</td>
 								<td>{{user.bio}}</td>
 								<td v-if="user.banned_at">gebanned</td>
-                                <td v-else>{{user.email_verified_at | approvedStatus}}</td>
+                                <td v-else>{{user.manually_verified_at | approvedStatus(user.email_verified_at)}}</td>
                                 <td>{{user.created_at | myDate}}</td>
                                 <td v-if="$gate.isAdminOrAuthor()">
                                     <a href="javascript:void(0)" @click="editModal(user)" v-my-tooltip.bottom-center="'aktualisieren'">
@@ -54,6 +54,11 @@
                                         <i class="fas fa-check-square"></i>
                                     </a>
                                 </td>
+								<td v-else-if="user.manually_verified_at">
+									<a href="javascript:void(0)" @click="unapproveUser(user.id)" v-my-tooltip.bottom-center="'Freischaltung zurückziehen'">
+                                        <i class="fas fa-times-circle"></i>
+                                    </a>
+								</td>	
 								<td v-else>
 									<a href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
                                         <i class="fas fa-check-square"></i>
@@ -197,7 +202,7 @@
 						 
 						 console.log(this);
 						 
-                             axios.get(base_path+'/admin_api/user/'+id).then(()=>{
+                             axios.delete(base_path+'/admin_api/user/'+id).then(()=>{
                                  swal(
                                      'Gelöscht!',
                                      'Benutzer wurde gelöscht.',
@@ -228,6 +233,32 @@
                             swal(
                                 'Freigeschaltet!',
                                 'Benutzer wurde erfolgreich freigeschaltet.',
+                                'success'
+                            )
+                            Fire.$emit('AfterDelete')
+                        }).catch(()=>{
+                            swal('Fehlgeschlagen!', 'Oops, etwas ist schief gelaufen!', 'warning')
+                        })
+
+                    }
+                })
+            },
+			
+			unapproveUser(id){
+                swal({
+                    title: 'Bist du sicher?',
+                    text: "Dann wird der Benutzer keinen Zugriff mehr auf Protokolle haben!",
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ja, ziehe die Freischaltung zurück!'
+                }).then((result) => {
+                    if (result.value) {
+                        axios.get(base_path+'/admin_api/unapproveUser/'+id).then(()=>{
+                            swal(
+                                'Freischaltung zurückgezogen!',
+                                'Der Benutzer ist nicht mehr freigeschaltet.',
                                 'success'
                             )
                             Fire.$emit('AfterDelete')

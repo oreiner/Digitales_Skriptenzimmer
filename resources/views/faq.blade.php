@@ -233,7 +233,7 @@
 								</div>
 								<div id="answer14" class="panel-collapse collapse" role="tabpanel" aria-labelledby="question14">
 									<div class="panel-body">
-									Schicke uns eine E-Mail an: <a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln" target="_top">{{ config('mail.from.address') }}</a>!
+									Schicke uns eine E-Mail an: <a href="mailto:{{ config('mail.from.address') }}" target="_top">{{ config('mail.from.address') }}</a>!
 									</div>
 								</div>
 							</div>					

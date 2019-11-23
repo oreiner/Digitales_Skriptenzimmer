@@ -40,6 +40,10 @@ Vue.use(VueProgressBar, {
     height: '2px'
 })
 
+//sortable tables
+//import TableComponent from 'vue-table-component';
+//Vue.use(TableComponent);
+
 let routes = [
     {
         path: '/admin', component: require('./components/Dashboard.vue'),
@@ -121,8 +125,8 @@ Vue.filter('myDate',function (created_at) {
    return moment(created_at).format('MMMM Do YYYY');
 })
 
-Vue.filter('approvedStatus',function (email_verified_at) {
-    return email_verified_at ? 'Yes' : 'No';
+Vue.filter('approvedStatus',function (manually_verified_at) {
+    return manually_verified_at ? 'Ja' : 'Nein';
 })
 
 Vue.filter('feedbackStatus',function (feedback_status) {

@@ -212,8 +212,11 @@ function loadExaminerByFach(){
 
 		var minimum =$('#minimum').val();
 
-		if($("#examiner").select2('data').length>=minimum){
-
+		if($("#examiner").select2('data').length>=minimum || userType=='moderator'){
+		
+			if(userType=='moderator') 
+              return confirm('Als Moderator darfst du auch einzelne Prüfer auswählen. Das ist nur für das Hochladen von Protokollen gedacht');
+            
 			return true;
 
 		}else {

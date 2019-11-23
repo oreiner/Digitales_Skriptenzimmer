@@ -33,7 +33,7 @@ class SendDigest extends Mailable implements ShouldQueue
      */
     public function build()
     {
-		$mail = $this->markdown('emails.digest')->from(config('mail.from.address'), config('app.name'))->subject('Digest: neue Benutzer und Kommentare ')->with('new_users',$this->new_users)->with('new_comments',$this->new_comments);
+		$mail = $this->markdown('emails.digest')->from(config('mail.from.sender'), config('app.name'))->subject('Digest: neue Benutzer und Kommentare ')->with('new_users',$this->new_users)->with('new_comments',$this->new_comments);
 		return $mail;
     }
 }

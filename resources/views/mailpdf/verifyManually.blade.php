@@ -73,7 +73,7 @@
 
 							<span>
 
-								<a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln">
+								<a href="mailto:{{ config('mail.from.address') }}">
 
                         <h1>{{ config('mail.from.address') }}</h1>
 							

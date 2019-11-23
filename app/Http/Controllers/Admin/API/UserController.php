@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin\Api;
 
 use App\User;
-use App\UserToTest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -211,11 +210,11 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {	
-		//$this->authorize('isAdmin');
+    {
+       //$this->authorize('isAdmin');
 		$user=User::findOrFail($id);
 		//close all open feedbacks so reminder email won't crash
-		$open_feedbacks = UserToTest::where('user_id',$id)->where('feedback_status',"0")->delete();
+		$open_feedbacks = UserToTest::where('user_id',$id)->where('feedback_status',"0")-delete(); 
 		//delete user
         $user->delete();
         return ['message'=>'User successfully deleted'];

@@ -92,7 +92,7 @@
                                         <td>{{mailPdf.mailpdf}}</td>
                                         <td>{{mailPdf.questions}}</td>
                                         <td>{{mailPdf.answers}}</td>
-                                        <td v-if="$gate.isAdminOrAuthor()">
+                                        <!--<td v-if="$gate.isAdminOrAuthor()">!--> <td>
                                             <!--<a href="javascript:void(0)" @click="testDetailByUser(mailPdf.id)">-->
                                                 <!--<i class="fas fa-info-circle"></i>-->
                                             <!--</a>-->

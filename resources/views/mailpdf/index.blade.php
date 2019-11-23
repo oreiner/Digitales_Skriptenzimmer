@@ -167,7 +167,7 @@
                                 <div class="single-address">
                                     <i class="fa fa-envelope"></i>
                                     <h4>E-Mail</h4>
-                                    <a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln" target="_top">{{ config('mail.from.address') }}</a>
+                                    <a href="mailto:{{ config('mail.from.address') }}" target="_top">{{ config('mail.from.address') }}</a>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-12 single-address-box">

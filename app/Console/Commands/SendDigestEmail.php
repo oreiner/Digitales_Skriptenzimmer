@@ -48,7 +48,7 @@ class SendDigestEmail extends Command
 	   //$new_comments = MailPdf::whereDate('created_at','>=',date('Y-m-d' , strtotime ( "previous monday" )))->with('UserToTest')->with('user')->get(); 
 	   $new_comments = UserToTest::where('feedback_status','1')->with('user')->with('mailpdfs')->whereHas('mailpdfs',function($query){ $query->whereNotNull('questions')->whereNotNull('answers')->whereDate('updated_at','>=',date('Y-m-d' , strtotime ( "previous monday" )));})->get();
 	   //$content = [$new_users, $new_comments];
-	   Mail::to(config('mail.from.sender'))->queue(new SendDigest($new_users, $new_comments));
+	   Mail::to(config('mail.from.address'))->queue(new SendDigest($new_users, $new_comments));
 
 	   $this->info(' Digest sent successfully!');
 
