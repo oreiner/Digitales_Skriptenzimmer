@@ -31,7 +31,7 @@ Sie wird im Verlauf berarbeitet.
 Ein Demo findet ihr hier: https://demoskriptenzimmer.000webhostapp.com/  
 Fühlr euch frei mit der Seite rumzuspielen.
 Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin
-Username: admin
+Username: admin1
 Passwort: 123123
  
 ## Installation
