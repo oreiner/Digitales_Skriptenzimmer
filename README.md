@@ -4,7 +4,7 @@ Diese Anleitung ist noch nicht vollständig!
 Sie wird im Verlauf berarbeitet.
 
 #### Nutzer können:
-  - Protokolle nach dem "Kittelautomat"-System. Erstes herunterladen und anschließend eigenes Protokoll ergänzen um sich wieder freizuschalten.
+  - Protokolle nach dem "Kittelautomat"-System erhalten. Erstes Protokoll herunterladen und anschließend eigenes Protokoll ergänzen um sich wieder freizuschalten.
   - Skripte unbegrenzt herunterladen
   - ...
   
@@ -17,7 +17,7 @@ Sie wird im Verlauf berarbeitet.
  - ...
 
 #### Administratoren können:
- - wie Moderatoren fungieren
+ - Alle Moderatoren Funktionen
  - Nutzer ein Ban geben
  - Prüfungen erstellen
  - Nutzer, Prüfer, Protokolle,  etc. löschen
@@ -31,7 +31,7 @@ Sie wird im Verlauf berarbeitet.
 
 Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst ihr: 
 1. Dateien auf einem Hosting hochladen.
-2. Datenbank erstellen und in phpmyadmin importieren 
+2. Datenbank erstellen und in phpmyadmin die Vorlage importieren 
 >> /database/db_vorlage_skrizi.sql  
 
 bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und mit dem Server mit ssh verbinden. Dann:  
@@ -41,9 +41,11 @@ bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und 
 4. nachdem .env fertig ist 
 >>php artisan config:cache
 
-bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren
+bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren.
+Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite langsamer.
 
 5. Alle Texte unter /resources/views/ für euch anpassen
+>Tabelle findet sich hier bald.
 
 ## Webseite für eure Prüfungen bereitstellen
 1. Admin User auf der Seite registrieren und in der Datenbank auf type:admin ändern
