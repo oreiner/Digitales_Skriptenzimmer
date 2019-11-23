@@ -4,13 +4,13 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
+class ComposerStaticInitb9d8b135feceafca34e85ce388191c9c
 {
     public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
@@ -27,13 +27,13 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '4a1f389d6ce373bda9e57857d3b61c84' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/helpers.php',
-        '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'f960e77410032f236cef8c56617b313e' => __DIR__ . '/..' . '/overtrue/laravel-lang/src/helpers.php',
+        '0d8253363903f0ac7b0978dcde4e28a0' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -195,8 +195,8 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         'phpDocumentor\\Reflection\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
-            1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
         ),
         'Zend\\Diactoros\\' => 
         array (
@@ -380,8 +380,8 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         ),
         'Illuminate\\Notifications\\' => 
         array (
-            0 => __DIR__ . '/..' . '/laravel/nexmo-notification-channel/src',
-            1 => __DIR__ . '/..' . '/laravel/slack-notification-channel/src',
+            0 => __DIR__ . '/..' . '/laravel/slack-notification-channel/src',
+            1 => __DIR__ . '/..' . '/laravel/nexmo-notification-channel/src',
         ),
         'Illuminate\\' => 
         array (
@@ -522,11 +522,13 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\SendDigestEmail' => __DIR__ . '/../..' . '/app/Console/Commands/SendDigestEmail.php',
         'App\\Console\\Commands\\SendReminderEmails' => __DIR__ . '/../..' . '/app/Console/Commands/SendReminderEmails.php',
         'App\\Console\\Commands\\UpdatePdfCount' => __DIR__ . '/../..' . '/app/Console/Commands/UpdatePdfCount.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Examiner' => __DIR__ . '/../..' . '/app/Examiner.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Helper\\AlphaPDF' => __DIR__ . '/../..' . '/app/Helper/Helper.php',
         'App\\Helper\\Helper' => __DIR__ . '/../..' . '/app/Helper/Helper.php',
         'App\\Helper\\PDF' => __DIR__ . '/../..' . '/app/Helper/Helper.php',
         'App\\Helper\\PDF_Rotate' => __DIR__ . '/../..' . '/app/Helper/Helper.php',
@@ -552,8 +554,10 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         'App\\Http\\Controllers\\ContactController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DownloadController' => __DIR__ . '/../..' . '/app/Http/Controllers/DownloadController.php',
+        'App\\Http\\Controllers\\FaqController' => __DIR__ . '/../..' . '/app/Http/Controllers/FaqController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\MailPdfController' => __DIR__ . '/../..' . '/app/Http/Controllers/MailPdfController.php',
+        'App\\Http\\Controllers\\ManualVerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ManualVerificationController.php',
         'App\\Http\\Controllers\\TermsController' => __DIR__ . '/../..' . '/app/Http/Controllers/TermsController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
@@ -561,6 +565,7 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         'App\\Http\\Middleware\\CheckForMaintenanceMode' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckForMaintenanceMode.php',
         'App\\Http\\Middleware\\CheckIfAdminAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckIfAdminAuthenticated.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
+        'App\\Http\\Middleware\\EnsureUserIsManuallyVerified' => __DIR__ . '/../..' . '/app/Http/Middleware/EnsureUserIsManuallyVerified.php',
         'App\\Http\\Middleware\\ForbidBannedUserCustom' => __DIR__ . '/../..' . '/app/Http/Middleware/ForbidBannedUserCustom.php',
         'App\\Http\\Middleware\\RedirectIfAdminAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAdminAuthenticated.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -571,6 +576,8 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
         'App\\Http\\Requests\\MailPdfFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/MailPdfFormRequest.php',
         'App\\Http\\Requests\\UpdateProfileRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateProfileRequest.php',
         'App\\MailPdf' => __DIR__ . '/../..' . '/app/MailPdf.php',
+        'App\\Mail\\SendContactMail' => __DIR__ . '/../..' . '/app/Mail/SendContactMail.php',
+        'App\\Mail\\SendDigest' => __DIR__ . '/../..' . '/app/Mail/SendDigest.php',
         'App\\Mail\\SendMailPdf' => __DIR__ . '/../..' . '/app/Mail/SendMailPdf.php',
         'App\\Mail\\SendReminder' => __DIR__ . '/../..' . '/app/Mail/SendReminder.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
@@ -4875,11 +4882,11 @@ class ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit069d78c9f3798ad8b8e5afdbe925948a::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb9d8b135feceafca34e85ce388191c9c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb9d8b135feceafca34e85ce388191c9c::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitb9d8b135feceafca34e85ce388191c9c::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb9d8b135feceafca34e85ce388191c9c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb9d8b135feceafca34e85ce388191c9c::$classMap;
 
         }, null, ClassLoader::class);
     }
