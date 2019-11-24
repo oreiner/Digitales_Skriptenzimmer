@@ -34,7 +34,7 @@ Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin
 Username: admin1
 Passwort: 123123
  
-## Installation
+### Installation
 
 Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst ihr: 
 1. Dateien auf einem Hosting hochladen.
@@ -56,13 +56,32 @@ Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite la
 5. Alle Texte unter /resources/views/ für euch anpassen
 >Tabelle findet sich hier bald.
 
-## Webseite für eure Prüfungen bereitstellen
+### Webseite für eure Prüfungen bereitstellen
 1. Admin User auf der Seite registrieren und in der Datenbank unter Users auf type:admin ändern
 2. einloggen auf https://URL/admin
 3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
 4. ...
 
-## Weitere Funktionen
+### Weitere Funktionen
 Sind auf der admin Startseite beschrieben
 
 [...]
+
+## Weiterentwicklung
+
+### extra Features
+Ein Paar Ideen, die ich im Verlauf implementieren möchte sind: 
+1. Möglichkeit per Prüfung zu entscheiden, ob Fragen+Antworten abzugeben sind oder nur ein Box
+2. Erinnerung an die Moderatoren die Prüfungstermine für das Semester anzupassen.  
+3.
+4. [...]
+
+### Cleanup & Refactoring
+Es gibt leider relativ viel schlechter Code und mehrere Dateien und Funktionen die komplett umgebracht sind.  
+Man muss aber natürlich beim Löschen sicher sein, dass sie wirklich nutzlos sind.
+Außerdem sind noch einige kleine Bugs
+1. Seitenwähler am Adminpanel ist irgendwie defekt.
+2.
+3.
+4. [...]
+Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, macht einfach ein Pull Request.
