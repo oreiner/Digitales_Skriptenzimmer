@@ -84,4 +84,4 @@ Außerdem sind noch einige kleine Bugs
 2.
 3.
 4. [...]
-Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, macht einfach ein Pull Request.
+Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
