@@ -60,6 +60,9 @@ Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite la
 1. Admin User auf der Seite registrieren und in der Datenbank unter Users auf type:admin ändern
 2. einloggen auf https://URL/admin
 3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
+>> wichtig! Die Protokolle müssen PDF in version 1.4 (bzw. adobe acrobbat 5) sein!  
+>> Ihr könntet eure Dateien mit acrobat (nicht reader) anpassen oder online. z.B. auf  
+>> https://docupub.de/pdfconvert/
 4. ...
 
 ### Weitere Funktionen
