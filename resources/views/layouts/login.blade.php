@@ -23,15 +23,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('eduread/css/style.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('eduread/css/responsive.min.css')}}">
 	
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134069936-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
-
-	  gtag('config', 'UA-134069936-1');
-	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics hier -->
+	
 </head>
 <body class="login">
      <!-- Preloader -->
