@@ -11,7 +11,7 @@ class Test extends Model
 	use SoftDeletes;
 	
     protected $fillable = [
-        'name', 'description', 'no_of_examiner'
+        'name', 'position', 'description', 'no_of_examiner'
     ];
 
 	protected $softCascade = ['TestExaminer', 'UserToTest', 'Reminder'];
