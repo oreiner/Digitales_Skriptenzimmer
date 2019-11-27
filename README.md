@@ -85,6 +85,7 @@ Man muss aber natürlich beim Löschen sicher sein, dass sie wirklich nutzlos si
 Außerdem sind noch einige kleine Bugs
 1. Seitenwähler am Adminpanel ist irgendwie defekt.
 2. Layouts mit Header-Datei umschreiben.
-3.
-4. [...]
+3. Statistik-Übersicht
+4.
+5. [...]
 Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
