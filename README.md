@@ -84,7 +84,8 @@ Es gibt leider relativ viel schlechter Code und mehrere Dateien und Funktionen d
 Man muss aber natürlich beim Löschen sicher sein, dass sie wirklich nutzlos sind.
 Außerdem sind noch einige kleine Bugs
 1. Seitenwähler am Adminpanel ist irgendwie defekt.
-2.
-3.
-4. [...]
+2. Layouts mit Header-Datei umschreiben.
+3. Statistik-Übersicht
+4.
+5. [...]
 Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
