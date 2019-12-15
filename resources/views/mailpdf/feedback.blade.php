@@ -92,7 +92,7 @@
 				<br><p>Beachte: Sowohl Fragen als auch Antworten müssen jeweils mindestens 10 Zeichen lang sein.</p>
 			</div>
 			<div class="row">
-                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'my-form']) !!}
+                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'my-form', 'onsubmit'=>'return confirm("Bist du sicher, dass alles richtig ist?\n\nHat der Prüfer gewechselt?\nDann bitte kontaktiere uns und wir schalten dich frei.\nVerstöße gegen die Seitenregeln werden bestraft!\n")']) !!}
                 <div id="contact">
                 <div class="col-sm-6 contact-form">
 
