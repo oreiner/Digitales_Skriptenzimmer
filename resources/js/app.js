@@ -77,6 +77,10 @@ let routes = [
         path: '/admin/uploadpdfs', component: require('./components/UploadPdfs.vue'),
         meta: { title: 'Skriptenzimmer Köln  | Skript hochladen' }
     },
+	{
+        path: '/admin/stats', component: require('./components/Stats.vue'),
+        meta: { title: 'Skriptenzimmer Köln  | Statistik ansehen' }
+    },
     {
         path: '/admin/developer', component: require('./components/Developer.vue'),
         meta: { title: 'Skriptenzimmer Köln  | Developer' }
