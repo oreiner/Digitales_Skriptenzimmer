@@ -10,6 +10,12 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
+					<div class="card-body">
+						<p>Die Protokolle MÜSSEN unbedingt auf pdf version 1.4 (Adobe 5.0) geändert werden, bevor man sie hochlädt!!!<br>
+							Das kann man entweder mit Adobe Acrobat (aber nicht reader) oder mit einem online Tool machen.<br>
+							Z.B. <a href="https://docupub.de/pdfconvert/"></a>
+						</p>
+                    </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover">
                             <tbody>
@@ -104,7 +110,7 @@
                                     <has-error :form="form" field="no_of_examiner"></has-error>
                                 </div>
 								<div class="form-group">
-                                    <input type="number" v-model="form.position" name="position" class="form-control" :class="{ 'is-invalid': form.errors.has('position') }" id="position">
+                                    <input v-model="form.position" type="text" name="position" placeholder="Position" class="form-control" :class="{ 'is-invalid': form.errors.has('position') }" id="position">
                                     <has-error :form="form" field="position"></has-error>
                                 </div>
                             </div>
