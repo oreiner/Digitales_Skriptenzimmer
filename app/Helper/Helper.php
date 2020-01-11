@@ -6,8 +6,8 @@ use setasign\Fpdi\Fpdi;
 //require('alphapdf.php');
 
 class Helper{
-    function generatePdf($file, $examinername){
-        $pdf = new PDF();
+    function generatePdf($file, $examinername, $watermark){
+        $pdf = new PDF($watermark);
         $pdf->_file=$file;
         $pdf->_examinername=$examinername;
         $pdf->AddPage();
@@ -134,14 +134,24 @@ class PDF extends AlphaPDF {
     var $_file;
     var $_examinername;
     var $_tplIdx;
+	var $_watermark;
+
+	function __construct($watermark){
+		parent::__construct();
+		$this->_watermark = $watermark;
+	}
 
     function Header() {
 		
         global $fullPathToFile;
 		//importing first and then watermark puts the mark in the foreground. needed becauseof image pages.
-		
-		//putting the watermark hier would make it below the text
-		//watermark...
+		if ($this->_watermark){
+			//put the "untersagt" water mark under the text
+			$this->SetFont('Arial', '', 25);
+			$this->SetTextColor(255, 192, 203);
+			$this->SetAlpha(0.5);
+			$this->RotatedText(10, 270, 'Die Verbreitung dieses Dokuments ist streng Untersagt!', 45);
+		}
 		
 		//import the original page
 		if (is_null($this->_tplIdx)) {
@@ -149,22 +159,17 @@ class PDF extends AlphaPDF {
 			$this->numPages = $this->setSourceFile(public_path('img/pdf/'.$this->_file));
 			$this->_tplIdx = $this->importPage(1);
         }
+		
 		$this->SetAlpha(1);
-        $this->useTemplate($this->_tplIdx, 0, 0, 200);
-		
-		//Name Watermark over the text (needed to be above, otherwise malfunctions with scanned pages)
-        $this->SetFont('Arial', '', 70);
-        $this->SetTextColor(255, 192, 203);
-		$this->SetAlpha(0.5);
-        $this->RotatedText(20, 190, $this->_examinername, 45);
-		//put the "untersagt" watermark over the text. now that it's transparent it's okay
-		$this->SetFont('Arial', '', 25);
-        $this->SetTextColor(255, 192, 203);
-		$this->SetAlpha(0.5);
-        $this->RotatedText(10, 270, 'Die Verbreitung dieses Dokuments ist streng Untersagt!', 45);
-		
-		
-	
+		$this->useTemplate($this->_tplIdx, 0, 0, 200);
+			
+		if ($this->_watermark){	
+		//put the user's name as water mark above the text
+			$this->SetFont('Arial', '', 70);
+			$this->SetTextColor(255, 192, 203);
+			$this->SetAlpha(0.5);
+			$this->RotatedText(20, 190, $this->_examinername, 45);
+		}
     }
 
     function RotatedText($x, $y, $txt, $angle) {

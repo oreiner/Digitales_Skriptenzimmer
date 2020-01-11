@@ -132,6 +132,14 @@
 											</div>
 										</div>
                                     </div>
+									<!-- moderators can choose if to receive Protocols or not !-->
+									<div>
+									@if (Auth::user()->type=="user")
+										<input type="hidden" name="with_email" value=1>
+									@else
+										<label for="with_email_checkbox"><input type="checkbox" name="with_email_checkbox" name="with_email" value=1 checked> Protokolle per E-Mail erhalten</label>
+									@endif      
+									</div>
 									<!-- send button !-->
 									<div class="row">
 										<div class="col-sm-12">
@@ -167,7 +175,7 @@
                                 <div class="single-address">
                                     <i class="fa fa-envelope"></i>
                                     <h4>E-Mail</h4>
-                                    <a href="mailto:{{ config('mail.from.address') }}" target="_top">{{ config('mail.from.address') }}</a>
+                                    <a href="mailto:{{ config('mail.from.address') }}?cc=info@skripte.koeln" target="_top">{{ config('mail.from.address') }}</a>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-12 single-address-box">
