@@ -137,7 +137,7 @@
 									@if (Auth::user()->type=="user")
 										<input type="hidden" name="with_email" value=1>
 									@else
-										<label for="with_email_checkbox"><input type="checkbox" name="with_email_checkbox" name="with_email" value=1 checked> Protokolle per E-Mail erhalten</label>
+										<label><input type="checkbox" id="with_email_checkbox" name="with_email" checked> Protokolle per E-Mail erhalten</label>
 									@endif      
 									</div>
 									<!-- send button !-->
