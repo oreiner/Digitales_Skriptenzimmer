@@ -51,7 +51,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <pagination :data="userToTests" @pagination-change-page="getResults"></pagination>
+                        <pagination :data="userToTests" :limit=5 @pagination-change-page="getResults"></pagination>
                     </div>
                     <!-- /.card-body -->
                 </div>

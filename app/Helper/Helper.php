@@ -6,7 +6,7 @@ use setasign\Fpdi\Fpdi;
 //require('alphapdf.php');
 
 class Helper{
-    function generatePdf($file, $examinername, $watermark){
+    function generatePdf($file, $examinername, $watermark=1){
         $pdf = new PDF($watermark);
         $pdf->_file=$file;
         $pdf->_examinername=$examinername;

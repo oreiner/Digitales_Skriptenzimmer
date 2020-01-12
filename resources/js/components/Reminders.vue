@@ -41,7 +41,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <pagination :data="reminders" @pagination-change-page="getResults"></pagination>
+                        <pagination :data="reminders" :limit=5 @pagination-change-page="getResults"></pagination>
                     </div>
                     <!-- /.card-body -->
                 </div>

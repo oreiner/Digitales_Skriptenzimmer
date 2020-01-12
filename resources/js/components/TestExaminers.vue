@@ -43,7 +43,7 @@
                         </table>
                     </div>
                     <div class="card-footer">
-                        <pagination :data="testExaminers" @pagination-change-page="getResults"></pagination>
+                        <pagination :data="testExaminers" :limit=5 @pagination-change-page="getResults"></pagination>
                     </div>
                     <!-- /.card-body -->
                 </div>
