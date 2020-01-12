@@ -14,6 +14,7 @@ Sie wird im Verlauf berarbeitet.
  - Protokolle und Skripte hochladen
  - Kommentare von Nutzer löschen
  - Zeiträume für Erinnerungs-E-Mail anpassen
+ - Statistik zu Protokolle Anfragen und Abgaben anschauen
  - ...
 
 #### Administratoren können:
@@ -83,9 +84,9 @@ Ein Paar Ideen, die ich im Verlauf implementieren möchte sind:
 Es gibt leider relativ viel schlechter Code und mehrere Dateien und Funktionen die komplett umgebracht sind.  
 Man muss aber natürlich beim Löschen sicher sein, dass sie wirklich nutzlos sind.
 Außerdem sind noch einige kleine Bugs
-1. Seitenwähler am Adminpanel ist irgendwie defekt.
-2. Layouts mit Header-Datei umschreiben.
-3. Statistik-Übersicht
+1. Seitenwähler am Adminpanel reparieren
+2. Layouts mit Header-Datei umschreiben
+3. Statistik-Übersicht verbesseren
 4.
 5. [...]
 Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
