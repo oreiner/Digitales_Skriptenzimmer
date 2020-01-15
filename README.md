@@ -4,14 +4,15 @@ Diese Anleitung ist noch nicht vollständig!
 Sie wird im Verlauf berarbeitet.
 
 #### Nutzer können:
-  - Protokolle nach dem "Kittelautomat"-System erhalten. Erstes Protokoll herunterladen und anschließend eigenes Protokoll ergänzen um sich wieder freizuschalten.
+  - Protokolle nach dem "Kittelautomat"-System erhalten. Erstes Protokoll herunterladen und anschließend eigenes Protokoll ergänzen um sich wieder freizuschalten. (technisch können sie zwei Protokolle abfragen pro Tag. z.B. ein falsches herunterladen, freischalten lassen und ein zweites heruntenladen. Dies sollte misbrauch des Systems verhindern)
   - Skripte unbegrenzt herunterladen
   - ...
   
-#### Moderator können:
+#### Moderator können
  - Nutzer freischalten und verwalten
  - Prüfer erstellen
- - Protokolle und Skripte hochladen
+ - Protokolle von der Nutzer-Oberfläche abgeben: sie 100 Protokolle pro Tag herunterladen und müssen keine Mail bekommen, wenn sie es nicht brauchen.
+ - neue Protokolle und Skripte vom Admin-Panel hochladen 
  - Kommentare von Nutzer löschen
  - Zeiträume für Erinnerungs-E-Mail anpassen
  - Statistik zu Protokolle Anfragen und Abgaben anschauen
