@@ -10,6 +10,16 @@
                         </div>
                     </div>
                     <!-- /.card-header -->
+					<div class="card-body">
+						<p>Die Protokolle MÜSSEN unbedingt auf pdf version 1.4 (Adobe 5.0) geändert werden, bevor man sie hochlädt!!!<br>
+							Das kann man entweder mit Adobe Acrobat (aber nicht reader) oder mit einem online Tool machen.<br>
+							Z.B. <a href="https://docupub.de/pdfconvert/"></a>
+						</p>
+						<p>VORSICHT! unbedingt darauf achten, dass der Name der Datei noch nicht gibt. z.B. Müller_Innere_M3.pdf<br>
+							Wenn noch einer Müller gibt, muss man die Datei anders bennen. z.B. Müller_Vorname_Innere_M3.pdf<br>
+							Sonst wird die erste Datei für den anderen ungültig gelöscht!
+						</p>
+                    </div>
                     <div class="card-body table-responsive p-0">
                         <table class="table table-hover">
                             <tbody>
