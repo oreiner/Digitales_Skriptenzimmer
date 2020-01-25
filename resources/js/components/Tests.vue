@@ -27,7 +27,7 @@
                                 <th>ID</th>
 								<th>Position</th>
                                 <th>Prüfung</th>
-                                <!-- <th>Beschreibung</th> !-->
+                                <th>Benennungsmuster</th>
                                 <th>Anzahl der Prüfer</th>
                                 <th>Aktion</th>
                             </tr>
@@ -35,7 +35,7 @@
                                 <td>{{test.id}}</td>
 								<td>{{test.position}}</td>
                                 <td>{{test.name}}</td>
-                                <!-- <td>{{test.description}}</td> !-->
+                                <td>{{test.description}}</td>
                                 <td>{{test.no_of_examiner }}</td>
                                 <td v-if="$gate.isAdminOrAuthor()">
                                     <a href="javascript:void(0)" @click="editModal(test)" v-my-tooltip.bottom-center="'aktualisieren'">
