@@ -80,7 +80,7 @@ let routes = [
 	{
         path: '/admin/stats', component: require('./components/Stats.vue'),
         meta: { title: 'Skriptenzimmer Köln  | Statistik ansehen' }
-    },
+    },  														  
     {
         path: '/admin/developer', component: require('./components/Developer.vue'),
         meta: { title: 'Skriptenzimmer Köln  | Developer' }
