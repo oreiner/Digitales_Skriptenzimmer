@@ -86,7 +86,7 @@
                     <div class="input-contact-form">
                           <div id="contact">
                             <div id="message"></div>
-                            {!! Form::open(array('route' => 'mailpdf.store', 'role'=>'form', 'id'=>'my-form' ,'onsubmit'=>'return confirm("Bist du sicher, dass alles richtig ist?")')) !!}
+                            {!! Form::open(array('route' => 'mailpdf.store', 'role'=>'form', 'id'=>'my-form')) !!}
                                 <div class="row">
 									<!-- choose test !-->
                                     <div class="col-sm-12">
