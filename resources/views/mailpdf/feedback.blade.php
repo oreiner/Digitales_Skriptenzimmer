@@ -92,7 +92,7 @@
 				<br><p>Beachte: Sowohl Fragen als auch Antworten müssen jeweils mindestens 10 Zeichen lang sein.</p>
 			</div>
 			<div class="row">
-                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'my-form', 'onsubmit'=>'return confirm("Bist du sicher, dass alles richtig ist?\n\nHat der Prüfer gewechselt?\nDann bitte kontaktiere uns und wir schalten dich frei.\nVerstöße gegen die Seitenregeln werden bestraft!\n")']) !!}
+                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'my-form']) !!}
                 <div id="contact">
                 <div class="col-sm-6 contact-form">
 
@@ -133,7 +133,7 @@
                                         </div>
 
                                         <div class="col-sm-12">
-                                            <label>Zusätzliche Informationen (Atmosphäre, Prüfungsmodus etc.) :</label>
+                                            <label>Zusätzliche Informationen zur Prüfung (Atmosphäre, Prüfungsmodus etc.) :</label>
                                                 <div class="form-group">
                                                     <textarea name="extra_information" rows="6" style="resize: both;" class="form-control{{ $errors->has('extra_information') ? ' is-invalid' : '' }}"  placeholder="Extra Information">{{ old('extra_information') }}</textarea>
                                                 </div>
@@ -198,17 +198,24 @@
 									<div class="col-sm-12">
 										<?php $num=0; ?>
 										@foreach($usertotest->mailpdfs as $mailpdf)
-											<input type="hidden" name="mailpdflist[]" value="<?php echo $mailpdf->id; ?>">
-											<input type="hidden" name="examinerlist[]" value="<?php echo $mailpdf->examiner->id; ?>">
-											<div class="form-group">
-												<label>Fragen <?php echo $mailpdf->examiner->name; ?> </label>
-												<textarea class="form-control" placeholder="Die gestellte Fragen hier" name="questions[]" rows="6" style="resize: both;">{{ old('questions.'.$num) }}</textarea>
-												<span class="alertrequired">{!!$errors->first('questions.'.$num)!!}</span>
-											</div>
-											<div class="form-group">
-												<label>Antworten</label>
-											<textarea class="form-control" placeholder="Deine Antworten und die erwartete Antworten hier" name="answers[]" rows="6" style="resize: both;">{{ old('answers.'.$num) }}</textarea>
-												<span class="alertrequired">{!!$errors->first('answers.'.$num)!!}</span>
+											<div style="border: solid gray 1px; padding: 4px; margin: 4px;">
+												<input type="hidden" name="mailpdflist[]" value="<?php echo $mailpdf->id; ?>">
+												<input type="hidden" name="examinerlist[]" value="<?php echo $mailpdf->examiner->id; ?>">
+												<div class="form-group">
+													<label>Fragen: <?php echo $mailpdf->examiner->name; ?> </label>
+													<textarea class="form-control" placeholder="Die gestellte Fragen hier" name="questions[]" rows="6" style="resize: both;">{{ old('questions.'.$num) }}</textarea>
+													<span class="alertrequired">{!!$errors->first('questions.'.$num)!!}</span>
+												</div>
+												<div class="form-group">
+													<label>Antworten: <?php echo $mailpdf->examiner->name; ?></label>
+												<textarea class="form-control" placeholder="Deine Antworten und die erwartete Antworten hier" name="answers[]" rows="6" style="resize: both;">{{ old('answers.'.$num) }}</textarea>
+													<span class="alertrequired">{!!$errors->first('answers.'.$num)!!}</span>
+												</div>
+												<div class="form-group">
+													<label>Tipps: <?php echo $mailpdf->examiner->name; ?></label>
+												<textarea class="form-control" placeholder="Tipps und zusätzliche Informationen hier" name="personal_extra[]" rows="6" style="resize: both;">{{ old('personal_extra.'.$num) }}</textarea>
+													<span class="alertrequired">{!!$errors->first('personal_extra.'.$num)!!}</span>
+												</div>
 											</div>
 											<?php $num++ ?>
 										@endforeach
@@ -223,7 +230,7 @@
 
                 <div class="col-sm-12">
 					<div class="row">	
-						<div class="col-xs-12 contact-form">
+						<div class="col-sm-12 contact-form">
 							<div class="input-contact-form">
 								<div class="view_more_btn" style="float: right">
 									<button value="Protokoll abgeben" type="submit" class="btn view-more-item" name="submit" id="submit">Protokoll abgeben &nbsp; &nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>

@@ -195,25 +195,38 @@ class MailPdfController extends Controller
         $usertotest = UserToTest::find($id);
         $usertotest->semester_session=$request->semester_session;
         $usertotest->extra_information=$request->extra_information;
+		if(empty($request->extra_information)){
+					$extra_info="";
+				} else {
+					$extra_info="\n\nZusätzliche Informationen zur Prüfung:\n".$request->extra_information;
+				} 
+		
         $usertotest->grade          =$request->grade;
         $usertotest->feedback_status='1';
         $usertotest->save();
 
         $questions=$request->questions;
         $answers=$request->answers;
+		$personal_extra=$request->personal_extra;
         $testid=$request->test_id;
        // $examinerlist=$request->examinerlist;
         $j=0;
         foreach($request->mailpdflist as $mailpdf) {
             $question=$questions[$j];
             $answer=$answers[$j];
+			$extra=$personal_extra[$j]; 
+				if(empty($extra)){
+					$tips="";
+				} else {
+					$tips="\n\nTipps und zusätzliche Informationen zum Prüfer:\n".$extra;
+				} 
             $mailpdf=MailPdf::find($mailpdf);
             $testExaminer=TestExaminer::where('test_id','=',$testid)->where('examiner_id','=',$mailpdf->examiner_id)->first();
             $examiner=Examiner::find($mailpdf->examiner_id);
             $pdf = new \FPDF();
             $pdf->AddPage();
             $pdf->SetFont('Arial',null,10);
-            $pdf->Write( 5, "Prüfer : ".$examiner->name."\n\nSemester : ".$request->semester_session."\n\nFragen :\n".$question."\n\nAntworten :\n".$answer."\n\nZusältzliche Informationen :\n".$request->extra_information."\n\nNote :\n".$request->grade);
+            $pdf->Write( 5, "Prüfer : ".$examiner->name."\n\nSemester : ".$request->semester_session."\n\nFragen :\n".$question."\n\nAntworten :\n".$answer.$tips.$extra_info."\n\nNote :\n".$request->grade);
             
             
 			//$statement = DB::select("SHOW TABLE STATUS LIKE 'mail_pdfs'");
@@ -237,8 +250,10 @@ class MailPdfController extends Controller
             $filename=public_path('img/pdf/'.$distination_path);
             $pdf->Output($filename, 'F');
 
+			//save single mailpdf to DB
             $mailpdf->questions =$question;
             $mailpdf->answers =$answer;
+			$mailpdf->personal_extra =$extra;
             $mailpdf->save();
             $j++;
         }

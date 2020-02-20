@@ -29,6 +29,9 @@ Bitte Kontrolliert sie auf Sinnhaftigkeit etc.<br>
 		
 <u>Antworten:</u> @foreach ($usertotest->mailpdfs->pluck('answers') as $a) {{($a)}} 
 			@endforeach
+
+<u>Tipps:</u> @foreach ($usertotest->mailpdfs->pluck('personal_extra') as $a) {{($a)}} 
+			@endforeach
 		
 <u>Extra Informationen:</u> {{$usertotest->extra_information}} 
 
