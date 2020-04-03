@@ -242,6 +242,7 @@ $('#submit-protocol').on('submit', function(){
 	var testid = $('#test_id').val() ;
 	var questions = document.getElementById("submit-protocol").elements["questions[]"];
 	var answers = document.getElementById("submit-protocol").elements["answers[]"];
+	var extras = document.getElementById("submit-protocol").elements["personal_extra[]"];
 	var num_questions = questions.length;
 	var num_answers = answers.length;
 	var num_validated = 0;
@@ -250,8 +251,14 @@ $('#submit-protocol').on('submit', function(){
 	for (var i=0; i<num_questions; i++){
 			if (questions[i].value.length>=10 && answers[i].value.length>=10){
 				num_validated++;
-			} else if (questions[i].value.length>=1 || answers[i].value.length>=1) {
-				alert("Bitte jeweils mindestens 10 Zeichen in jeder Fragen- und jeder Antworten-Antwortkiste eingeben");
+			} else if (questions[i].value.length>=1) {
+				alert("Du hast irgendwo die Fragen ausgefüllt, aber ohne die entsprechende Antworten");
+				return false;
+			} else if (answers[i].value.length>=1) {
+				alert("Du hast irgendwo die Antworten ausgefüllt, aber ohne die entsprechende Fragen");
+				return false;
+			} else if (extras[i].value.length>=1) {
+				alert("Du hast irgendwo die Tipps ausgefüllt, aber weder Fragen noch Antworten eingegeben");
 				return false;
 			}
 	}
