@@ -149,7 +149,10 @@
 										</div>
 									</div>
 									<div class="row">					
-										<div class="full-width"><p>Bitte das Protokoll nur runterladen, wenn du deinen Prüfer zugeteilt bekommen hast.<br>Verstöße gegen die Regeln werden zur Sperrung führen!</p></div>          								
+										<div class="full-width">
+										<p>Bitte das Protokoll nur herunterladen, wenn du deinen Prüfer zugeteilt bekommen hast.<br>Verstöße gegen die Regeln werden zur Sperrung führen!</p>
+										<p>Bitte erst <a href="{{url('faq')}}">hier die FAQ lesen</a></p>
+										</div>          								
 									</div>
                                 </div>
                             {!! Form::close() !!}

@@ -227,11 +227,12 @@ $('#request-protocol').on('submit', function(){
 	} else if (userType=='moderator' && $("#examiner").select2('data').length<1 ) {
 		alert('Bitte wähl mindestens einen Prüfer aus')
 	}else {
-
-		alert('Bitte wähl genau '+minimum+' Prüfer aus')
-
+		if (minimum>4){
+			alert('Bitte wähl genau '+minimum+' Prüfer aus. D.h. '+minimum/2+' Prüfer und '+minimum/2+' Vertreter')
+		} else {
+			alert('Bitte wähl genau '+minimum+' Prüfer aus')
+		}
 		return false;
-
 	}
 
 })
@@ -249,6 +250,9 @@ $('#submit-protocol').on('submit', function(){
 	for (var i=0; i<num_questions; i++){
 			if (questions[i].value.length>=10 && answers[i].value.length>=10){
 				num_validated++;
+			} else if (questions[i].value.length>=1 || answers[i].value.length>=1) {
+				alert("Bitte jeweils mindestens 10 Zeichen in jeder Fragen- und jeder Antworten-Antwortkiste eingeben");
+				return false;
 			}
 	}
 	
