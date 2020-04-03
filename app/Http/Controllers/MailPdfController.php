@@ -136,9 +136,9 @@ class MailPdfController extends Controller
             $mailpdf->save();
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->whereIn('examiner_id',$request->examinerlist)->get();
-		$content = [
-                   'from_email'=> 'info@skripte.koeln',
-				   'name'=> 'Skriptenzimmer Köln',
+        $content = [
+                   'from_email'=> config('mail.from.sender'),
+				   'name'=> config('mail.from.name'),
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
                   ];
@@ -214,42 +214,45 @@ class MailPdfController extends Controller
         foreach($request->mailpdflist as $mailpdf) {
             $question=$questions[$j];
             $answer=$answers[$j];
-			$extra=$personal_extra[$j]; 
-				if(empty($extra)){
-					$tips="";
-				} else {
-					$tips="\n\nTipps und zusätzliche Informationen zum Prüfer:\n".$extra;
-				} 
-            $mailpdf=MailPdf::find($mailpdf);
-            $testExaminer=TestExaminer::where('test_id','=',$testid)->where('examiner_id','=',$mailpdf->examiner_id)->first();
-            $examiner=Examiner::find($mailpdf->examiner_id);
-            $pdf = new \FPDF();
-            $pdf->AddPage();
-            $pdf->SetFont('Arial',null,10);
-            $pdf->Write( 5, "Prüfer : ".$examiner->name."\n\nSemester : ".$request->semester_session."\n\nFragen :\n".$question."\n\nAntworten :\n".$answer.$tips.$extra_info."\n\nNote :\n".$request->grade);
-            
-            
-			//$statement = DB::select("SHOW TABLE STATUS LIKE 'mail_pdfs'");
-            //$next_id = intval( $statement[0]->Auto_increment) + $j; //autoincrement doesn't get rechecked before creating the next file, so manually increment with the already existing $j
-			$comment_id = $mailpdf->id;
-            $distination_path = $comment_id.'_mergepdf.pdf'; //changed time() to next mail pdf id. this is unique enough and should make it easier to delete specific comments. change back if you have a different solution
-            $filename=public_path('img/mergepdf/'.$distination_path);
-            $pdf->Output($filename, 'F');
+			$extra=$personal_extra[$j];
+			$mailpdf=MailPdf::find($mailpdf);
+			
+			if(!empty($question) || !empty($answer) || !empty($extra)) { //if the protocoll is empty. for example because it was from an extra examiner on M3, don't create a page for it
+					if(empty($extra)){
+						$tips="";
+					} else {
+						$tips="\n\nTipps und zusätzliche Informationen zum Prüfer:\n".$extra;
+					} 
+				
+				$testExaminer=TestExaminer::where('test_id','=',$testid)->where('examiner_id','=',$mailpdf->examiner_id)->first();
+				$examiner=Examiner::find($mailpdf->examiner_id);
+				$pdf = new \FPDF();
+				$pdf->AddPage();
+				$pdf->SetFont('Arial',null,10);
+				$pdf->Write( 5, "Prüfer : ".$examiner->name."\n\nSemester : ".$request->semester_session."\n\nFragen :\n".$question."\n\nAntworten :\n".$answer.$tips.$extra_info."\n\nNote :\n".$request->grade);
+				
+				
+				//$statement = DB::select("SHOW TABLE STATUS LIKE 'mail_pdfs'");
+				//$next_id = intval( $statement[0]->Auto_increment) + $j; //autoincrement doesn't get rechecked before creating the next file, so manually increment with the already existing $j
+				$comment_id = $mailpdf->id;
+				$distination_path = $comment_id.'_mergepdf.pdf'; //changed time() to next mail pdf id. this is unique enough and should make it easier to delete specific comments. change back if you have a different solution
+				$filename=public_path('img/mergepdf/'.$distination_path);
+				$pdf->Output($filename, 'F');
 
-            $files = [public_path('img/mergepdf/'.$distination_path),public_path('img/pdf/'.$testExaminer->pdf)];
-            $pdf = new Fpdi();
-            foreach ($files as $file) {
-                $pageCount = $pdf->setSourceFile($file);
-                for ($i = 0; $i < $pageCount; $i++) {
-                    $tpl = $pdf->importPage($i + 1, '/MediaBox');
-                    $pdf->addPage();
-                    $pdf->useTemplate($tpl);
-                }
-            }
-            $distination_path = $testExaminer->pdf;
-            $filename=public_path('img/pdf/'.$distination_path);
-            $pdf->Output($filename, 'F');
-
+				$files = [public_path('img/mergepdf/'.$distination_path),public_path('img/pdf/'.$testExaminer->pdf)];
+				$pdf = new Fpdi();
+				foreach ($files as $file) {
+					$pageCount = $pdf->setSourceFile($file);
+					for ($i = 0; $i < $pageCount; $i++) {
+						$tpl = $pdf->importPage($i + 1, '/MediaBox');
+						$pdf->addPage();
+						$pdf->useTemplate($tpl);
+					}
+				}
+				$distination_path = $testExaminer->pdf;
+				$filename=public_path('img/pdf/'.$distination_path);
+				$pdf->Output($filename, 'F');
+			}
 			//save single mailpdf to DB
             $mailpdf->questions =$question;
             $mailpdf->answers =$answer;
@@ -279,9 +282,9 @@ class MailPdfController extends Controller
             $mailpdf->save();
         }
         $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
-		$content = [
-                   'from_email'=> 'info@skripte.koeln',
-				   'name'=> 'Skriptenzimmer Köln',
+        $content = [
+                   'from_email'=> config('mail.from.sender'),
+				   'name'=> config('mail.from.name'),
                    'username'=> auth()->user()->name,
                    'queryMailPdfs'=> $mailpdfs,
                   ];
