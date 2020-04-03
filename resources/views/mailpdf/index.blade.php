@@ -86,12 +86,12 @@
                     <div class="input-contact-form">
                           <div id="contact">
                             <div id="message"></div>
-                            {!! Form::open(array('route' => 'mailpdf.store', 'role'=>'form', 'id'=>'my-form')) !!}
+                            {!! Form::open(array('route' => 'mailpdf.store', 'role'=>'form', 'id'=>'request-protocol')) !!} <!-- form submission javascript is in public/eduread/js/function.js !-->
                                 <div class="row">
 									<!-- choose test !-->
                                     <div class="col-sm-12">
                                         <div class="form-group">
-                                            {{Form::select('test_id', $tests ,null,['class'=>'form-control','placeholder'=>'Prüfung auswählen','id'=>'test_id', 'onchange'=>"loadExaminerByTestid(); loadFachByTestid(); loadDatepickerDates();"])}}
+                                            {{Form::select('test_id', $tests ,null,['class'=>'form-control','placeholder'=>'Prüfung auswählen','id'=>'test_id', 'onchange'=>"loadExaminerByTestid(); loadFachByTestid(); loadDatepickerDates();"])}} 
                                             <span class="alertrequired">{!!$errors->first('test_id')!!}</span>
                                         </div>
                                     </div>

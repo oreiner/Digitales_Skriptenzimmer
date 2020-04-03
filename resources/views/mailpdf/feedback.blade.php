@@ -39,7 +39,9 @@
 
 
 </style>
-
+<script>
+  var userType = {!! json_encode((array)auth()->user()->type) !!}; //allow js to get user type, so moderators can get single examiners (to use for uploading protocols)
+</script>		  
 @section('content')
 
 
@@ -92,7 +94,7 @@
 				<br><p>Beachte: Sowohl Fragen als auch Antworten müssen jeweils mindestens 10 Zeichen lang sein.</p>
 			</div>
 			<div class="row">
-                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'my-form']) !!}
+                {!! Form::model($usertotest, ['route'=>['mailpdf.update',$usertotest->id],'method'=>'PUT','role'=>'form','id'=>'submit-protocol']) !!} <!-- form submission javascript is in public/eduread/js/function.js !-->
                 <div id="contact">
                 <div class="col-sm-6 contact-form">
 
@@ -110,14 +112,14 @@
                                                 <div class="col-sm-8">
                                                     <label>Prüfungsangaben :</label>
                                                     <div class="form-group">
-                                                        <input type="hidden" name="test_id" value="<?php echo $usertotest->test->id; ?>">
+                                                        <input type="hidden" name="test_id" id="test_id" value="<?php echo $usertotest->test->id; ?>">
                                                         <input value="{{$usertotest->test->name}}"   type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  required autofocus placeholder="Name" readonly>
                                                     </div>
                                                 </div>
                                                  <div class="col-sm-4">
                                                      <label>Semester :</label>
                                                     <div class="form-group">
-                                                        {{Form::select('semester_session', $sessions ,$mailPdfRequestDate,['class'=>'form-control','placeholder'=>'Select Session','id'=>'test_id'])}}
+                                                        {{Form::select('semester_session', $sessions ,$mailPdfRequestDate,['class'=>'form-control','placeholder'=>'Select Session','id'=>'semester'])}}
                                                         <span class="alertrequired">{!!$errors->first('semester_session')!!}</span>
                                                     </div>
                                                  </div>
@@ -229,6 +231,9 @@
 				</div>
 
                 <div class="col-sm-12">
+					<div class="row">	
+						<p>Bitte erst <a href="{{url('faq')}}">hier die FAQ lesen</a><p>
+					</div>	
 					<div class="row">	
 						<div class="col-sm-12 contact-form">
 							<div class="input-contact-form">
