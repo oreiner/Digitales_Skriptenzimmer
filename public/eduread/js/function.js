@@ -252,13 +252,13 @@ $('#submit-protocol').on('submit', function(){
 			if (questions[i].value.length>=10 && answers[i].value.length>=10){
 				num_validated++;
 			} else if (questions[i].value.length>=1) {
-				alert("Du hast irgendwo die Fragen ausgefüllt, aber ohne die entsprechende Antworten");
+				alert("Du hast irgendwo die Fragen ausgefüllt, aber ohne die entsprechenden Antworten. Bitte jeweils mindestens 10 Zeichen schreiben");
 				return false;
 			} else if (answers[i].value.length>=1) {
-				alert("Du hast irgendwo die Antworten ausgefüllt, aber ohne die entsprechende Fragen");
+				alert("Du hast irgendwo die Antworten ausgefüllt, aber ohne die entsprechenden Fragen. Bitte jeweils mindestens 10 Zeichen schreiben");
 				return false;
 			} else if (extras[i].value.length>=1) {
-				alert("Du hast irgendwo die Tipps ausgefüllt, aber weder Fragen noch Antworten eingegeben");
+				alert("Du hast irgendwo die Tipps ausgefüllt, aber weder Fragen noch Antworten eingegeben.");
 				return false;
 			}
 	}
@@ -268,12 +268,12 @@ $('#submit-protocol').on('submit', function(){
 		//however, this was a dynamic change and the first users were allowed only 4 protocols and should return all. so the prerequisite for the relaxed condition is when more than four examiners are present in the page
 		if(num_questions>4){
 			if (num_validated<(num_questions/2)){
-				alert("Bitte jeweils mindestens 10 Zeichen in jeder Fragen- und jeder Antworten-Antwortkiste eingeben");
+				alert("Bitte jeweils mindestens 10 Zeichen in jedes Fragen- und jedes Antworten-Eingabefeld eingeben");
 				return false;
 			}
 		}  else {
 			if (num_validated!=num_questions){
-				alert("Bitte jeweils mindestens 10 Zeichen in jeder Fragen- und jeder Antworten-Antwortkiste eingeben");
+				alert("Bitte jeweils mindestens 10 Zeichen in jedes Fragen- und jedes Antworten-Eingabefeld eingeben");
 				return false;
 			}
 		}
