@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\UserToTest;
 
 class MailPdfEditFormRequest extends FormRequest
 {
@@ -23,16 +24,33 @@ class MailPdfEditFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'test_id'                    => 'required|numeric',
-            'semester_session'           =>'required',
-            'examinerlist'               =>'required',
-             'questions'                 =>'required',
-             'questions.*'               =>'required|min:10',
-              'answers'                  =>'required',
-              'answers.*'                =>'required|min:10',
 
-        ];
+		$usertotest =UserToTest::where('user_id', auth()->user()->id)->where('feedback_status','0')->first();
+		if ($usertotest->test_id==7) /* M3 has different rules. only needs one questions/answers per pair of examiners (main and substitute) */
+		{
+				//moved validation to public/eduread/js/function.js !!!
+				$rules = [
+					'test_id'                  => 'required|numeric',
+					'semester_session'         =>'required',
+					'examinerlist'             =>'required',
+					'questions'                =>'required',
+					'answers'                  =>'required',
+					//'questions.*'              =>'required|min:10',
+					//'answers.*'                =>'sometimes|min:10',	
+				];
+		} else {
+			$rules = [
+					'test_id'                  => 'required|numeric',
+					'semester_session'         =>'required',
+					'examinerlist'             =>'required',
+					'questions'                =>'required',
+					'answers'                  =>'required',
+					'questions.*'              =>'required|min:10',
+					'answers.*'                =>'required|min:10',	
+				];
+		}
+		//return $v;
+		return $rules;
     }
 
     public function messages()
@@ -42,4 +60,5 @@ class MailPdfEditFormRequest extends FormRequest
             'examinerlist.required'=> 'The examiner(s) field is required.'
         ];
     }
+
 }
