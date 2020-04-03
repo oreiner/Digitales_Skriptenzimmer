@@ -88,6 +88,7 @@ Außerdem sind noch einige kleine Bugs
 1. Seitenwähler am Adminpanel reparieren
 2. Layouts mit Header-Datei umschreiben
 3. Statistik-Übersicht verbesseren
-4.
-5. [...]
+4. Hard-Coding von M3 ändern und als Einstellung auf der Admin-Panel einstellbar machen. 
+5.
+6. [...]
 Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
