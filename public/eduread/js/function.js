@@ -247,6 +247,16 @@ $('#submit-protocol').on('submit', function(){
 	var num_answers = answers.length;
 	var num_validated = 0;
 	
+	//if only one textarea then the vars above are undefined. Workaround to make it one.
+	if (!Number.isInteger(num_questions)) { 
+		num_questions = 1;
+		questions = [questions];
+	}
+	if (!Number.isInteger(num_answers)) { 
+		num_answers = 1;
+		answers = [answers];
+	}
+	
 	//count for each examiner if both questions and answers are at least 10 charachters long
 	for (var i=0; i<num_questions; i++){
 			if (questions[i].value.length>=10 && answers[i].value.length>=10){
