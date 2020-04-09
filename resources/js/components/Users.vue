@@ -22,7 +22,7 @@
 								<th>Kreuzmich-Benutzername</th>
                                 <th>Freigeschaltet</th>
                                 <th>Registriert am</th>
-                                <th v-if="$gate.isAdminOrAuthor()">Aktion</th>
+                                <th>Aktion</th>
                             </tr>
                             <tr v-for="user in users.data" :key="user.id">
                                 <td>{{user.id}}</td>
@@ -34,36 +34,26 @@
 								<td v-if="user.banned_at">gebanned</td>
                                 <td v-else>{{user.manually_verified_at | approvedStatus(user.email_verified_at)}}</td>
                                 <td>{{user.created_at | myDate}}</td>
-                                <td v-if="$gate.isAdminOrAuthor()">
-                                    <a href="javascript:void(0)" @click="editModal(user)" v-my-tooltip.bottom-center="'aktualisieren'">
+                                <td>
+                                    <a v-if="$gate.isAdminOrAuthor()" href="javascript:void(0)" @click="editModal(user)" v-my-tooltip.bottom-center="'aktualisieren'">
                                         <i class="fas fa-edit"></i>
                                     </a>
-                                    /
-									<a v-if="user.banned_at" href="javascript:void(0)" @click="revokeUser(user.id)" v-my-tooltip.bottom-center="'unban'">
-                                        <i class="fas fa-check-circle"></i>
-                                    </a>
-									<a v-else href="javascript:void(0)" @click="banUser(user.id)" v-my-tooltip.bottom-center="'ban'">
-                                        <i class="fas fa-ban"></i>
-                                    </a>
-                                    /
-                                    <a href="javascript:void(0)" @click="deleteUser(user.id)" v-my-tooltip.bottom-center="'löschen'">
+                                    <a v-if="$gate.isAdminOrAuthor()" href="javascript:void(0)" @click="deleteUser(user.id)" v-my-tooltip.bottom-center="'löschen'">
                                         <i class="fas fa-trash"></i>
                                     </a>
-                                    /
-                                    <a href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
+									<a v-if="user.banned_at" href="javascript:void(0)" @click="revokeUser(user.id)" v-my-tooltip.bottom-center="'unban'">
+											<i class="fas fa-check-circle"></i>
+									</a>
+									<a v-else href="javascript:void(0)" @click="banUser(user.id)" v-my-tooltip.bottom-center="'ban'">
+										<i class="fas fa-ban"></i>
+									</a>
+									<a v-if="user.manually_verified_at" href="javascript:void(0)" @click="unapproveUser(user.id)" v-my-tooltip.bottom-center="'Freischaltung zurückziehen'">
+                                        <i class="fas fa-times-circle"></i>
+                                    </a>
+                                    <a v-else href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
                                         <i class="fas fa-check-square"></i>
                                     </a>
                                 </td>
-								<td v-else-if="user.manually_verified_at">
-									<a href="javascript:void(0)" @click="unapproveUser(user.id)" v-my-tooltip.bottom-center="'Freischaltung zurückziehen'">
-                                        <i class="fas fa-times-circle"></i>
-                                    </a>
-								</td>	
-								<td v-else>
-									<a href="javascript:void(0)" @click="approvedUser(user.id)" v-my-tooltip.bottom-center="'freischalten'">
-                                        <i class="fas fa-check-square"></i>
-                                    </a>
-								</td>
                             </tr>
                             </tbody>
                         </table>
