@@ -43,7 +43,7 @@ class UserController extends Controller
 	  //if ($unverified) {
 		//return User::where(['type'=>'user'])->orWhere(['type'=>'moderator'])->whereNull('email_verified_at')->orderByRaw("CASE WHEN email_verified_at IS NULL THEN 0 ELSE 1 END ASC")->orderByRaw('substring_index(name, \' \', -1)')->paginate(10); //only show unverified users. order by last name, when format is "first name last name"
 	  //}else{
-	    return User::where(['type'=>'user'])->orWhere(['type'=>'moderator'])->orderByRaw("CASE WHEN manually_verified_at IS NULL THEN 0 ELSE 1 END ASC")->orderByRaw('substring_index(name, \' \', -1)')->paginate(10); //first unverified. order by last name, when format is "first name last name"
+	    return User::where(['type'=>'user'])->orWhere(['type'=>'moderator'])->orderByRaw("CASE WHEN banned_at IS NULL THEN 0 ELSE 2 END ASC")->orderByRaw("CASE WHEN manually_verified_at IS NULL THEN 0 ELSE 1 END ASC")->orderByRaw('substring_index(name, \' \', -1)')->paginate(10); //first unverified. order by last name, when format is "first name last name"
 	  //}
 	  
     }
