@@ -32,6 +32,30 @@
 							</div>
 							<br>
 							
+							<div class="panel panel-default">
+								<div class="panel-heading" role="tab" id="question1b">
+									<h5 class="panel-title">
+									<a data-toggle="collapse" data-parent="#faq" href="#answer1b" aria-expanded="false" aria-controls="answer1b">
+									Ich möchte meine E-Mail-Adresse bestätigen, erhalte jedoch die Meldung "invalid signature" bzw. "error 401"
+									</a>
+									</h5>
+								</div>
+								<div id="answer1b" class="panel-collapse collapse" role="tabpanel" aria-labelledby="question1b">
+									<div class="panel-body">
+									Versuche folgende schritte:
+									<ol>
+										<li>Schließe alle Fenster des Browsers und gehe nochmal auf <a href="{{url('faq')}}">{{url('faq')}}</a></li>
+										<li>Falls du noch automatisch angemeldet bist, melde dich ab.</li>
+										<li>Drücke Strg+F5 zusammen, um den Cache zu löschen und die Seite neu zu laden.</li>
+										<li>gehe auf "Protokolle" und lass dir eine neue Bestätigungs-E-Mail schicken, über den Link dort.</li>
+										<li>Geh in dein E-Mail-Postfach und bestätige deinen Account über die neue Mail.</li>
+									</ol>
+									Wenn das nochmal nicht klappt, musst du ggf. alle Cookies von der Seite löschen und alle Schritte wiederholen.
+									</div>
+								</div>
+							</div>
+							<br>
+							
 							<h3>Protokolle</h3>
 							
 							<div class="panel panel-default">
