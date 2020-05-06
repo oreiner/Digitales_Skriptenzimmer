@@ -12,12 +12,11 @@
                      <table class="table table-condensed" cellspacing="0" width="100%">
                          <thead>
                          <tr style="background-color: rgb(246,246,246)">
-                             <th class="align-center" style="width: 1%">ID</th>
+                            <!-- <th class="align-center" style="width: 1%">ID</th>  !-->
+							 <th>Datei herunterladen</th>
                              <th>Titel</th>
-							 <th>Semester</th>
                              <th>Fach</th>
-                             <th>Beschreibung</th>
-                             <th>Datei herunterladen</th>
+							 <th>Semester</th>
                          </tr>
                          </thead>
                          <tbody>
@@ -25,26 +24,20 @@
 						 
                          @foreach($downloads as $download)
                              <tr id="companyidrow{{ $download->id }}">
-                                 <td><?php echo $num++ ?></td>
-                                 <td>{{$download->title}}</td>
-								 <!--
-								 <td>{{$download->Semester}}</td>
-								 !-->
-                                 <td>{{$download->category}}</td>
-                                 <td>{{$download->description}}</td>
-                                 {{--<td>{{Html::image($patient->pati_picture,$patient->pati_name,['height='=>'30','width'=>'30'])}}</td>--}}
-                                 {{--<td >{{date('M j, Y', strtotime($company->created_at))}}</td>--}}
-                                 <td  style="width: 10%;">
+                                  <!--<td><?php // echo $num++ ?></td>  !-->
+								 <td  style="width: 10%;">
                                      <a href="{{url('getDownload/'.$download->id)}}"><i class="fa fa-download"></i> </a>
                                  </td>
-
-
+                                 <td>{{$download->title}}</td>
+                                 <td>{{$download->Fach}}</td>
+								 <td>{{$download->Semester}}</td> 
+                                 <!--{{--<td>{{Html::image($patient->pati_picture,$patient->pati_name,['height='=>'30','width'=>'30'])}}</td>--}}
+                                 {{--<td >{{date('M j, Y', strtotime($company->created_at))}}</td>--}}!-->
                              </tr>
                          @endforeach
 						 
                          </tbody>
                      </table>
-
 
                      <div class="paginator" style="text-align: center">
                          {{ $downloads->links() }}
