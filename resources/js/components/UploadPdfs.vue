@@ -25,8 +25,8 @@
                             <tr v-for="uploadPdf in uploadPdfs.data" :key="uploadPdf.id">
                                 <td>{{uploadPdf.id}}</td>
                                 <td>{{uploadPdf.title}}</td>
-                                <td>{{uploadPdf.category}}</td>
-								<td>{{uploadPdf.description}}</td>
+                                <td>{{uploadPdf.Semester}}</td>
+								<td>{{uploadPdf.Fach}}</td>
                                 <td>{{uploadPdf.upload_pdf}}</td>
                                 <td>{{uploadPdf.created_at | myDate}}</td>
                                 <td v-if="$gate.isAdminOrAuthor()">
@@ -80,9 +80,9 @@
                                     <div v-if="errors && errors.title" class="text-danger">{{ errors.title[0] }}</div>
                                 </div>
                                 <div class="form-group">
-                                    <input v-model="form.category" type="text" name="category" id="category" placeholder="Semester" class="form-control" :class="{ 'is-invalid': form.errors.has('category') }">
-                                    <has-error :form="form" field="category"></has-error>
-                                    <div v-if="errors && errors.category" class="text-danger">{{ errors.category[0] }}</div>
+                                    <input v-model="form.Semester" type="text" name="Semester" id="Semester" placeholder="Semester" class="form-control" :class="{ 'is-invalid': form.errors.has('Semester') }">
+                                    <has-error :form="form" field="Semester"></has-error>
+                                    <div v-if="errors && errors.Semester" class="text-danger">{{ errors.Semester[0] }}</div>
                                 </div>
 
                             </div>
@@ -93,9 +93,9 @@
                                     <div v-if="errors && errors.upload_pdf" class="text-danger">{{ errors.upload_pdf[0] }}</div>
                                 </div>
                                 <div class="form-group">
-                                    <textarea v-model="form.description" type="text" name="description" id="description" placeholder="Fach" class="form-control" :class="{ 'is-invalid': form.errors.has('description') }"></textarea>
-                                    <has-error :form="form" field="description"></has-error>
-                                    <div v-if="errors && errors.description" class="text-danger">{{ errors.description[0] }}</div>
+                                    <textarea v-model="form.Fach" type="text" name="Fach" id="Fach" placeholder="Fach" class="form-control" :class="{ 'is-invalid': form.errors.has('Fach') }"></textarea>
+                                    <has-error :form="form" field="Fach"></has-error>
+                                    <div v-if="errors && errors.Fach" class="text-danger">{{ errors.Fach[0] }}</div>
                                 </div>
                             </div>
                         </div>
@@ -128,9 +128,9 @@
                 uploadPdfs:{},
                  form : new Form({
                      id          :'',
-                     category    :'',
+                     Semester    :'',
                      title       :'',
-                     description :''
+                     Fach :''
                  })
             }
         },
@@ -195,17 +195,17 @@
                 var formData = new FormData();
                 var id=this.form.id;
                 var title =$('#title').val();
-                var category =$('#category').val();
+                var Semester =$('#Semester').val();
 
 
 
                 var upload_pdf = document.querySelector('#upload_pdf');
-                var description = $('#description').val();
+                var Fach = $('#Fach').val();
                 formData.append("id", id);
                 formData.append("title", title);
-                formData.append("category", category);
+                formData.append("Semester", Semester);
                 formData.append("upload_pdf", upload_pdf.files[0]);
-                formData.append("description", description);
+                formData.append("Fach", Fach);
                 this.$Progress.start()
                 axios.post(base_path+'/admin_api/uploadPdf',formData,{
                     headers: {
@@ -223,6 +223,7 @@
                     })
                     .catch(error=>{
                         if (error.response.status === 422) {
+							swal('Fehlgeschlagen!', 'Oops, etwas ist schief gelaufen!', 'warning')
                             this.errors = error.response.data.errors || {};
                         }
                         this.$Progress.fail()
@@ -233,14 +234,14 @@
              var formData = new FormData();
              var id=this.form.id;
              var title =$('#title').val();
-             var category =$('#category').val();
+             var Semester =$('#Semester').val();
              var upload_pdf = document.querySelector('#upload_pdf');
-             var description = $('#description').val();
+             var Fach = $('#Fach').val();
              formData.append("id", id);
              formData.append("title", title);
-             formData.append("category", category);
+             formData.append("Semester", Semester);
              formData.append("upload_pdf", upload_pdf.files[0]);
-             formData.append("description", description);
+             formData.append("Fach", Fach);
              this.$Progress.start()
              axios.post(base_path+'/admin_api/updateUploadPdf',formData,{
                  headers: {

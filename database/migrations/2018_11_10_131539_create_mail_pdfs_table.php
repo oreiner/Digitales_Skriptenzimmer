@@ -20,7 +20,9 @@ class CreateMailPdfsTable extends Migration
             $table->string('mailpdf');
             $table->text('questions')->nullable();
             $table->text('answers')->nullable();
+            $table->text('personal_extra')->nullable();
             $table->timestamps();
+			$table->softDeletes();
         });
     }
 

@@ -48,22 +48,21 @@ class UploadPdfController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'title'        => 'required',	
-            'category'       => 'required',
+            'title'        => 'required',
+            'Semester'       => 'required',						'Fach'       => 'required',			
             'upload_pdf'        => 'required|mimes:pdf',
         ]);
 
         $upload_pdf=$request->upload_pdf;
-        //$filename = time().'_'.$upload_pdf->getClientOriginalName();		$filename = $upload_pdf->getClientOriginalName();
+        $filename = time().'_'.$upload_pdf->getClientOriginalName();
         $destinationPath = public_path('img/uploadpdf/');
         $upload_pdf->move($destinationPath, $filename);
 
         return UploadPdf::create([
             'title'=>$request->title,
-            'category'=>$request->category,
 			'Semester'=>$request->Semester,
             'upload_pdf'=>$filename,
-            'description'=>$request->description
+            'Fach'=>$request->Fach
         ]);
 
 
@@ -92,7 +91,7 @@ class UploadPdfController extends Controller
         $uploadPdf=UploadPdf::findOrFail($request->id);
         $this->validate($request,[
             'title'        => 'required',
-            'category'       => 'required',
+            'Semester'       => 'required',						'Fach'       => 'required',	  
             'upload_pdf'        => 'nullable',
         ]);
        if($request->hasFile('upload_pdf')) {
@@ -106,9 +105,8 @@ class UploadPdfController extends Controller
            $uploadPdf->upload_pdf=$filename;
        }
         $uploadPdf->title=$request->title;
-        $uploadPdf->category=$request->category;
 		$uploadPdf->Semester=$request->Semester;
-        $uploadPdf->description=$request->description;
+        $uploadPdf->Fach=$request->Fach;
         $uploadPdf->save();
         return ['message'=>'Updated the Pdf info'];
     }

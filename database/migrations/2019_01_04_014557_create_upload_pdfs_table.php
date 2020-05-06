@@ -16,10 +16,9 @@ class CreateUploadPdfsTable extends Migration
         Schema::create('upload_pdfs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('category');
 			$table->string('Semester');
+			$table->string('Fach');
             $table->string('upload_pdf');
-            $table->string('description')->nullable();
             $table->timestamps();
         });
     }
