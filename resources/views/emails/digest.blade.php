@@ -17,9 +17,41 @@ Bitte Kontrolliert sie auf Sinnhaftigkeit etc.<br>
 	Keine neue Benutzer
 @endforelse
 	
+
+<br><br><u><strong>Neue Kommentare</strong></u><br>
+@forelse ($ids as $id)
+<!-- the use of first() needed because this is a weird workaround with the ids !-->
+<?php $usertotest=$new_comments->where('id',$id)->first() ?>
+<u>Empfangenes Protokoll-ID:</u> {{$usertotest->id}}
+
+<u>Name:</u> {{$usertotest->user->name}}
+
+<u>Fragen:</u> @foreach ($usertotest->mailpdfs->pluck('questions') as $q) {{($q)}} <br>
+			@endforeach
+		
+<u>Antworten:</u> @foreach ($usertotest->mailpdfs->pluck('answers') as $a) {{($a)}} <br>
+			@endforeach
+
+<u>Tipps:</u> @foreach ($usertotest->mailpdfs->pluck('personal_extra') as $a) {{($a)}} <br>
+			@endforeach
+		
+<u>Extra Informationen:</u> {{$usertotest->extra_information}} 
+
+--------------------
+
+@empty
+	
+	Keine neue Kommentare
+@endforelse
+	
+
+
+
+
+<!--
 <br><br><u><strong>Neue Kommentare</strong></u><br>
 @forelse ($new_comments as $usertotest)
-
+{{$usertotest}}
 <u>Empfangenes Protokoll-ID:</u> {{$usertotest->id}}
 
 <u>Name:</u> {{$usertotest->user->name}}
@@ -41,6 +73,7 @@ Bitte Kontrolliert sie auf Sinnhaftigkeit etc.<br>
 	
 	Keine neue Kommentare
 @endforelse
+!-->
 <br>
 Vielen Dank!<br>
 Viele Grüße<br>

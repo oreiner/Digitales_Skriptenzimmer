@@ -46,9 +46,15 @@ class SendDigestEmail extends Command
     {
 	   $new_users = User::whereNull('manually_verified_at')->whereDate('created_at','>=',date('Y-m-d' , strtotime ( "previous monday" )))->orderByRaw('substring_index(name, \' \', -1)')->get();  
 	   //$new_comments = MailPdf::whereDate('created_at','>=',date('Y-m-d' , strtotime ( "previous monday" )))->with('UserToTest')->with('user')->get(); 
-	   $new_comments = UserToTest::where('feedback_status','1')->with('user')->with('mailpdfs')->whereHas('mailpdfs',function($query){ $query->whereNotNull('questions')->whereNotNull('answers')->whereDate('updated_at','>=',date('Y-m-d' , strtotime ( "previous monday" )));})->get();
+	   $new_comments = UserToTest::where('feedback_status','1')->with('user')->with('mailpdfs') 
+						->whereHas('mailpdfs',function($query){ $query->whereNotNull('questions')->whereNotNull('answers')->whereDate('updated_at','>=',date('Y-m-d' , strtotime ( "previous monday" )));})
+						->get();
+		//make short comments appear first to detect problem protocls faster
+		$question_length = 'mailpdf.questions';
+		$new_comments = $new_comments->sortBy(function($question_length) { return strlen($question_length);});
+		//dd($new_comments);
 	   //$content = [$new_users, $new_comments];
-	   Mail::to(config('mail.from.address'))->queue(new SendDigest($new_users, $new_comments));
+	   Mail::to(config('mail.from.sender'))->cc('info@skripte.koeln')->queue(new SendDigest($new_users, $new_comments));
 
 	   $this->info(' Digest sent successfully!');
 
