@@ -20,7 +20,7 @@ class DownloadController extends Controller
 
     public function index(){
 
-        $downloads =UploadPdf::latest()->paginate(10);
+        $downloads =UploadPdf::orderBy('Semester','ASC')->orderBy('Fach','ASC')->paginate(10);
         return view('download',compact('downloads'));
     }
 
