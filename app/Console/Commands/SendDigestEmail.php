@@ -49,15 +49,49 @@ class SendDigestEmail extends Command
 	   $new_comments = UserToTest::where('feedback_status','1')->with('user')->with('mailpdfs') 
 						->whereHas('mailpdfs',function($query){ $query->whereNotNull('questions')->whereNotNull('answers')->whereDate('updated_at','>=',date('Y-m-d' , strtotime ( "previous monday" )));})
 						->get();
-		//make short comments appear first to detect problem protocls faster
-		$question_length = 'mailpdf.questions';
-		$new_comments = $new_comments->sortBy(function($question_length) { return strlen($question_length);});
+		//make short comments appear first to detect problem protocls faster //deprecated
+		//$question_length = 'mailpdf.questions';
+		//$new_comments = $new_comments->sortBy(function($question_length) { return strlen($question_length);});
 		//dd($new_comments);
 	   //$content = [$new_users, $new_comments];
+	   
+	   	// Used to determine the shortest comment (question of mailpdf) a UserToTest has
+		$maxCommentLength = function ($shortest, $mailpdf) {
+			$length = strlen($mailpdf->questions);
+			if ((($length < $shortest) && ($length > 0 )) || $shortest == 0 ) {
+			   return $length;
+			 }
+			//echo "shortest: ".$shortest." len: ".$length; //debug
+			return $shortest;
+		};
+
+		// Sort the users array using a comparator function and our max length helper
+		$new_comments = $new_comments->sort(function ($u1, $u2) use ($maxCommentLength) {
+			$max1 = $u1->mailpdfs->reduce($maxCommentLength, 0);
+			$max2 = $u2->mailpdfs->reduce($maxCommentLength, 0);
+			
+			// Shift element right
+			if ($max1 > $max2) {
+				return 1;
+			}
+			
+			// Shift element left
+			if ($max1 < $max2) {
+				return -1;
+			}
+			
+			// Keep same index
+			return 0;
+		});
+	   
+	   //send digest
 	   Mail::to(config('mail.from.sender'))->cc('info@skripte.koeln')->queue(new SendDigest($new_users, $new_comments));
 
+	//notify in cli about digest
 	   $this->info(' Digest sent successfully!');
 
     }
+	
+
 	
 }
