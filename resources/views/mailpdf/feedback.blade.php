@@ -41,7 +41,7 @@
 </style>
 <script>
   var userType = {!! json_encode((array)auth()->user()->type) !!}; //allow js to get user type, so moderators can get single examiners (to use for uploading protocols)
-</script>		  
+</script>
 @section('content')
 
 
@@ -233,20 +233,27 @@
                 <div class="col-sm-12">
 					<div class="row">	
 						<p>Bitte erst <a href="{{url('faq')}}">hier die FAQ lesen</a><p>
-					</div>	
+					</div>
+
 					<div class="row">	
 						<div class="col-sm-12 contact-form">
 							<div class="input-contact-form">
 								<div class="view_more_btn" style="float: right">
-									<button value="Protokoll abgeben" type="submit" class="btn view-more-item" name="submit" id="submit">Protokoll abgeben &nbsp; &nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+									<button value="Protokoll abgeben" type="submit" class="btn details-item" name="submit" id="submit">Protokoll abgeben &nbsp; &nbsp;<i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
 								</div>
 							</div>
 						</div>
 					</div>
+					
 					<div class="row">		
 						<div class="col-sm-8"></div>				
 						<div class="col-sm-4"><p>Die Prüfung ist zu lange her und du weißt gar nicht mehr, was du gefragt wurdest? Hat einer der Prüfer gewechselt und du brauchst ein neues Protokoll? Oder hast du ein anderes Problem mit dem Protokoll?<br>Bitte schreib nichts Sinnloses. Dies würden sonst all deine NachfolgerInnen bekommen!<br>Kontaktiere uns und wir schalten dich frei.</p></div>         								
-                    </div>
+						<div class="col-sm-12 contact-form">
+								<div class="view_more_btn" style="float: right">
+									<button type="button" value="Prüfungsangaben korrigieren" onclick="location.href='mailto:{{ config('mail.from.address') }}';" class=field1>Prüfungsangaben korrigieren &nbsp; &nbsp;<i class="fa fa-cog" aria-hidden="true"></i></button>
+								</div>
+						</div>
+				    </div>
                 </div>
                 {!! Form::close() !!}
             </div>
