@@ -272,11 +272,17 @@ class MailPdfController extends Controller
 		$usertotest = UserToTest::with('mailpdfs')->find($id);
 		$testExaminers= TestExaminer::where('test_id',$usertotest->test_id)->whereIn('examiner_id',$usertotest->mailpdfs->pluck('examiner_id'))->get();
 		
+        //users should get watermark, moderators and admins shouldn't
+		if(auth()->user()->type=="user"){
+			$watermark = TRUE;
+		} else {
+			$watermark = FALSE;
+		}
 		
 		//update mailpdf with new file name and watermark
 		foreach($testExaminers as $testExaminer) {
             $helper=new Helper();
-            $filename=$helper->generatePdf($testExaminer->pdf,auth()->user()->name);
+            $filename=$helper->generatePdf($testExaminer->pdf,auth()->user()->name, $watermark);
 			$mailpdf =  MailPdf::where('user_to_test_id',$usertotest->id)->where('examiner_id',$testExaminer->examiner_id)->first();
 			$mailpdf->mailpdf = $filename;
             $mailpdf->save();
