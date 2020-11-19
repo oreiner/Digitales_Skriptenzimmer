@@ -26,16 +26,16 @@ Bitte Kontrolliert sie auf Sinnhaftigkeit etc.<br>
 
 <u>Name:</u> {{$usertotest->user->name}}
 
-<u>Fragen:</u> @foreach ($usertotest->mailpdfs->pluck('questions') as $q) {{($q)}} <br>
+<u>Fragen:</u> <br> @foreach ($usertotest->mailpdfs->pluck('questions') as $key => $q) Einzelprotokoll {{$key+1}} (von {{count($usertotest->mailpdfs->pluck('questions'))}}): {{($q)}} <br><br>
 			@endforeach
 		
-<u>Antworten:</u> @foreach ($usertotest->mailpdfs->pluck('answers') as $a) {{($a)}} <br>
+<u>Antworten:</u> <br> @foreach ($usertotest->mailpdfs->pluck('answers') as $a) Einzelprotokoll {{$key+1}} (von {{count($usertotest->mailpdfs->pluck('answers'))}}): {{($a)}} <br><br>
 			@endforeach
 
-<u>Tipps:</u> @foreach ($usertotest->mailpdfs->pluck('personal_extra') as $a) {{($a)}} <br>
+<u>Tipps:</u> <br> @foreach ($usertotest->mailpdfs->pluck('personal_extra') as $a) Einzelprotokoll {{$key+1}} (von {{count($usertotest->mailpdfs->pluck('answers'))}}): {{($a)}} <br> <br>
 			@endforeach
 		
-<u>Extra Informationen:</u> {{$usertotest->extra_information}} 
+<u>Extra Informationen:</u>  <br> {{$usertotest->extra_information}} 
 
 --------------------
 

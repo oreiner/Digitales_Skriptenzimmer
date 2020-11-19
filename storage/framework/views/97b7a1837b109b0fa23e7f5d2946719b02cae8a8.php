@@ -5,7 +5,7 @@
                 <ul class="list-unstyled">
                     <li><i class="fa fa-facebook-square top-icon"></i> <a href="<?php echo e(config('app.facebook')); ?>" target="_blank">Facebook</a></li> 
                     
-					<li><i class="fa fa-envelope top-icon"></i><a href="mailto:<?php echo e(config('mail.from.address')); ?>?cc=info@skripte.koeln" target="_top"><?php echo e(config('mail.from.address')); ?></a> </li>
+					<li><i class="fa fa-envelope top-icon"></i><a href="mailto:<?php echo e(config('mail.from.address')); ?>" target="_top"><?php echo e(config('mail.from.address')); ?></a> </li>
 					
 					<li><i class="fa fa-calendar top-icon"></i><a href="<?php echo e(config('app.calendar')); ?>" target="_blank" >Öffnungszeiten</a> </li>
 					

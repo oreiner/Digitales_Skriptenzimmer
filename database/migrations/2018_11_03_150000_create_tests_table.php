@@ -15,6 +15,7 @@ class CreateTestsTable extends Migration
     {
         Schema::create('tests', function (Blueprint $table) {
             $table->increments('id');
+			$table->increments('position'); //need to make sure this works or change to $table->integer('position')->unsigned();
             $table->string('name');
             $table->mediumText('description')->nullable();
             $table->integer('no_of_examiner')->unsigned();
