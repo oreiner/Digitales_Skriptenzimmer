@@ -47,10 +47,11 @@
 
 
     <body class="contact">
-    <!-- Preloader -->
+    <!-- removed preloader for performance. sometimes gets stucks 
     <div id="preloader">
         <div id="status">&nbsp;</div>
     </div>
+    -->
     <header id="header">
         @include('layouts.topmenu')
 
