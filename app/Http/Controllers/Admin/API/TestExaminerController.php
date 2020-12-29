@@ -73,12 +73,11 @@ class TestExaminerController extends Controller
 		$backupPath = public_path('img/originalpdf/');
 		copy($destinationPath.$filename, $backupPath.$filename);
 
-        return TestExaminer::create([
-            'test_id'=>$request->test_id,
-            'examiner_id'=>$request->examiner_id,
-            'pdf'=>$filename,
-            'about_pdf'=>$request->about_pdf
-        ]);
+		//updateOrCreate instead of create will update the testExaminer if exits, instead of creating duplicates of the testExaminer
+		return TestExaminer::updateOrCreate(
+			['test_id' => $request->test_id, 'examiner_id' => $request->examiner_id],
+			['pdf'=>$filename, 'about_pdf'=>$request->about_pdf]
+		);
 
 
     }
