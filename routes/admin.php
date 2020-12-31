@@ -20,10 +20,10 @@
 
 //Route::get('/admin', ['as' => 'admin', 'uses' => 'DashboardController@index']);
 //Auth::routes();
-Route::get('/', function () {
+//Route::get('/', function () {
 //    return view('welcome');
     return redirect('admin/');
-});
+//});
 // admin routes
 
     Route::get('dashboard', 'DashboardController@index');
@@ -34,7 +34,7 @@ Route::get('logout', ['uses' => 'Auth\LoginController@logout']);
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-Route::get('{path}', 'DashboardController@index')->where('path','([A-z\d-\/_.]+)?' );
+Route::get('{path}', 'DashboardController@index')->where('path','([\w\/.-]+)?' );
 
 //Route::get('{subs?}', function () {
 //    return view('admin.home');
