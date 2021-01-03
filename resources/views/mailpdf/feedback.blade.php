@@ -107,89 +107,88 @@
 
 
 
-                            <div class="input-contact-form">
-                                    <div class="row">
+						<div class="input-contact-form">
+							<div class="row">
+								<div class="col-sm-8">
+									<label>Prüfungsangaben :</label>
+									<div class="form-group">
+										<input type="hidden" name="test_id" id="test_id" value="<?php echo $usertotest->test->id; ?>">
+										<input value="{{$usertotest->test->name}}"   type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  required autofocus placeholder="Name" readonly>
+									</div>
+								</div>
+								 <div class="col-sm-4">
+									 <label>Semester :</label>
+									<div class="form-group">
+										{{Form::select('semester_session', $sessions ,$mailPdfRequestDate,['class'=>'form-control','placeholder'=>'Select Session','id'=>'semester'])}}
+										<span class="alertrequired">{!!$errors->first('semester_session')!!}</span>
+									</div>
+								 </div>
+							</div>
+							
+							<div class="row">
+								<div class="col-sm-12">
+									   <label>Deine Prüfer waren :</label>
+									   @foreach($usertotest->mailpdfs as $mailpdf)
+										<div class="form-group">
+										   <input value="<?php echo $mailpdf->examiner->name; ?>"   type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  required autofocus placeholder="Name" readonly>
+										 </div>
+									   @endforeach
+								</div>
 
-                                                <div class="col-sm-8">
-                                                    <label>Prüfungsangaben :</label>
-                                                    <div class="form-group">
-                                                        <input type="hidden" name="test_id" id="test_id" value="<?php echo $usertotest->test->id; ?>">
-                                                        <input value="{{$usertotest->test->name}}"   type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  required autofocus placeholder="Name" readonly>
-                                                    </div>
-                                                </div>
-                                                 <div class="col-sm-4">
-                                                     <label>Semester :</label>
-                                                    <div class="form-group">
-                                                        {{Form::select('semester_session', $sessions ,$mailPdfRequestDate,['class'=>'form-control','placeholder'=>'Select Session','id'=>'semester'])}}
-                                                        <span class="alertrequired">{!!$errors->first('semester_session')!!}</span>
-                                                    </div>
-                                                 </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                               <label>Deine Prüfer waren :</label>
-                                               @foreach($usertotest->mailpdfs as $mailpdf)
-                                                <div class="form-group">
-                                                   <input value="<?php echo $mailpdf->examiner->name; ?>"   type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"  required autofocus placeholder="Name" readonly>
-                                                 </div>
-                                               @endforeach
-                                        </div>
+								<div class="col-sm-12">
+									<label>Zusätzliche Informationen zur Prüfung (Atmosphäre, Prüfungsmodus etc.) :</label>
+										<div class="form-group">
+											<textarea name="extra_information" rows="6" style="resize: both;" class="form-control{{ $errors->has('extra_information') ? ' is-invalid' : '' }}"  placeholder="Extra Information">{{ old('extra_information') }}</textarea>
+										</div>
+								</div>
+							</div>
 
-                                        <div class="col-sm-12">
-                                            <label>Zusätzliche Informationen zur Prüfung (Atmosphäre, Prüfungsmodus etc.) :</label>
-                                                <div class="form-group">
-                                                    <textarea name="extra_information" rows="6" style="resize: both;" class="form-control{{ $errors->has('extra_information') ? ' is-invalid' : '' }}"  placeholder="Extra Information">{{ old('extra_information') }}</textarea>
-                                                </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <label>Welche Note hast du bekommen? (anonym) :</label>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="Ich will nicht mitteilen" checked>
-                                                    &nbsp;&nbsp; Ich möchte meine Note nicht mitteilen.
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios1" value="1">
-                                                   &nbsp;&nbsp; 1
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="2">
-                                                    &nbsp;&nbsp; 2
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="3">
-                                                    &nbsp;&nbsp; 3
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="4">
-                                                    &nbsp;&nbsp; 4
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="failed">
-                                                    &nbsp;&nbsp; durchgefallen
-                                                </label>
-                                            </div>
-
-
-                                        </div>
+							<div class="row">
+								<div class="col-sm-12">
+									<label>Welche Note hast du bekommen? (bleibt anonym!) :</label>
+									<div class="form-check"  id="formGrade1">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios1" value="1" required>
+										   &nbsp;&nbsp; 1
+										</label>
+									</div>
+									<div class="form-check"  id="formGrade2">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="2">
+											&nbsp;&nbsp; 2
+										</label>
+									</div>
+									<div class="form-check"  id="formGrade3">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="3">
+											&nbsp;&nbsp; 3
+										</label>
+									</div>
+									<div class="form-check"  id="formGrade4">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="4">
+											&nbsp;&nbsp; 4
+										</label>
+									</div>
+									<div class="form-check" id="formGrade0">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios0" value="bestanden">
+										   &nbsp;&nbsp; bestanden
+										</label>
+									</div>
+									<div class="form-check"  id="formGrade5">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="failed">
+											&nbsp;&nbsp; durchgefallen
+										</label>
+									</div>
+									<div class="form-check"  id="formGrade6">
+										<label class="form-check-label">
+											<input class="form-check-input" type="radio" name="grade" id="gridRadios2" value="Ich will nicht mitteilen">
+											&nbsp;&nbsp; Ich möchte meine Note nicht mitteilen.
+										</label>
+									</div>
+								</div>
 							</div>
 						</div>
                    </div>
