@@ -31,15 +31,14 @@ class TestExaminerController extends Controller
      */
     public function index()
     {
-        // $this->authorize('isAdmin');
-
-        // if (\Gate::allows('isAdmin') || \Gate::allows('isAuthor')) {
-        return TestExaminer::with('examiner')->with('test')->latest()->paginate(10);
-		//return TestExaminer::with('examiner')->with('test')->get()->sortBy('examiner.name');
-        //  }
-
-
-
+       return TestExaminer::with('examiner')->with('test')->latest()->paginate(10);
+    }
+	
+	//used in UserToTest.vue to get all possible TE before filtering by test id. couldn't get this to work more elegantly
+    public function displayAll()
+    {
+       //return TestExaminer::with('examiner')->with('test')->get()->sortBy('examiner.name'); //can't figure out how to set the vuejs filter
+	   return TestExaminer::with('examiner')->with('test')->latest()->paginate(10000); //access on UserToTest.vue with testExaminers.data
     }
 
     /**
@@ -74,11 +73,17 @@ class TestExaminerController extends Controller
 		copy($destinationPath.$filename, $backupPath.$filename);
 
 		//updateOrCreate instead of create will update the testExaminer if exits, instead of creating duplicates of the testExaminer
+        /*return TestExaminer::create([
+            'test_id'=>$request->test_id,
+            'examiner_id'=>$request->examiner_id,
+            'pdf'=>$filename,
+            'about_pdf'=>$request->about_pdf
+        ]);*/
+
 		return TestExaminer::updateOrCreate(
 			['test_id' => $request->test_id, 'examiner_id' => $request->examiner_id],
 			['pdf'=>$filename, 'about_pdf'=>$request->about_pdf]
 		);
-
 
     }
 

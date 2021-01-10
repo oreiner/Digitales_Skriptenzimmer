@@ -4,12 +4,18 @@ namespace App\Http\Controllers\Admin\Api;
 
 use App\User;
 use App\MailPdf;
+use App\Helper\Helper;
 use App\UserToTest;
 use App\TestExaminer;
 use setasign\Fpdi\Fpdi;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Mail\SendMailPdf;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
 use Debugbar;
 
 class UserToTestController extends Controller
@@ -65,11 +71,6 @@ class UserToTestController extends Controller
     }
 
 
-
-
-
-
-
     public function store(Request $request)
     {
 
@@ -95,7 +96,7 @@ class UserToTestController extends Controller
 
 
     }
-
+/*
     public function updateProfile(Request $request){
         $user= auth('api')->user();
         $this->validate($request,[
@@ -122,7 +123,7 @@ class UserToTestController extends Controller
 
 
         $user->update($request->all());
-    }
+    }*/
 
 
 
@@ -147,15 +148,61 @@ class UserToTestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user=User::findOrFail($id);
+        $usertotest=UserToTest::findOrFail($id);
         $this->validate($request,[
-            'name'=>'required|string|max:191',
-            'email'=> 'required|email|string|max:191"|unique:users,email,'.$user->id,
-            'password'=>'sometimes|string|min:6',
-            'type'=>'required|string'
+            'examiner_id'=>'required|array',
         ]);
-        $user->update($request->all());
-        return ['message'=>'Updated the user info'];
+
+		$ids = $request->examiner_id;
+
+        $usertotest->mailpdfs()->each(function ($child, $k) use ($ids) {
+			$child->update(["examiner_id" => $ids[$k] ?? null]);
+		});
+		
+		$this->resend($id);
+		
+        return ['message'=>'Updated all the examiners and resent Mail'];
+		
+    }
+
+public function resend($id)
+    {
+		
+		//get old data
+		$usertotest = UserToTest::with('user')->with('mailpdfs')->findOrFail($id);
+		$testExaminers= TestExaminer::where('test_id',$usertotest->test_id)->whereIn('examiner_id',$usertotest->mailpdfs->pluck('examiner_id'))->get();
+		
+		//users should get watermark, moderators and admins shouldn't
+		if($usertotest->user->type=="user"){
+			$watermark = TRUE;
+		} else {
+			$watermark = FALSE;
+		}
+		
+		//update mailpdf with new file name and watermark
+		foreach($testExaminers as $testExaminer) {
+            $helper=new Helper();
+            $filename=$helper->generatePdf($testExaminer->pdf,$usertotest->user->name, $watermark);
+			$mailpdf =  MailPdf::where('user_to_test_id',$usertotest->id)->where('examiner_id',$testExaminer->examiner_id)->first();
+			$mailpdf->mailpdf = $filename;
+            $mailpdf->save();
+        }
+        $mailpdfs= MailPdf::where('user_to_test_id',$usertotest->id)->get();
+        $content = [
+                   'from_email'=> config('mail.from.sender'),
+				   'name'=> config('mail.from.name'),
+                   'username'=> $usertotest->user->name,
+                   'queryMailPdfs'=> $mailpdfs,
+                  ];
+		
+        try {
+            Mail::to($usertotest->user->email)->send(new SendMailPdf($content)); //queues by default in class
+			return ['message'=>'Re-sent Mail'];
+        } catch (\Exception $e) {
+            echo 'Error - '.$e;
+            //  die;
+        }
+
     }
 
     /**
