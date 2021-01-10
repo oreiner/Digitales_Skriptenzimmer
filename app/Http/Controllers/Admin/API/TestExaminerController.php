@@ -37,8 +37,7 @@ class TestExaminerController extends Controller
 	//used in UserToTest.vue to get all possible TE before filtering by test id. couldn't get this to work more elegantly
     public function displayAll()
     {
-       //return TestExaminer::with('examiner')->with('test')->get()->sortBy('examiner.name'); //can't figure out how to set the vuejs filter
-	   return TestExaminer::with('examiner')->with('test')->latest()->paginate(10000); //access on UserToTest.vue with testExaminers.data
+	   return TestExaminer::with('examiner')->with('test')->orderBy('pdf')->paginate(10000); //access on UserToTest.vue with testExaminers.data
     }
 
     /**
