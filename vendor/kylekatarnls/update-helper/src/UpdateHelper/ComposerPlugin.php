@@ -34,4 +34,6 @@ class ComposerPlugin implements PluginInterface, EventSubscriberInterface
 
         UpdateHelper::check($event);
     }
+	
+
 }

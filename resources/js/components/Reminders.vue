@@ -206,7 +206,7 @@
                 let query=this.$parent.search;
                 axios.get(base_path+'/admin_api/findReminder?q='+ query)
                     .then((data)=>{
-                       this.tests = data.data;
+                       this.reminders = data.data;
                     })
                     .catch(()=>{
 

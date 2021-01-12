@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Api;
+namespace App\Http\Controllers\Admin\API;
 
 use App\Examiner;
 use App\TestExaminer;
@@ -37,6 +37,7 @@ class TestExaminerController extends Controller
 	//used in UserToTest.vue to get all possible TE before filtering by test id. couldn't get this to work more elegantly
     public function displayAll()
     {
+       //return TestExaminer::with('examiner')->with('test')->get()->sortBy('examiner.name'); //can't figure out how to set the vuejs filter
 	   return TestExaminer::with('examiner')->with('test')->orderBy('pdf')->paginate(10000); //access on UserToTest.vue with testExaminers.data
     }
 
@@ -172,15 +173,32 @@ class TestExaminerController extends Controller
 
     public function search(){
         if($search = \Request::get('q')){
-            $users =User::where(function ($query) use ($search){
+            $testexaminers =TestExaminer::where(function ($query) use ($search){
                 $query->where('name', 'LIKE', "%$search%")
                     ->orWhere('email', 'LIKE', "%$search%")
                     ->orWhere('type', 'LIKE', "%$search%");
             })->paginate(20);
         }else{
-            $users= User::latest()->paginate(20);
+            $testexaminers= TestExaminer::latest()->paginate(20);
         }
-        return $users;
+        return $testexaminers;
+		
+		
+		//translate name into id
+			$examiner_ids = Examiner::where(function ($query) use ($search){
+                $query->Where( 'name', 'LIKE', "%$search%"); 
+            })->pluck('id')->toArray();
+			//get testExaminer by id
+            $testExaminers =testExaminer::whereIn('examiner_id',$examiner_ids)->with('examiner')->with('test')->latest()->paginate(10);
+        }else{
+            $testExaminers= TestExaminer::with('examiner')->with('test')->latest()->paginate(10);
+			
+        }
+        return $testExaminers;
+		
+		
+		
+		
     }
 
     public function examiners(){

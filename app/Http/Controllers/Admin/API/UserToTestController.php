@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Api;
+namespace App\Http\Controllers\Admin\API;
 
 use App\User;
 use App\MailPdf;
@@ -49,19 +49,8 @@ class UserToTestController extends Controller
         //return UserToTest::with('user')->with('test')->latest()->paginate(10);
 		//order by last uploaded comment
 		return UserToTest::with('user')->with('test')->orderBy('feedback_status','desc')->orderBy('updated_at','desc')->paginate(10);
-		
         //  }
-
-
-
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
 
 
     public function testDetailByUser($id)
@@ -70,7 +59,13 @@ class UserToTestController extends Controller
 
     }
 
-
+	
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
 

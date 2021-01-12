@@ -269,9 +269,9 @@
         created(){
             Fire.$on('searching',()=>{
                 let query=this.$parent.search;
-                axios.get(base_path+'/admin_api/findExaminer?q='+ query)
+                axios.get(base_path+'/admin_api/findUploadedPdfs?q='+ query)
                     .then((data)=>{
-                       this.examiners = data.data;
+                       this.uploadPdfs = data.data;
                     })
                     .catch(()=>{
 

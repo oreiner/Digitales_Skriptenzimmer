@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Api;
+namespace App\Http\Controllers\Admin\API;
 
 use App\UploadPdf;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-
+use Debugbar;
 class UploadPdfController extends Controller
 {
     private $guardName = 'admin_api';
@@ -49,7 +49,7 @@ class UploadPdfController extends Controller
     {
         $this->validate($request,[
             'title'        => 'required',
-            'Semester'       => 'required',						'Fach'       => 'required',			
+            'Semester'       => 'required',						'Fach'       => 'required',
             'upload_pdf'        => 'required|mimes:pdf',
         ]);
 
@@ -57,10 +57,10 @@ class UploadPdfController extends Controller
         $filename = time().'_'.$upload_pdf->getClientOriginalName();
         $destinationPath = public_path('img/uploadpdf/');
         $upload_pdf->move($destinationPath, $filename);
-
+Debugbar::info($request);
         return UploadPdf::create([
             'title'=>$request->title,
-			'Semester'=>$request->Semester,
+            'Semester'=>$request->Semester,
             'upload_pdf'=>$filename,
             'Fach'=>$request->Fach
         ]);
@@ -87,11 +87,11 @@ class UploadPdfController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function updateUploadPdf(Request $request)
-    {
+    {Debugbar::info($request);
         $uploadPdf=UploadPdf::findOrFail($request->id);
         $this->validate($request,[
             'title'        => 'required',
-            'Semester'       => 'required',						'Fach'       => 'required',	  
+            'Semester'       => 'required',						'Fach'       => 'required',
             'upload_pdf'        => 'nullable',
         ]);
        if($request->hasFile('upload_pdf')) {
@@ -130,15 +130,15 @@ class UploadPdfController extends Controller
 
     public function search(){
         if($search = \Request::get('q')){
-            $users =User::where(function ($query) use ($search){
-                $query->where('name', 'LIKE', "%$search%")
-                    ->orWhere('email', 'LIKE', "%$search%")
-                    ->orWhere('type', 'LIKE', "%$search%");
+            $pdfs =UploadPdf::where(function ($query) use ($search){
+                $query->where('title', 'LIKE', "%$search%")
+                    ->orWhere('Fach', 'LIKE', "%$search%")
+                    ->orWhere('Semester', 'LIKE', "%$search%");
             })->paginate(20);
         }else{
-            $users= User::latest()->paginate(20);
+            $pdfs= UploadPdf::latest()->paginate(20);
         }
-        return $users;
+        return $pdfs;
     }
 
     public function examiners(){
