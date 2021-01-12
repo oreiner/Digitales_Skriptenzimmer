@@ -173,17 +173,6 @@ class TestExaminerController extends Controller
 
     public function search(){
         if($search = \Request::get('q')){
-            $testexaminers =TestExaminer::where(function ($query) use ($search){
-                $query->where('name', 'LIKE', "%$search%")
-                    ->orWhere('email', 'LIKE', "%$search%")
-                    ->orWhere('type', 'LIKE', "%$search%");
-            })->paginate(20);
-        }else{
-            $testexaminers= TestExaminer::latest()->paginate(20);
-        }
-        return $testexaminers;
-		
-		
 		//translate name into id
 			$examiner_ids = Examiner::where(function ($query) use ($search){
                 $query->Where( 'name', 'LIKE', "%$search%"); 
@@ -194,11 +183,7 @@ class TestExaminerController extends Controller
             $testExaminers= TestExaminer::with('examiner')->with('test')->latest()->paginate(10);
 			
         }
-        return $testExaminers;
-		
-		
-		
-		
+        return $testExaminers;		
     }
 
     public function examiners(){
