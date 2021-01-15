@@ -100,6 +100,7 @@ CREATE TABLE IF NOT EXISTS `mail_pdfs` (
   `mailpdf` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `questions` text COLLATE utf8mb4_unicode_ci,
   `answers` text COLLATE utf8mb4_unicode_ci,
+  `personal_extra` text COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
