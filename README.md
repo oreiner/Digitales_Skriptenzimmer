@@ -4,32 +4,34 @@ Diese Anleitung ist noch nicht vollständig!
 Sie wird im Verlauf berarbeitet.
 
 #### Nutzer können:
-  - Protokolle nach dem "Kittelautomat"-System erhalten. Erstes Protokoll herunterladen und anschließend eigenes Protokoll ergänzen um sich wieder freizuschalten. (technisch können sie zwei Protokolle abfragen pro Tag. z.B. ein falsches herunterladen, freischalten lassen und ein zweites heruntenladen. Dies sollte misbrauch des Systems verhindern)
-  - Skripte unbegrenzt herunterladen
-  - ...
+  - Protokolle nach dem "Kittelautomat"-System erhalten. Das erste Protokoll können die Prüflinge einfach herunterladen aber werden dann für weitere Protokolle gespert bis sie anschließend ein eigenes Protokoll eingeben. Nach der Eingabe des Protokolls werden sie automatisch für das nächste Protokoll freigeschaltet. 
+  - Für jeden Prüfer müssen die Prüflinge mindestens 10 Zeichen in jeweils einem Textfeld für Fragen und Antworten. Zusätzlich können sie Tipps zum Prüfer eingeben sowie für die gesamte Prüfung, wenn sie von mehreren Prüfer geprüft wurden.
+  - Die Prüflinge können zwei Protokolle pro Tag abfragen. Dies sollte misbrauch des System verhindern ohne die Prüflinge zu stark einzuschränken. (Diese Zahl kann im Backend angepasst werden).
+  - Angemeldete Nutzer können angebotene Skripte oder andere bereitgestellte Dokumente unbegrenzt herunterladen.
   
 #### Moderator können
- - Nutzer freischalten und verwalten
- - Prüfer erstellen
- - Protokolle von der Nutzer-Oberfläche abgeben: sie 100 Protokolle pro Tag herunterladen und müssen keine Mail bekommen, wenn sie es nicht brauchen.
- - neue Protokolle und Skripte vom Admin-Panel hochladen 
- - Kommentare von Nutzer löschen
- - Zeiträume für Erinnerungs-E-Mail anpassen
- - Statistik zu Protokolle Anfragen und Abgaben anschauen
- - ...
+ - Nutzer für die Protokolle freischalten und verwalten.
+ - Prüfer erstellen und entsprechend Protokolle (z.B. alte PDFs von eurer alten Datenbank) hochladen.
+ - Neue Einzelprotokolle von der Nutzer-Oberfläche abgeben, z.B. wenn die Prüflinge das selber nicht hinkriegen zu Machen. Die Moderatoren können 100 Protokolle pro Tag herunterladen und müssten dabei keine Mail bekommen, wenn sie es nicht brauchen.
+ - Skripte und andere allgemeine Dokumenten vom Admin-Panel hochladen. 
+ - Die Prüfer von einzelnen Nutzern anpassen und Protokolle erneut versenden.
+ - Kommentare von Nutzern löschen.
+ - Nutzer ein Ban erteilen oder zurückziehen. 
+ - Zeiträume für Erinnerungs-E-Mail anpassen.
+ - Statistik zu Protokolle Anfragen und Abgaben anschauen (Diese Funktion ist derzeit nicht ganz richtig implemintiert).
 
 #### Administratoren können:
  - Alle Moderatoren Funktionen
- - Nutzer ein Ban geben
  - Prüfungen erstellen
  - Nutzer, Prüfer, Protokolle,  etc. löschen
- - ...
+ - Nutzer-Typ von Studierenden und Moderatoren ändern 
 
 #### Der Skriptenzimmer-Roboter kann:
 
  - Digest über neuen Nutzer und neuen abgegebenen Protokolle an die Moderatoren herumschicken 
  
 ### Beispielseite
+
 Ein Demo findet ihr hier: https://demoskriptenzimmer.000webhostapp.com/  
 Fühlr euch frei mit der Seite rumzuspielen.
 Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin
@@ -39,7 +41,7 @@ Passwort: 123123
 ### Installation
 
 Die Webseite ist Laravel basiert. Um sie für euer Uni zu installieren, müsst ihr: 
-1. Dateien auf einem Hosting hochladen.
+1. Dateien auf einem Hosting-Server hochladen.
 2. Datenbank erstellen und in phpmyadmin die Vorlage importieren 
 >> /database/db_vorlage_skrizi.sql  
 
@@ -50,7 +52,7 @@ bzw. Laravel installieren (siehe https://laravel.com/docs/5.7/installation) und 
 4. nachdem .env fertig ist 
 >> $ php artisan config:cache
 
-bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren.
+Bei jeder Änderung der .env Datei muss man die Cache nochmal mit diesem Befehl aktualisieren.
 Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite langsamer.
 
 *Wenn ihr shared hosting benutzt (kostenloses Server) kann es komplizierter sein. Ein gutes Tutorial dafür ist   https://www.000webhost.com/forum/t/deploy-laravel-project-into-000webhost-site/127323
@@ -60,12 +62,11 @@ Alternative kann man in .env APP_ENV=local einstellen, so wird aber die Seite la
 
 ### Webseite für eure Prüfungen bereitstellen
 1. Admin User auf der Seite registrieren und in der Datenbank unter Users auf type:admin ändern
-2. einloggen auf https://URL/admin
-3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle hochladen.
+2. einloggen auf https://euerURL/admin
+3. Im Admin-Panel Prüfer und Prüfungen erstellen, dann Protokolle über die "Prüfungen" Leiste hochladen.
 >> wichtig! Die Protokolle müssen PDF in version 1.4 (bzw. adobe acrobbat 5) sein!  
 >> Ihr könntet eure Dateien mit acrobat (nicht reader) anpassen oder online. z.B. auf  
 >> https://docupub.de/pdfconvert/
-4. ...
 
 ### Weitere Funktionen
 Sind auf der admin Startseite beschrieben
@@ -74,21 +75,4 @@ Sind auf der admin Startseite beschrieben
 
 ## Weiterentwicklung
 
-### extra Features
-Ein Paar Ideen, die ich im Verlauf implementieren möchte sind: 
-1. Möglichkeit per Prüfung zu entscheiden, ob Fragen+Antworten abzugeben sind oder nur ein Box
-2. Erinnerung an die Moderatoren die Prüfungstermine für das Semester anzupassen.  
-3.
-4. [...]
-
-### Cleanup & Refactoring
-Es gibt leider relativ viel schlechter Code und mehrere Dateien und Funktionen die komplett umgebracht sind.  
-Man muss aber natürlich beim Löschen sicher sein, dass sie wirklich nutzlos sind.
-Außerdem sind noch einige kleine Bugs
-1. Seitenwähler am Adminpanel reparieren
-2. Layouts mit Header-Datei umschreiben
-3. Statistik-Übersicht verbesseren
-4. Hard-Coding von M3 ändern und als Einstellung auf der Admin-Panel einstellbar machen. 
-5.
-6. [...]
-Ich freue mich auf Kollaborationen! Falls ihr ein Feature vorschlagen möchtet oder ihr selbst entwickeln, schreibt mir, öffnet ein Issue oder macht einfach ein Pull Request.
+[lese hier](Weiterentwicklung.md)
