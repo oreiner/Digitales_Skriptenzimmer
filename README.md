@@ -75,4 +75,4 @@ Sind auf der admin Startseite beschrieben
 
 ## Weiterentwicklung
 
-[lese hier](Weiterentwicklung.md)
+[lese hier](Weiterentwicklung.MD)
