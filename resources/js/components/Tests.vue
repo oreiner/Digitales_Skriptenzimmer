@@ -47,7 +47,7 @@
                                     </a>
                                     /
                                     <a href="javascript:void(0)" @click="assignModal(test)" v-my-tooltip.bottom-center="'Protokoll hochladen'">
-                                        <i class="fas fa-share"></i>
+                                        <i class="fas fa-share-square"></i>
                                     </a>
                                 </td>
 								<td v-else>
@@ -56,7 +56,7 @@
                                     </a>
                                     /
                                     <a href="javascript:void(0)" @click="assignModal(test)" v-my-tooltip.bottom-center="'Protokoll hochladen'">
-                                        <i class="fas fa-share"></i>
+                                        <i class="fas fa-share-square"></i>
                                     </a>
 								</td>
                             </tr>
@@ -71,7 +71,6 @@
                 <!-- /.card -->
             </div>
         </div>
-
         <!--<div v-if="!$gate.isAdminOrAuthor()">-->
             <!--<not-found></not-found>-->
         <!--</div>-->
@@ -102,14 +101,12 @@
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
-										<!--
                                         <option value="5">5</option>
                                         <option value="6">6</option>
                                         <option value="7">7</option>
                                         <option value="8">8</option>
                                         <option value="9">9</option>
                                         <option value="10">10</option>
-										!-->
                                     </select>
                                     <has-error :form="form" field="no_of_examiner"></has-error>
                                 </div>
@@ -156,7 +153,7 @@
                                     <div class="form-group">
                                         <select v-model="form.examiner_id" name="examiner_id"  class="form-control" :class="{ 'is-invalid': form.errors.has('examiner_id') }" id="examiner_id">
                                             <option value="" disabled>Prüfer auswählen</option>
-                                            <option v-for="examiner in examiners" :value="examiner.id">
+                                            <option v-for="examiner in examiners.data" :value="examiner.id">
                                                 {{ examiner.name }}
                                             </option>
                                         </select>
@@ -344,17 +341,14 @@
                     })
 
             },
+			
             loadExaminers(){
-                axios.get(base_path+'/admin_api/examiners')
+				this.$Progress.start()
+                axios.get(base_path+'/admin_api/examiner')
                     .then(response => this.examiners = response.data)
                     .catch(error=>console.log(error));
+				this.$Progress.finish()
             }
-
-
-
-
-
-
 
         },
 
@@ -372,7 +366,7 @@
                     })
             })
 
-           this.loadExaminers();
+            this.loadExaminers();
             this.loadTests()
             Fire.$on('AfterCreate',()=>{
                 this.loadTests()

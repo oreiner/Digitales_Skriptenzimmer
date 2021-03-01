@@ -76077,7 +76077,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -76228,11 +76227,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         loadExaminers: function loadExaminers() {
             var _this7 = this;
 
-            axios.get(base_path + '/admin_api/examiners').then(function (response) {
+            this.$Progress.start();
+            axios.get(base_path + '/admin_api/examiner').then(function (response) {
                 return _this7.examiners = response.data;
             }).catch(function (error) {
                 return console.log(error);
             });
+            this.$Progress.finish();
         }
     },
 
@@ -76913,7 +76914,7 @@ var render = function() {
                                   [_vm._v("Prüfer auswählen")]
                                 ),
                                 _vm._v(" "),
-                                _vm._l(_vm.examiners, function(examiner) {
+                                _vm._l(_vm.examiners.data, function(examiner) {
                                   return _c(
                                     "option",
                                     { domProps: { value: examiner.id } },
@@ -79813,13 +79814,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
 
+            console.log("page is " + page);
             this.$Progress.start();
-            axios.get(base_path + '/admin_api/userToTest?page=' + page).then(function (response) {
-                _this2.userToTests = response.data;
-                _this2.$Progress.finish();
-            }).catch(function (error) {
-                _this2.$Progress.fail();
+
+            /*
+                        axios.get(base_path+'/admin_api/userToTest?page=' + page)
+                            .then(response => {
+                                this.userToTests = response.data;
+                                this.$Progress.finish()
+                            }).catch(error=>{
+                            this.$Progress.fail()
+                        });
+            */
+            //trying to make search and pagination work together. doesn't work yet
+            Fire.$click('searching', function () {
+                var query = _this2.$parent.search;
+                axios.get(base_path + '/admin_api/findFeedback?q=' + query + '&page=' + page).then(function (response) {
+                    _this2.userToTests = response.data;
+                    _this2.$Progress.finish();
+                }).catch(function (error) {
+                    _this2.$Progress.fail();
+                });
             });
+            Fire.$on('searching', function () {
+                var query = _this2.$parent.search;
+                axios.get(base_path + '/admin_api/findFeedback?q=' + query + '&page=' + page).then(function (response) {
+                    _this2.userToTests = response.data;
+                    _this2.$Progress.finish();
+                }).catch(function (error) {
+                    _this2.$Progress.fail();
+                });
+            });
+            console.log("end " + page);
         },
         testDetailByUser: function testDetailByUser(usertestid, feedbackstatus, testid) {
             var _this3 = this;
