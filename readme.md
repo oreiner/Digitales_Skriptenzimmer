@@ -33,10 +33,13 @@ Sie wird im Verlauf berarbeitet.
 ### Beispielseite
 
 Ein Demo findet ihr hier: https://demoskriptenzimmer.000webhostapp.com/  
-Fühlr euch frei mit der Seite rumzuspielen.
-Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin
-Username: admin1
-Passwort: 123123
+Fühlt euch frei mit der Seite rumzuspielen.  
+Username: testuser  
+Passwort: 123123  
+Das Admin-Panel findet ihr unter: https://demoskriptenzimmer.000webhostapp.com/admin  
+Username: admin1  
+Passwort: 123123  
+(Ihr könnt auch ruhig weitere Nuzter erstellen)  
  
 ### Installation
 

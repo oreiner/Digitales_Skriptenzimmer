@@ -76228,7 +76228,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this7 = this;
 
             this.$Progress.start();
-            axios.get(base_path + '/admin_api/examiner').then(function (response) {
+            axios.get(base_path + '/admin_api/examinerDisplyAll').then(function (response) {
                 return _this7.examiners = response.data;
             }).catch(function (error) {
                 return console.log(error);
@@ -76914,7 +76914,7 @@ var render = function() {
                                   [_vm._v("Prüfer auswählen")]
                                 ),
                                 _vm._v(" "),
-                                _vm._l(_vm.examiners.data, function(examiner) {
+                                _vm._l(_vm.examiners, function(examiner) {
                                   return _c(
                                     "option",
                                     { domProps: { value: examiner.id } },

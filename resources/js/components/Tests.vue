@@ -153,7 +153,7 @@
                                     <div class="form-group">
                                         <select v-model="form.examiner_id" name="examiner_id"  class="form-control" :class="{ 'is-invalid': form.errors.has('examiner_id') }" id="examiner_id">
                                             <option value="" disabled>Prüfer auswählen</option>
-                                            <option v-for="examiner in examiners.data" :value="examiner.id">
+                                            <option v-for="examiner in examiners" :value="examiner.id">
                                                 {{ examiner.name }}
                                             </option>
                                         </select>
@@ -344,7 +344,7 @@
 			
             loadExaminers(){
 				this.$Progress.start()
-                axios.get(base_path+'/admin_api/examiner')
+                axios.get(base_path+'/admin_api/examinerDisplyAll')
                     .then(response => this.examiners = response.data)
                     .catch(error=>console.log(error));
 				this.$Progress.finish()

@@ -36,8 +36,12 @@ class ExaminerController extends Controller
 		return Examiner::orderBy('name','asc')->paginate(10); //order by last name, when format is "last name, first name"
         //  }
 
+    }
 
-
+	// function for admin panel Prüferliste as used on tests.vue
+	public function displayAll() 
+    {
+		return Examiner::orderBy('name','asc')->get(); //order by last name, when format is "last name, first name"
     }
 
     /**
