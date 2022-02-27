@@ -11,7 +11,6 @@
 
 namespace Overtrue\LaravelLang;
 
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Translation\FileLoader as LaravelTranslationFileLoader;
 
@@ -48,6 +47,8 @@ class FileLoader extends LaravelTranslationFileLoader
     {
         $defaults = [];
 
+        $locale = str_replace('_', '-', $locale);
+
         foreach ($this->paths as $path) {
             $defaults = array_replace_recursive($defaults, $this->loadPath($path, $locale, $group));
         }
@@ -68,7 +69,7 @@ class FileLoader extends LaravelTranslationFileLoader
     {
         $result = parent::loadPath($path, $locale, $group);
 
-        if (empty($result) && Str::contains($locale, '-')) {
+        if (empty($result) && str_contains($locale, '-')) {
             return parent::loadPath($path, strstr($locale, '-', true), $group);
         }
 
