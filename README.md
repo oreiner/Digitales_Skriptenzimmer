@@ -3,6 +3,15 @@
 Diese Anleitung ist noch nicht vollständig! 
 Sie wird im Verlauf berarbeitet.
 
+## Voraussetzungen
+
+- PHP
+>>Version 1.0.0. läuft mit Laravel 5.8 und PHP7. Wurde bis PHP 7.4.33 getestet
+
+>>Version 2.0.0. läuft mit Laravel 9 und braucht PHP8. Wurde bis PHP 8.2.0 getestet
+
+- SQL-Datenbank
+
 #### Nutzer können:
   - Protokolle nach dem "Kittelautomat"-System erhalten. Das erste Protokoll können die Prüflinge einfach herunterladen aber werden dann für weitere Protokolle gespert bis sie anschließend ein eigenes Protokoll eingeben. Nach der Eingabe des Protokolls werden sie automatisch für das nächste Protokoll freigeschaltet. 
   - Für jeden Prüfer müssen die Prüflinge mindestens 10 Zeichen in jeweils einem Textfeld für Fragen und Antworten. Zusätzlich können sie Tipps zum Prüfer eingeben sowie für die gesamte Prüfung, wenn sie von mehreren Prüfer geprüft wurden.
