@@ -54,13 +54,6 @@ class Token extends Model
     ];
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    /**
      * Get the client that the token belongs to.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -79,7 +72,9 @@ class Token extends Model
     {
         $provider = config('auth.guards.api.provider');
 
-        return $this->belongsTo(config('auth.providers.'.$provider.'.model'));
+        $model = config('auth.providers.'.$provider.'.model');
+
+        return $this->belongsTo($model, 'user_id', (new $model)->getKeyName());
     }
 
     /**
@@ -117,9 +112,11 @@ class Token extends Model
     {
         $parts = explode(':', $scope);
 
+        $partsCount = count($parts);
+
         $scopes = [];
 
-        for ($i = 0; $i <= count($parts); $i++) {
+        for ($i = 1; $i <= $partsCount; $i++) {
             $scopes[] = implode(':', array_slice($parts, 0, $i));
         }
 

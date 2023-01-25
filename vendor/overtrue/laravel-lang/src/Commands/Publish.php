@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the overtrue/laravel-lang.
- *
- * (c) overtrue <i@overtrue.me>
- *
- * This source file is subject to the MIT license that is bundled
- * with this source code in the file LICENSE.
- */
-
 namespace Overtrue\LaravelLang\Commands;
 
 use Illuminate\Console\Command;
@@ -39,19 +30,20 @@ class Publish extends Command
     /**
      * Execute the console command.
      *
-     * @return mixed
+     * @return void
      */
     public function handle()
     {
-        $locale = $this->argument('locales');
+        $locale = \str_replace('-', '_', $this->argument('locales'));
         $force = $this->option('force') ? 'f' : 'n';
 
-        $sourcePath = base_path('vendor/laravel-lang/lang/src');
-        $sourceJsonPath = base_path('vendor/laravel-lang/lang/json');
-        $targetPath = base_path('resources/lang/');
+        $sourcePath = base_path('vendor/laravel-lang/lang/locales');
+        $sourceJsonPath = base_path('vendor/laravel-lang/lang/locales');
+        $targetPath = lang_path();
 
         if (!is_dir($targetPath) && !mkdir($targetPath)) {
-            return $this->error('The lang path "resources/lang/" does not exist or not writable.');
+            $this->error('The lang path "lang" does not exist or not writable.');
+            return;
         }
 
         $files = [];
@@ -61,8 +53,8 @@ class Publish extends Command
 
         if ('all' == $locale) {
             $files = [
-                $sourcePath.'/*',
-                $sourceJsonPath,
+                \addslashes($sourcePath).'/*',
+                \addslashes($sourceJsonPath).'/*/*.json',
             ];
             $message = 'all';
             $copyEnFiles = true;
@@ -73,25 +65,26 @@ class Publish extends Command
 
                     continue;
                 }
-                $filename = str_replace('_', '-', $filename);
-                $file = $sourcePath.'/'.trim($filename);
-                $jsonFile = $sourceJsonPath.'/'.trim($filename).'.json';
+
+                $trimFilename = trim($filename);
+                $file = $sourcePath.'/'.$trimFilename;
+                $jsonFile = $sourceJsonPath."/{$trimFilename}/{$trimFilename}".'.json';
 
                 if (!file_exists($file)) {
-                    $this->error("lang '$filename' not found.");
+                    $this->error("'$filename' not found.");
 
                     continue;
                 }
 
                 $published[] = $filename;
-                $files[] = $file;
+                $files[] = escapeshellarg($file);
 
                 if (!file_exists($jsonFile)) {
-                    $this->error("lang '$filename' not found.");
+                    $this->error("'$filename' not found.");
 
                     continue;
                 }
-                $files[] = $jsonFile;
+                $files[] = escapeshellarg($jsonFile);
             }
 
             if (empty($files)) {
@@ -102,15 +95,17 @@ class Publish extends Command
         }
 
         if ($inLumen && $copyEnFiles) {
-            $files[] = base_path('vendor/laravel/lumen-framework/resources/lang/en');
+            $files[] = escapeshellarg(base_path('vendor/laravel/lumen-framework/resources/lang/en'));
         }
 
         $files = implode(' ', $files);
-        $process = new Process("cp -r{$force} $files $targetPath");
+        $targetPath = escapeshellarg($targetPath);
+        $command = "cp -r{$force} {$files} {$targetPath}";
+        $process = \method_exists(Process::class, 'fromShellCommandline') ? Process::fromShellCommandline($command) : new Process([$command]);
 
         $process->run(function ($type, $buffer) {
             if (Process::ERR === $type) {
-                return $this->error(trim($buffer));
+                $this->error(trim($buffer));
             }
         });
 

@@ -3,6 +3,7 @@
 ![cog-laravel-ban](https://user-images.githubusercontent.com/1849174/44558308-1d8e0580-a74c-11e8-8e2a-ec297bbc3f12.png)
 
 <p align="center">
+<a href="https://discord.gg/nAZBEkH"><img src="https://img.shields.io/static/v1?logo=discord&label=&message=Discord&color=36393f&style=flat-square" alt="Discord"></a>
 <a href="https://github.com/cybercog/laravel-ban/releases"><img src="https://img.shields.io/github/release/cybercog/laravel-ban.svg?style=flat-square" alt="Releases"></a>
 <a href="https://travis-ci.org/cybercog/laravel-ban"><img src="https://img.shields.io/travis/cybercog/laravel-ban/master.svg?style=flat-square" alt="Build Status"></a>
 <a href="https://styleci.io/repos/83971055"><img src="https://styleci.io/repos/83971055/shield" alt="StyleCI"></a>
@@ -41,9 +42,9 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 ## Features
 
-- Model can has many bans.
-- Removed bans keeps in history as Soft deleted record.
-- Most part of the the logic is handled by the `BanService`.
+- Model can have many bans.
+- Removed bans kept in history as soft deleted records.
+- Most parts of the logic is handled by the `BanService`.
 - Has middleware to prevent banned user route access.
 - Use case is not limited to `User` model, any Eloquent model could be banned.
 - Events firing on models `ban` and `unban`.
@@ -61,7 +62,7 @@ Use case is not limited to User model, any Eloquent model could be banned: Organ
 
 First, pull in the package through Composer:
 
-```sh
+```shell script
 $ composer require cybercog/laravel-ban
 ```
 
@@ -81,7 +82,7 @@ Include the service provider within `app/config/app.php`:
 
 At last you need to publish and run database migrations:
 
-```sh
+```shell script
 $ php artisan vendor:publish --provider="Cog\Laravel\Ban\Providers\BanServiceProvider" --tag="migrations"
 $ php artisan migrate
 ```
@@ -107,7 +108,7 @@ Bannable model must have `nullable timestamp` column named `banned_at`. This val
 
 #### Create a new migration file
 
-```sh
+```shell script
 $ php artisan make:migration add_banned_at_column_to_users_table
 ```
 
@@ -147,7 +148,7 @@ $user->ban();
 ```
 
 #### Apply ban for the entity with reason comment
- 
+
 ```php
 $user->ban([
     'comment' => 'Enjoy your ban!',
@@ -155,7 +156,7 @@ $user->ban([
 ```
 
 #### Apply ban for the entity which will be deleted over time
- 
+
 ```php
 $user->ban([
     'expired_at' => '2086-03-28 00:00:00',
@@ -341,7 +342,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 Run the tests with:
 
-```sh
+```shell script
 $ vendor/bin/phpunit
 ```
 
@@ -351,25 +352,28 @@ If you discover any security related issues, please email open@cybercog.su inste
 
 ## Contributors
 
-| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> |
-| :---: | :---: | :---: |
+| <a href="https://github.com/antonkomarev">![@antonkomarev](https://avatars.githubusercontent.com/u/1849174?s=110)<br />Anton Komarev</a> | <a href="https://github.com/badrshs">![@badrshs](https://avatars.githubusercontent.com/u/26596347?s=110)<br />badr aldeen shek salim</a> | <a href="https://github.com/rickmacgillis">![@rickmacgillis](https://avatars.githubusercontent.com/u/8941225?s=110)<br />Rick Mac Gillis</a> | <a href="https://github.com/AnsellC">![@AnsellC](https://avatars.githubusercontent.com/u/2049714?s=110)<br />AnsellC</a> | <a href="https://github.com/joearcher">![@joearcher](https://avatars.githubusercontent.com/u/1125046?s=110)<br />Joe Archer</a> |
+| :---: | :---: |:--------------------------------------------------------------------------------------------------------------------------------------------:| :---: | :---: |
+| <a href="https://github.com/Im-Fran">![@Im-Fran](https://avatars.githubusercontent.com/u/30329003?s=110)<br />Francisco Solis</a> | <a href="https://github.com/jadamec">![@jadamec](https://avatars.githubusercontent.com/u/19595874?s=110)<br />Jakub Adamec</a> | <a href="https://github.com/ilzrv">![@ilzrv](https://avatars.githubusercontent.com/u/28765966?s=110)<br />Ilia Lazarev</a> | <a href="https://github.com/ZeoKnight">![@ZeoKnight](https://avatars.githubusercontent.com/u/1521472?s=110)<br />ZeoKnight</a> | |
 
 [Laravel Ban contributors list](../../contributors)
 
 ## Alternatives
 
-*Feel free to add more alternatives as Pull Request.* 
+- https://github.com/imanghafoori1/laravel-temp-tag
 
 ## License
 
-- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev](https://github.com/antonkomarev/).
+- `Laravel Ban` package is open-sourced software licensed under the [MIT License](LICENSE) by [Anton Komarev].
 - `Fat Boss In Jail` image licensed under [Creative Commons 3.0](https://creativecommons.org/licenses/by/3.0/us/) by Gan Khoon Lay.
 
 ## About CyberCog
 
-[CyberCog](http://www.cybercog.ru) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
+[CyberCog](https://cybercog.su) is a Social Unity of enthusiasts. Research best solutions in product & software development is our passion.
 
 - [Follow us on Twitter](https://twitter.com/cybercog)
 - [Read our articles on Medium](https://medium.com/cybercog)
 
-<a href="http://cybercog.ru"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>
+<a href="https://cybercog.su"><img src="https://cloud.githubusercontent.com/assets/1849174/18418932/e9edb390-7860-11e6-8a43-aa3fad524664.png" alt="CyberCog"></a>
+
+[Anton Komarev]: https://komarev.com
