@@ -100,24 +100,24 @@ class AlphaPDF extends PDF_Rotate
 		for ($i = 1; $i <= count($this->extgstates); $i++)
 		{
 			$this->_newobj();
-			$this->extgstates[$i]['n'] = $this->n;
-			$this->_out('<</Type /ExtGState');
-			$parms = $this->extgstates[$i]['parms'];
-			$this->_out(sprintf('/ca %.3F', $parms['ca']));
-			$this->_out(sprintf('/CA %.3F', $parms['CA']));
-			$this->_out('/BM '.$parms['BM']);
-			$this->_out('>>');
-			$this->_out('endobj');
+            $this->extgstates[$i]['n'] = $this->n;
+            $this->_put('<</Type /ExtGState');
+            $parms = $this->extgstates[$i]['parms'];
+            $this->_put(sprintf('/ca %.3F', $parms['ca']));
+            $this->_put(sprintf('/CA %.3F', $parms['CA']));
+            $this->_put('/BM '.$parms['BM']);
+            $this->_put('>>');
+            $this->_put('endobj');
 		}
 	}
 
 	function _putresourcedict()
 	{
 		parent::_putresourcedict();
-		$this->_out('/ExtGState <<');
-		foreach($this->extgstates as $k=>$extgstate)
-			$this->_out('/GS'.$k.' '.$extgstate['n'].' 0 R');
-		$this->_out('>>');
+        $this->_put('/ExtGState <<');
+        foreach($this->extgstates as $k=>$extgstate)
+            $this->_put('/GS'.$k.' '.$extgstate['n'].' 0 R');
+        $this->_put('>>');
 	}
 
 	function _putresources()
