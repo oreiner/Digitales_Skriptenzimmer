@@ -14,10 +14,10 @@
 Route::get('/', 'HomeController@index');
 
 //Auth::routes();
-Auth::routes(['verify' => true]);
-Route::post('auth/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail') ->name('password.email'); //manual override, because default Auth::Routes not working for whatever reason
-Route::get('auth/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); //manual override, because default Auth::Routes not working for whatever reason
-Route::post('auth/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); //manual override, because default Auth::Routes not working for whatever reason
+Auth::routes(['verify' => true]); //now works fine?
+//Route::post('auth/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail') ->name('password.email'); //manual override, because default Auth::Routes not working for whatever reason
+//Route::get('auth/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset'); //manual override, because default Auth::Routes not working for whatever reason
+//Route::post('auth/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update'); //manual override, because default Auth::Routes not working for whatever reason
 
 Route::group(['middleware'=>'is-ban'], function(){
 	Route::get('/', 'HomeController@index');//->middleware('verified');
@@ -39,8 +39,8 @@ Route::group(['middleware'=>'is-ban'], function(){
 Route::get('terms', 'TermsController@index')->name('terms');
 Route::resource('contact', 'ContactController');
 
-Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+//Route::get('email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+//Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+//Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
 Route::get('{path}', 'HomeController@index')->where('path','([\w\/.-]+)?' );
