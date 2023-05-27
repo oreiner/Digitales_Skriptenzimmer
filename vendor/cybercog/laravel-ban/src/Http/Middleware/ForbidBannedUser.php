@@ -3,11 +3,13 @@
 /*
  * This file is part of Laravel Ban.
  *
- * (c) Anton Komarev <a.komarev@cybercog.su>
+ * (c) Anton Komarev <anton@komarev.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
+declare(strict_types=1);
 
 namespace Cog\Laravel\Ban\Http\Middleware;
 
@@ -15,11 +17,6 @@ use Closure;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Illuminate\Contracts\Auth\Guard;
 
-/**
- * Class ForbidBannedUser.
- *
- * @package Cog\Laravel\Ban\Http\Middleware
- */
 class ForbidBannedUser
 {
     /**
@@ -43,6 +40,7 @@ class ForbidBannedUser
      * @param \Illuminate\Http\Request $request
      * @param \Closure $next
      * @return mixed
+     *
      * @throws \Exception
      */
     public function handle($request, Closure $next)
@@ -50,9 +48,17 @@ class ForbidBannedUser
         $user = $this->auth->user();
 
         if ($user && $user instanceof BannableContract && $user->isBanned()) {
-            return redirect()->back()->withInput()->withErrors([
+            $redirectUrl = config('ban.redirect_url', null);
+            $errors = [
                 'login' => 'This account is blocked.',
-            ]);
+            ];
+
+            $responseCode = $request->header('X-Inertia') ? 303 : 302;
+            if ($redirectUrl === null) {
+                return redirect()->back($responseCode)->withInput()->withErrors($errors);
+            } else {
+                return redirect($redirectUrl, $responseCode)->withInput()->withErrors($errors);
+            }
         }
 
         return $next($request);

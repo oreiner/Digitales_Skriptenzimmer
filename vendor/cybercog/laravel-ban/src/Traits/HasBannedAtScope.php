@@ -3,21 +3,18 @@
 /*
  * This file is part of Laravel Ban.
  *
- * (c) Anton Komarev <a.komarev@cybercog.su>
+ * (c) Anton Komarev <anton@komarev.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Laravel\Ban\Traits;
 
 use Cog\Laravel\Ban\Scopes\BannedAtScope;
 
-/**
- * Trait HasBannedAtScope.
- *
- * @package Cog\Laravel\Ban\Traits
- */
 trait HasBannedAtScope
 {
     /**
@@ -25,8 +22,8 @@ trait HasBannedAtScope
      *
      * @return void
      */
-    public static function bootHasBannedAtScope()
+    public static function bootHasBannedAtScope(): void
     {
-        static::addGlobalScope(new BannedAtScope);
+        static::addGlobalScope(new BannedAtScope());
     }
 }

@@ -46,19 +46,19 @@ class TranslationServiceProvider extends LaravelTranslationServiceProvider
     {
         $this->app->singleton('translation.loader', function ($app) {
             $paths = [
-                base_path('vendor/laravel-lang/lang/src/'),
+                base_path('vendor/laravel-lang/lang/locales/'),
             ];
-
-            $jsonPath = base_path('vendor/laravel-lang/lang/json/');
 
             if ($this->inLumen) {
                 $this->app['path.lang'] = base_path('vendor/laravel/lumen-framework/resources/lang');
-                array_push($paths, base_path('resources/lang/'));
+                $paths[] = base_path('lang');
             }
 
             $loader = new FileLoader($app['files'], $app['path.lang'], $paths);
 
-            $loader->addJsonPath($jsonPath);
+            if (\is_callable([$loader, 'addJsonPath'])) {
+                $loader->addJsonPath(base_path('vendor/laravel-lang/lang/locales/'));
+            }
 
             return $loader;
         });
@@ -77,7 +77,7 @@ class TranslationServiceProvider extends LaravelTranslationServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return array_merge(parent::provides(), [PublishCommand::class]);
     }

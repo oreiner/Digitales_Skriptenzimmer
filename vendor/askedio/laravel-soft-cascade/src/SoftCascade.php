@@ -123,6 +123,7 @@ class SoftCascade implements SoftCascadeable
 
             if ($action === 'restrict' && $affectedRows > 0) {
                 DB::rollBack(); //Rollback the transaction before throw exception
+
                 throw (new SoftCascadeRestrictedException())->setModel(get_class($modelRelation->getModel()), $foreignKeyUse, $foreignKeyIdsUse->toArray());
             }
 
@@ -172,7 +173,10 @@ class SoftCascade implements SoftCascadeable
     {
         $relatedClass = $relation->getRelated();
         $foreignKeyUse = $relatedClass->getKeyName();
-        $foreignKeyIdsUse = $relatedClass::withTrashed()->where($relation->getMorphType(), $relation->getMorphClass())
+        $baseQuery = $this->direction === 'delete'
+        ? $relatedClass::query()
+        : $relatedClass::withTrashed();
+        $foreignKeyIdsUse = $baseQuery->where($relation->getMorphType(), $relation->getMorphClass())
             ->whereIn($relation->getQualifiedForeignKeyName(), $foreignKeyIds)
             ->select($foreignKeyUse)
             ->get()->toArray();
@@ -199,7 +203,12 @@ class SoftCascade implements SoftCascadeable
         $relationModel = $relation->getQuery()->getModel();
         $relationModel = new $relationModel();
         if ($affectedRows > 0) {
-            $relationModel = $relationModel->withTrashed()->whereIn($foreignKey, $foreignKeyIds)->limit($affectedRows);
+            if ($this->direction != 'delete') {
+                $relationModel = $relationModel->withTrashed();
+            }
+
+            $relationModel = $relationModel->whereIn($foreignKey, $foreignKeyIds)->limit($affectedRows);
+
             $this->run($relationModel->get([$relationModel->getModel()->getKeyName()]));
             $relationModel->{$this->direction}($this->directionData);
         }
@@ -218,11 +227,13 @@ class SoftCascade implements SoftCascadeable
         $class = get_class($model);
         if (!method_exists($model, $relation)) {
             DB::rollBack(); //Rollback the transaction before throw exception
+
             throw new \LogicException(sprintf('%s does not have method \'%s\'.', $class, $relation));
         }
 
         if (!$model->$relation() instanceof \Illuminate\Database\Eloquent\Relations\Relation) {
             DB::rollBack(); //Rollback the transaction before throw exception
+
             throw new \LogicException(sprintf('%s \'%s\' is not an instance of Illuminate\Database\Eloquent\Relations\Relation.', $class, $relation));
         }
     }
@@ -253,7 +264,11 @@ class SoftCascade implements SoftCascadeable
         $relationModel = $relation->getQuery()->getModel();
         $relationModel = new $relationModel();
 
-        return $relationModel->withTrashed()->whereIn($foreignKey, $foreignKeyIds)->count();
+        if ($this->direction != 'delete') {
+            $relationModel = $relationModel->withTrashed();
+        }
+
+        return $relationModel->whereIn($foreignKey, $foreignKeyIds)->count();
     }
 
     /**
@@ -265,17 +280,13 @@ class SoftCascade implements SoftCascadeable
      */
     protected function relationResolver($relation)
     {
-        $return = ['relation' => '', 'action' => 'update'];
-
-        try {
-            list($relation, $action) = explode('@', $relation);
-            $return = ['relation' => $relation, 'action' => $action];
-        } catch (\Exception $e) {
-            $return['relation'] = $relation;
-        }
+        $parsedAction = explode('@', $relation);
+        $return['relation'] = $parsedAction[0];
+        $return['action'] = isset($parsedAction[1]) ? $parsedAction[1] : 'update';
 
         if (!in_array($return['action'], $this->availableActions)) {
             DB::rollBack(); //Rollback the transaction before throw exception
+
             throw (new SoftCascadeNonExistentRelationActionException())->setRelation(implode('@', $return));
         }
 

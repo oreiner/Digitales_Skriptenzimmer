@@ -1,23 +1,18 @@
 <?php
 
 /*
- * This file is part of Laravel Ban.
+ * This file is part of PHP Contracts: Ban.
  *
- * (c) Anton Komarev <a.komarev@cybercog.su>
+ * (c) Anton Komarev <anton@komarev.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
+declare(strict_types=1);
+
 namespace Cog\Contracts\Ban;
 
-use Cog\Contracts\Ban\Bannable as BannableContract;
-
-/**
- * Interface BanService.
- *
- * @package Cog\Contracts\Ban
- */
 interface BanService
 {
     /**
@@ -27,7 +22,7 @@ interface BanService
      * @param array $attributes
      * @return \Cog\Contracts\Ban\Ban
      */
-    public function ban(BannableContract $bannable, array $attributes = []);
+    public function ban(Bannable $bannable, array $attributes = []): Ban;
 
     /**
      * Unban entity.
@@ -35,12 +30,12 @@ interface BanService
      * @param \Cog\Contracts\Ban\Bannable $bannable
      * @return void
      */
-    public function unban(BannableContract $bannable);
+    public function unban(Bannable $bannable): void;
 
     /**
      * Delete all expired Ban models.
      *
      * @return void
      */
-    public function deleteExpiredBans();
+    public function deleteExpiredBans(): void;
 }
