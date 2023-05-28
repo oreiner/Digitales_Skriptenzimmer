@@ -151,6 +151,10 @@ you need
 use Illuminate\Http\Middleware\TrustProxies as Middleware; 
 ~~~
  and
+ instead of 
+~~~
+protected $headers = [...]
+~~~
 ~~~
 protected $headers =
     Request::HEADER_X_FORWARDED_FOR |
