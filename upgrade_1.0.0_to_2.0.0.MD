@@ -171,10 +171,12 @@ Passport's routes have been moved to a dedicated route file. You need to remove 
 7. Update the resend verification mail link to a button with POST method on ```\resources\views\layouts\verify.blade.php``` (line 105)
 ~~~
 <h3 class="verify-text ">	Wenn du keine E-Mail erhalten hast,  
-							<form class="d-inline" method="POST" action={{ route('verification.resend') }}>
-								@csrf
-								<button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-								{{ __('klicke hier, um eine neue Mail anzufordern') }}</button></form>
+	<form class="d-inline" method="POST" action={{ route('verification.resend') }}>
+	    @csrf
+		<button type="submit" class="btn btn-link p-0 m-0 align-baseline">
+		    {{ __('klicke hier, um eine neue Mail anzufordern') }}
+        </button>
+    </form>
 </h3>
 ~~~
 8. Run ```composer update```
