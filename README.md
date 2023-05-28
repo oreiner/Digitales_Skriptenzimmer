@@ -88,3 +88,7 @@ Sind auf der admin Startseite beschrieben
 ## Weiterentwicklung
 
 [lese hier](Weiterentwicklung.MD)
+
+## Version aktualisieren
+
+[von PHP 7.4 to PHP 8.2](upgrade_1.0.0_to_2.0.0.MD)
