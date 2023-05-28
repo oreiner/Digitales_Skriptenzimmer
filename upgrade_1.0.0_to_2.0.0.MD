@@ -2,8 +2,8 @@
 ## From PHP 7.4 to 8.2 and Laravel 5.7 to 9.0
 
 
-1. delete lock files
-2. Then update composer.json to upgrade to laravel 9.0. edit json with
+1. Delete ```composer.lock```
+2. Update ```composer.json``` to upgrade to laravel 9.0. edit the .json file with
 ~~~
 {
     "name": "laravel/laravel",
@@ -88,7 +88,7 @@
 }
 ~~~
 
-3. change app/exceptions/handler.php
+3. Change app/exceptions/handler.php
 ~~~
 <?php
 
@@ -140,7 +140,7 @@ class Handler extends ExceptionHandler
 }
 ~~~
 
-4. update app/http/Middleware/TrustProxies.php
+4. Update ```app/http/Middleware/TrustProxies.php```
 
 instead of 
 ~~~
@@ -159,20 +159,20 @@ protected $headers =
     Request::HEADER_X_FORWARDED_AWS_ELB;
 ~~~
 
-5. Upgrade app/helpers/helper to make transparent pdfs possible again
-This is an issue with the external AlphaPDF script
-(updated the script as seen on the fpdf website, _out was wrong, should be _put)
+5. Upgrade ```app/helpers/helper``` to make transparent pdfs possible again.
+replace all ```_out``` with ```_put```
+(This is an issue with the external AlphaPDF script and has been updated on the official fpdf website)
 
 
-6. update app\Providers\AuthServiceProvider.php:
-Passport's routes have been moved to a dedicated route file. You need to remove the `Passport::routes()` call from this service provider
+6. Update ```app\Providers\AuthServiceProvider.php```
+Passport's routes have been moved to a dedicated route file. You need to remove the ```Passport::routes()``` call from this service provider
 
 
-7. run composer update 
+7. Run ```composer update```
 
 8. One bit of code has been hardcoded into the fpdf library. So needs to be updated after compser update
 to make utf 8 work again:
-Vendor/setasign/fpdf/fpdf.php		add to line 628  directly after
+```Vendor/setasign/fpdf/fpdf.php```		add to line 628  directly after
 ~~~if($txt!=='') 
 {
 ~~~
