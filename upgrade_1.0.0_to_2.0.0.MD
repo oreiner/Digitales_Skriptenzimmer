@@ -88,7 +88,7 @@
 }
 ~~~
 
-3. Change app/exceptions/handler.php
+3. Change ```app/exceptions/handler.php```
 ~~~
 <?php
 
@@ -146,6 +146,7 @@ instead of
 ~~~
 use Fideloper
 ~~~
+you need
 ~~~
 use Illuminate\Http\Middleware\TrustProxies as Middleware; 
 ~~~
@@ -170,12 +171,14 @@ Passport's routes have been moved to a dedicated route file. You need to remove 
 
 7. Run ```composer update```
 
-8. One bit of code has been hardcoded into the fpdf library. So needs to be updated after compser update
+8. One bit of code has been hardcoded into the vendor fpdf library. Soit needs to be updated after running composer update
 to make utf 8 work again:
 ```Vendor/setasign/fpdf/fpdf.php```		add to line 628  directly after
-~~~if($txt!=='') 
+~~~
+if($txt!=='') 
 {
 ~~~
+the follwing code
 ~~~
 $txt = iconv('utf-8', 'cp1252//IGNORE', $txt); 
 ~~~
