@@ -168,10 +168,18 @@ replace all ```_out``` with ```_put```
 6. Update ```app\Providers\AuthServiceProvider.php```
 Passport's routes have been moved to a dedicated route file. You need to remove the ```Passport::routes()``` call from this service provider
 
+7. Update the resend verification mail link to a button with POST method on ```\resources\views\layouts\verify.blade.php``` (line 105)
+~~~
+<h3 class="verify-text ">	Wenn du keine E-Mail erhalten hast,  
+							<form class="d-inline" method="POST" action={{ route('verification.resend') }}>
+								@csrf
+								<button type="submit" class="btn btn-link p-0 m-0 align-baseline">
+								{{ __('klicke hier, um eine neue Mail anzufordern') }}</button></form>
+</h3>
+~~~
+8. Run ```composer update```
 
-7. Run ```composer update```
-
-8. One bit of code has been hardcoded into the vendor fpdf library. Soit needs to be updated after running composer update
+9. One bit of code has been hardcoded into the vendor fpdf library. Soit needs to be updated after running composer update
 to make utf 8 work again:
 ```Vendor/setasign/fpdf/fpdf.php```		add to line 628  directly after
 ~~~
